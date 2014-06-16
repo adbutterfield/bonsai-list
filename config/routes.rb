@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   # get '/:id/marketplace'   => 'users#marketplace',   as: 'user_marketplace'
   get '/marketplace'           => 'products#marketplace',   as: 'marketplace'
   resources :products
-  get 'products/show'          => 'products#show',       as: 'single_product'
+  get 'listings/show'          => 'listings#show',       as: 'single_product'
   resources :offers
   get 'offers/show'            => 'offers#show'
 

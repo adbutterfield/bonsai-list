@@ -1,0 +1,13 @@
+<ul class="pricing-table">
+  <li class="title"><%= @listing.title %></li>
+  <li class="description"><%= @listing.description %></li>
+ <!--  <li class="bullet-item">
+    <p>Common name: Japanese Black Pine</p>
+    <p>Species: <em>Pinus thunbergii</em></p>
+    <p>Japanese: 黒松 (Kuromatsu)</p>
+  </li> -->
+  <li class="bullet-item">Location: <%= @listing.location %></li>
+  <li class="price">$<%= @listing.price %></li>
+  <li class="bullet-item"><%= willing_to_ship?(@listing) %></li>
+  <li class="cta-button"><a class="button radius product-button" href="#">I'm interested!</a></li>
+</ul>
