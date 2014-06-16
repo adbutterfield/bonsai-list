@@ -1,0 +1,12 @@
+<li><%= link_to("<i class='fi-shopping-cart'></i> Marketplace".html_safe, marketplace_path, class: marketplace_page? ? "current" : nil) %></li>
+<% if user_signed_in? %>
+  <li class="has-dropdown">
+    <%= link_to "<i class='fi-home'></i> Home".html_safe, products_path %>
+    <ul class="dropdown">
+      <%= render partial: "home_links" %>
+    </ul>
+  </li>
+  <li><%= link_to "<i class='fi-power'></i> Sign Out".html_safe, destroy_user_session_path, :method => :delete %></li>
+<% else %>  
+  <li><%= link_to "<i class='fi-power'></i> Sign In".html_safe, new_user_session_path %></li>
+<% end %>

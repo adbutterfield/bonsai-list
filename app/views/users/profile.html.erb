@@ -1,0 +1,117 @@
+<div class="off-canvas-wrap ">
+  <div class="inner-wrap">
+    <%= render partial: "topbar" %>
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <%= render partial: "side_nav" %>
+      </ul>
+    </aside>
+    <section class="main-section">
+      <%= render partial: "hero" %>
+      <%= render partial: "profile_banner" %>
+      <div class="row">
+        <div class="small-6 medium-3 columns">
+          <a href="" class="button radius small bon-button profile-button"><i class="fi-torsos"></i> Connect</a>
+        </div>
+        <div class="small-6 medium-3 left columns">
+          <a href="" class="button radius small bon-button profile-button"><i class="fi-mail"></i> Message</a>
+        </div>
+        <hr class="no-margin profile-hr" />
+      </div>
+      <!-- <div class="row">
+        <div class="small-12 columns">
+        <p></p>
+        </div>
+        <div class="small-12 columns">
+        </div>
+        <div class="small-12 columns">
+        </div>
+      </div> -->
+      <div class="row">
+        <div class="small-12 columns profile-panel">
+          <h3>For Sale </h3><span><%= link_to "See All" %></span>
+          <div class="row">
+            <div class="small-12 columns small-centered panel">
+              <div class="row">
+                <div class="small-6 medium-3 columns">
+                  <img src="http://placehold.it/1000x1000&text=Thumbnail">
+                  <div class="panel">
+                    <h5>Item Name</h5>
+                    <h6 class="subheader">$000.00</h6>
+                  </div>
+                </div>
+                <div class="small-6 medium-3 columns">
+                  <img src="http://placehold.it/1000x1000&text=Thumbnail">
+                  <div class="panel">
+                    <h5>Item Name</h5>
+                    <h6 class="subheader">$000.00</h6>
+                  </div>
+                </div>
+                <div class="small-6 medium-3 columns">
+                  <img src="http://placehold.it/1000x1000&text=Thumbnail">
+                  <div class="panel">
+                    <h5>Item Name</h5>
+                    <h6 class="subheader">$000.00</h6>
+                  </div>
+                </div>
+                <div class="small-6 medium-3 columns">
+                  <img src="http://placehold.it/1000x1000&text=Thumbnail">
+                  <div class="panel">
+                    <h5>Item Name</h5>
+                    <h6 class="subheader">$000.00</h6>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-6 columns">Previous</div>
+                <div class="small-6 columns text-right">Next</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr class="no-margin profile-hr" />
+      </div>
+      <div class="row">
+        <div class="small-12 columns profile-panel">
+          <h3>Photos </h3><span><%= link_to "See All" %></span>
+          <div class="row">
+            <div class="small-12 columns small-centered panel">
+              <div class="row">
+                <div class="small-6 medium-3 columns">
+                  <img src="http://placehold.it/1000x1000&text=Thumbnail">
+                  <div class="panel">
+                    <h5>Photo Caption</h5>
+                  </div>
+                </div>
+                <div class="small-6 medium-3 columns">
+                  <img src="http://placehold.it/1000x1000&text=Thumbnail">
+                  <div class="panel">
+                    <h5>Photo Caption</h5>
+                  </div>
+                </div>
+                 <div class="small-6 medium-3 columns">
+                  <img src="http://placehold.it/1000x1000&text=Thumbnail">
+                  <div class="panel">
+                    <h5>Photo Caption</h5>
+                  </div>
+                </div>
+                <div class="small-6 medium-3 columns">
+                  <img src="http://placehold.it/1000x1000&text=Thumbnail">
+                  <div class="panel">
+                    <h5>Photo Caption</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="small-6 columns">Previous</div>
+                <div class="small-6 columns text-right">Next</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%= render partial: "footer" %>
+    </section>
+    <a class="exit-off-canvas"></a>
+  </div>
+</div>
