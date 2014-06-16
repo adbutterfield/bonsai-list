@@ -1,10 +1,31 @@
 Rails.application.routes.draw do
+  resources :listings
+
+  resources :subcategories
+
+  resources :categories
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'static_pages#home'
+  get '/home'                  => 'users#home',          as: 'user_root'
+  get '/messages'              => 'messages#index',      as: 'messages'
+  get '/message'               => 'messages#show',       as: 'message'
+  # get '/messages/:id'            => 'messages#show',       as: 'message'
+  get '/profile'               => 'users#profile',       as: 'profile'
+  get '/profile/photos'        => 'users#photos',        as: 'photo'
+  get '/profile/marketplace'   => 'users#marketplace',   as: 'user_marketplace'
+  # get '/:id'               => 'users#profile',       as: 'profile'
+  # get '/:id/photos'        => 'users#photos',        as: 'photo'
+  # get '/:id/marketplace'   => 'users#marketplace',   as: 'user_marketplace'
+  get '/marketplace'           => 'products#marketplace',   as: 'marketplace'
+  resources :products
+  get 'products/show'          => 'products#show',       as: 'single_product'
+  resources :offers
+  get 'offers/show'            => 'offers#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
