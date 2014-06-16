@@ -1,0 +1,87 @@
+@import "foundation_and_overrides";
+@import "hero";
+@import "search_filter";
+@import "footer";
+@import "topbar";
+@import "home_nav";
+@import "profile";
+@import "messages";
+@import "static_pages";
+@import "offers";
+@import "foundation-icons";
+
+.no-padding {
+  padding: 0;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.top-margin {
+  margin-top: 20px;
+}
+
+.product-search-button {
+  padding-right: 5px;
+  padding-left: 5px;
+  margin-bottom: 0;
+}
+
+.bon-button {
+  background-color: #e1e1e1;
+  border: 1px solid #b6b6b6;
+  color: #071307;
+}
+
+.bon-button:hover {
+  background-color: #246020;
+}
+
+#marketplace-nav {
+  // width: 250px;
+}
+
+// Shared styles for messages & offers views
+
+.message-block {
+  padding-left: 0px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.message-date {
+  color: #737373;
+  font-size: smaller;
+  margin-top: 0;
+}
+
+.message-name {
+  margin-top: 0;
+}
+
+.message-pic {
+  max-width: 80px;
+}
+
+.search-box {
+  padding-right: 0;
+}
+
+// // Remove select dropdown arrow for Firefox
+// select {
+//     -webkit-appearance: none;
+//     -moz-appearance: none;
+//     text-indent: 0.01px;
+//     text-overflow: '';
+// }
+
+// // Remove select dropdown arrow for IE10
+// select::-ms-expand
+// {
+//   display: none;
+// }

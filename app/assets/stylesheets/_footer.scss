@@ -1,0 +1,28 @@
+#footer {
+  background-color: #246020;
+  height: 60px;
+  border-bottom: 0;
+  margin-bottom: 0;
+
+  #footer-links {
+    margin-top: 15px;
+  }
+
+  a {
+    color: white;
+  }
+  a:visited {
+    color: white;
+  }
+  a:hover {
+    color: #737373;
+  }
+}
+
+#bottom-bar {
+  background-color: #262626;
+  border-bottom: 0;
+  border-top: 0;
+  height: 20px;
+  margin-bottom: 0;
+}

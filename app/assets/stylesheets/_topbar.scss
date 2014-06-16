@@ -1,0 +1,31 @@
+.name h1 a {
+  margin-left: 40px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+}
+
+.top-bar-section li:not(.has-form) a.current {
+  cursor: default;
+  pointer-events: none;
+  background: #222222;
+}
+
+ul.off-canvas-list li a.current {
+  cursor: default;
+  pointer-events: none;
+  background: #222222;
+}
+
+.fi-alert {
+  color: yellow;
+  font-size: large;
+}
+
+li {
+  list-style: none;
+}
