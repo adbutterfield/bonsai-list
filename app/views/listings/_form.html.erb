@@ -23,13 +23,18 @@
     <%= f.label :price %><br>
     <%= f.text_field :price %>
   </div>
+
   <div class="field">
-    <%= f.collection_radio_buttons :category_id, Category.all, :id, :name %>
+    <%= f.label "Category" %><br>
+    <%= f.collection_radio_buttons :category_id, Category.all, :id, :name, {}, { :checked => Category.first, id: 'categories_radio' } %>
   </div>
 
   <div class="field">
-    <%#= f.collection_check_boxes :subcategory_id, @subcategories, :id, :name %>
-    <%= f.collection_radio_buttons :subcategory_id, Subcategory.all, :id, :name %>
+    <%= f.label "Sub-category" %><br>
+    <div id="subcategories_radio" >
+      <%#= f.collection_check_boxes :subcategory_id, @subcategories, :id, :name %>
+      <%= f.collection_radio_buttons :subcategory_id, @subcategories, :id, :name, {}, { } %>
+    </div>
   </div>
 
   <div class="field">

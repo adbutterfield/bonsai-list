@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  get 'listings/set_subcategories' => 'listings#set_subcategories', as: 'set_subcategories'
+
   resources :listings
   # get '/:category/:id' => 'listings#show' as: 'listing'
   patch 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
   # put 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
-
   resources :subcategories
 
   resources :categories
@@ -25,7 +26,6 @@ Rails.application.routes.draw do
   # get '/:id/photos'        => 'users#photos',        as: 'photo'
   # get '/:id/marketplace'   => 'users#marketplace',   as: 'user_marketplace'
   get '/marketplace'           => 'products#marketplace',   as: 'marketplace'
-  # get 'listings/show'          => 'listings#show',       as: 'single_product'
   resources :offers
   resources :products
   get 'offers/show'            => 'offers#show'

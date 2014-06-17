@@ -18,6 +18,7 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = current_user.listings.build
+    @subcategories = Subcategory.where('category_id =?', Category.first).order(id: :asc)
   end
 
   # GET /listings/1/edit
@@ -67,6 +68,13 @@ class ListingsController < ApplicationController
   def remove
     @listing.update(remove: true)
     redirect_to user_root_url, notice: 'Listing was successfully removed.'
+  end
+
+  def set_subcategories
+    @subcategories = Subcategory.where("category_id = ?", params[:category_id]).order(id: :asc)
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
