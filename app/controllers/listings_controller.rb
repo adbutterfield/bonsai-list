@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_listing, only: [:show, :edit, :update, :destroy]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy, :remove]
   before_action :set_location, only: :create
 
 
@@ -31,7 +31,7 @@ class ListingsController < ApplicationController
     # raise
     respond_to do |format|
       if @listing.save
-        format.html { redirect_to user_root_path, notice: 'Listing was successfully created.' }
+        format.html { redirect_to user_root_url, notice: 'Listing was successfully created.' }
         # format.json { render :show, status: :created, location: @listing }
       else
         format.html { render :new }
@@ -64,6 +64,11 @@ class ListingsController < ApplicationController
     end
   end
 
+  def remove
+    @listing.update(remove: true)
+    redirect_to user_root_url, notice: 'Listing was successfully removed.'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
@@ -72,7 +77,7 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :description, :price, :shippable, :publish, :location, :user_id, :category_id, :subcategory_id)
+      params.require(:listing).permit(:title, :description, :price, :shippable, :publish, :location, :remove, :user_id, :category_id, :subcategory_id)
     end
 
     def set_location

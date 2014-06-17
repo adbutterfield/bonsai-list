@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :listings
   # get '/:category/:id' => 'listings#show' as: 'listing'
+  patch 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
+  # put 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
 
   resources :subcategories
 

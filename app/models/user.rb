@@ -6,4 +6,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :firstname, :lastname, :postcode, presence: true
+
+  def current_listings
+    Listing.where(user_id: self.id, remove: false)
+  end
 end

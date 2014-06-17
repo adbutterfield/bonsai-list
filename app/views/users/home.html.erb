@@ -30,12 +30,13 @@
 
             <tbody>
               <% @listings.each do |listing| %>
-                <tr>
+                <tr class="listing">
                   <td><%= listing.title %></td>
                   <td><%= "#{listing.category.name}/#{listing.subcategory.name }" %></td>
                   <td><%= listing.published? %></td>
                   <td><%= link_to 'Show', listing %></td>
                   <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+                  <td><%= link_to 'Remove', remove_listing_path(listing), method: :patch, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
               <% end %>
             </tbody>
