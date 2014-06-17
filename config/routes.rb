@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :listings
+  # get '/:category/:id' => 'listings#show' as: 'listing'
 
   resources :subcategories
 
@@ -22,9 +23,9 @@ Rails.application.routes.draw do
   # get '/:id/photos'        => 'users#photos',        as: 'photo'
   # get '/:id/marketplace'   => 'users#marketplace',   as: 'user_marketplace'
   get '/marketplace'           => 'products#marketplace',   as: 'marketplace'
-  resources :products
-  get 'listings/show'          => 'listings#show',       as: 'single_product'
+  # get 'listings/show'          => 'listings#show',       as: 'single_product'
   resources :offers
+  resources :products
   get 'offers/show'            => 'offers#show'
 
   # Example of regular route:
