@@ -14,14 +14,13 @@ feature 'Creating Listings' do
     expect(page).to have_content(@listing.title)
 
     click_link "Remove"
+    # Can't test for the alert notice with Capybara
     # expect(page).to have_content('Are you sure?')
     # click_button "OK"
 
     expect(page.current_url).to eql(user_root_url)
     expect(page).to have_content('Listing was successfully removed.')
     expect(page).not_to have_content(@listing.title)
-
-    # expect(page.has_selector?('tr#listing', :count => 0))
 
   end
 end
