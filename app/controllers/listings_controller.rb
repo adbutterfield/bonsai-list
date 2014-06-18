@@ -18,11 +18,14 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = current_user.listings.build
+    @categories = Category.all
     @subcategories = Subcategory.where('category_id =?', Category.first).order(id: :asc)
   end
 
   # GET /listings/1/edit
   def edit
+    @categories = Category.all
+    @subcategories = Subcategory.where(category_id: @listing.category_id).order(id: :asc)
   end
 
   # POST /listings
