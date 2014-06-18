@@ -1,0 +1,16 @@
+<li><%= link_to category.name, {
+  controller: 'marketplace',
+  action: 'filter_listings',
+  category_id: category.id,
+  remote: true } %></li>
+<ul>
+<% category.subcategories.each do |subcategory| %>
+  <li>
+    <%= link_to subcategory.name, {
+    controller: 'marketplace',
+    action: 'filter_listings',
+    subcategory_id: subcategory.id,
+    remote: true } %>
+  </li>
+<% end %>
+</ul>
