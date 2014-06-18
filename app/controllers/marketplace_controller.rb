@@ -1,7 +1,9 @@
 class MarketplaceController < ApplicationController
   def index
-    set_listings
+    # set_listings
     @categories = Category.includes(:subcategories).order(id: :asc)
+    @listings = Listing.filter_listings(params)
+    # raise
   end
 
   def filter_listings

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  get 'marketplace/:category_id(/:subcategory_id)' => 'marketplace#index', as: 'marketplace_filter'
   get 'marketplace' => 'marketplace#index', as: 'marketplace'
-  get 'marketplace/filter_listings' => 'marketplace#filter_listings', as: 'filter_listings'
-  # get 'marketplace/:category(/:subcategory)' => 'marketplace/index', as: 'marketplace_filter'
+  # get 'marketplace/filter_listings' => 'marketplace#filter_listings', as: 'filter_listings'
   get 'listings/set_subcategories' => 'listings#set_subcategories', as: 'set_subcategories'
   resources :listings
   # get '/:category/:id' => 'listings#show' as: 'listing'
