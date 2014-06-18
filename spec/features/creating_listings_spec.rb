@@ -15,8 +15,9 @@ feature 'Creating Listings' do
     fill_in 'Title', with: 'Black Pine'
     fill_in 'Description', with: 'It\'s a black pine'
     fill_in 'Price', with: 9.99
-    choose 'listing[category_id]'
-    choose 'listing[subcategory_id]'
+    # Capybara cannot find the 'Trees' radio button, but it's chosen by default.
+    # choose 'Trees'
+    choose 'Coniferous'
     check 'Willing to ship?'
     check 'Publish now?'
 
