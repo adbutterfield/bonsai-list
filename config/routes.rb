@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  get 'listings/set_subcategories' => 'listings#set_subcategories', as: 'set_subcategories'
+  get 'marketplace' => 'marketplace#index', as: 'marketplace'
 
+  get 'listings/set_subcategories' => 'listings#set_subcategories', as: 'set_subcategories'
   resources :listings
   # get '/:category/:id' => 'listings#show' as: 'listing'
   patch 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
-  # put 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
+
   resources :subcategories
 
   resources :categories
@@ -15,17 +16,17 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'static_pages#home'
-  get '/home'                  => 'users#home',          as: 'user_root'
-  get '/messages'              => 'messages#index',      as: 'messages'
-  get '/message'               => 'messages#show',       as: 'message'
+  get 'home'                  => 'users#home',          as: 'user_root'
+  get 'messages'              => 'messages#index',      as: 'messages'
+  get 'message'               => 'messages#show',       as: 'message'
   # get '/messages/:id'            => 'messages#show',       as: 'message'
-  get '/profile'               => 'users#profile',       as: 'profile'
-  get '/profile/photos'        => 'users#photos',        as: 'photo'
-  get '/profile/marketplace'   => 'users#marketplace',   as: 'user_marketplace'
+  get 'profile'               => 'users#profile',       as: 'profile'
+  get 'profile/photos'        => 'users#photos',        as: 'photo'
+  get 'profile/marketplace'   => 'users#marketplace',   as: 'user_marketplace'
   # get '/:id'               => 'users#profile',       as: 'profile'
   # get '/:id/photos'        => 'users#photos',        as: 'photo'
   # get '/:id/marketplace'   => 'users#marketplace',   as: 'user_marketplace'
-  get '/marketplace'           => 'products#marketplace',   as: 'marketplace'
+  # get '/marketplace'           => 'products#marketplace',   as: 'marketplace'
   resources :offers
   resources :products
   get 'offers/show'            => 'offers#show'

@@ -1,5 +1,13 @@
 <li><label>Categories</label></li>
-<li><a href="#">Trees</a></li>
+<% @categories.each do |category| %>
+  <li><%= category.name %></li>
+  <ul>
+  <% category.subcategories.each do |subcategory| %>
+    <li><%= subcategory.name %></li>
+  <% end %>
+  </ul>
+<% end %>
+<!-- <li><a href="#">Trees</a></li>
 <ul>
   <li>Pine</li>
   <li>Maple</li>
@@ -18,4 +26,4 @@
   <li>Scissors</li>
   <li>Branch Cutters</li>
   <li>Repotting</li>
-</ul> 
+</ul>  -->

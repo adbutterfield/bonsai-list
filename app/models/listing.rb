@@ -5,6 +5,8 @@ class Listing < ActiveRecord::Base
   validates :title, :description, :price, :location, :category, :subcategory, :user, presence: true
   validates :shippable, :publish, :remove, inclusion: { in: [true, false] }
 
+  scope :postable, -> { where(remove: false) }
+
   def published?
     self.publish ? "Yes" : "No"
   end
