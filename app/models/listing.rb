@@ -12,14 +12,15 @@ class Listing < ActiveRecord::Base
   end
 
   def self.filter_listings(params)
-    if params.has_key? 'category_id'
-      if params.has_key? 'subcategory_id'
-        return Listing.postable.where('category_id = ? AND subcategory_id = ?', params[:category_id], params[:subcategory_id])
+    params[:sort] ||= "created_at desc"
+    if params[:category_id].present?
+      if params[:subcategory_id].present?
+        return Listing.postable.where('category_id = ? AND subcategory_id = ?', params[:category_id], params[:subcategory_id]).order(params[:sort])
       else
-        return Listing.postable.where('category_id = ?', params[:category_id])
+        return Listing.postable.where('category_id = ?', params[:category_id]).order(params[:sort])
       end
     else
-      return Listing.postable
+      return Listing.postable.order(params[:sort])
     end
   end
 end

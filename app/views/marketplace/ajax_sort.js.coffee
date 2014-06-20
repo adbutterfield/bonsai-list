@@ -1,0 +1,1 @@
+$("#listings").empty().append("<%= escape_javascript(render(:partial => @listings)) %>")

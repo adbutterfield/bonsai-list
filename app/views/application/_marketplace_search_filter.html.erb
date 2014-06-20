@@ -6,7 +6,7 @@
           <p>Order by:</p>
         </div>
         <div class="small-8 columns">
-          <%= select_tag :sort, options_for_select([["Newest", "name"], ["Price", "most_recent"]], ), :class => 'filter-sort' %>
+          <%= select_tag :sort, options_for_select([["Newest", "created_at desc"], ["Low Price", "price asc"], ["High Price", "price desc"]], ), :id => 'mobile_sort_listing', :class => 'filter-sort' %>
         </div>
       </div>
       <div class="hide-for-small medium-6 large-4 columns">
@@ -14,7 +14,7 @@
           <p class="filter-label left-label">Order by:</p>
         </div>
         <div class="medium-6 columns no-padding">
-          <%= select_tag :sort, options_for_select([["Newest", "name"], ["Price", "most_recent"]], ), :class => 'filter-sort' %>
+          <%= select_tag :sort, options_for_select([["Newest", "created_at desc"], ["Low Price", "price asc"], ["High Price", "price desc"]], ), :id => 'sort_listing', :class => 'filter-sort' %>
         </div>
         <div class="medium-1 columns filter-pipe">
           <span class="filter-pipe">|</span>
