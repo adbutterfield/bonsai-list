@@ -4,6 +4,8 @@ class Listing < ActiveRecord::Base
   belongs_to :subcategory
   validates :title, :description, :price, :location, :category, :subcategory, :user, presence: true
   validates :shippable, :publish, :remove, inclusion: { in: [true, false] }
+  geocoded_by :location
+  after_validation :geocode
 
   scope :postable, -> { where(remove: false) }
 

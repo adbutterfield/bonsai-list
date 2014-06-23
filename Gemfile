@@ -32,6 +32,8 @@ gem 'foundation-rails'
 
 gem 'devise'
 
+gem "geocoder"
+
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
