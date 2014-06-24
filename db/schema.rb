@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140623224511) do
   end
 
   add_index "listings", ["category_id"], name: "index_listings_on_category_id", using: :btree
+  add_index "listings", ["latitude", "longitude"], name: "index_listings_on_latitude_and_longitude", using: :btree
   add_index "listings", ["subcategory_id"], name: "index_listings_on_subcategory_id", using: :btree
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
 
