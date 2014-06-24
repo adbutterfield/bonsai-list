@@ -13,17 +13,31 @@ class Listing < ActiveRecord::Base
     self.publish ? "Yes" : "No"
   end
 
+  # def self.filter_listings(params, user_postcode)
+  #   params[:sort] ||= "created_at desc"
+  #   params[:distance_filter] ||= "50"
+  #   if params[:category_id].present?
+  #     if params[:subcategory_id].present?
+  #       return Listing.near(user_postcode, params[:distance_filter], :order => params[:sort]).postable.where('category_id = ? AND subcategory_id = ?', params[:category_id], params[:subcategory_id])
+  #     else
+  #       return Listing.near(user_postcode, params[:distance_filter], :order => params[:sort]).postable.where('category_id = ?', params[:category_id])
+  #     end
+  #   else
+  #     return Listing.near(user_postcode, params[:distance_filter], :order => params[:sort]).postable
+  #   end
+  # end
+
   def self.filter_listings(params, user_postcode)
     params[:sort] ||= "created_at desc"
     params[:distance_filter] ||= "50"
     if params[:category_id].present?
       if params[:subcategory_id].present?
-        return Listing.near(user_postcode, params[:distance_filter], :order => params[:sort]).postable.where('category_id = ? AND subcategory_id = ?', params[:category_id], params[:subcategory_id])
+        return Listing.postable.where('category_id = ? AND subcategory_id = ?', params[:category_id], params[:subcategory_id]).near(user_postcode, params[:distance_filter], :order => params[:sort])
       else
-        return Listing.near(user_postcode, params[:distance_filter], :order => params[:sort]).postable.where('category_id = ?', params[:category_id])
+        return Listing.postable.where('category_id = ?', params[:category_id]).near(user_postcode, params[:distance_filter], :order => params[:sort])
       end
     else
-      return Listing.near(user_postcode, params[:distance_filter], :order => params[:sort]).postable
+      return Listing.postable.near(user_postcode, params[:distance_filter], :order => params[:sort])
     end
   end
 end
