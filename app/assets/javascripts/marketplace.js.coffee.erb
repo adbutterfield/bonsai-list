@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
-  $(document).on 'change', '#sort_listing', (evt) ->
+  $(document).on 'change', ['#sort_listing', '#distance_filter'], (evt) ->
     category = $('#listings').data('categoryId')
     subcategory = $('#listings').data('subcategoryId')
 
@@ -21,24 +21,3 @@ $ ->
 
       success: (data, textStatus, jqXHR) ->
         console.log("Dynamic listing sort OK!")
-
-$ ->
-  $(document).on 'change', '#distance_filter', (evt) ->
-    category = $('#listings').data('categoryId')
-    subcategory = $('#listings').data('subcategoryId')
-
-    $.ajax
-      url: 'ajax_sort',
-      type: 'GET'
-      dataType: 'script'
-      data: {
-        category_id: category
-        subcategory_id: subcategory
-        sort: $('#sort_listing option:selected').val()
-        distance_filter: $('#distance_filter option:selected').val()
-      }
-      error: (jqXHR, textStatus, errorThrown) ->
-        console.log("AJAX Error: #{textStatus}")
-
-      success: (data, textStatus, jqXHR) ->
-        console.log("Dynamic listing filter OK!")

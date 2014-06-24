@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require turbolinks
 //= require listings
+//= require marketplace
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
