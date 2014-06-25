@@ -5,6 +5,8 @@ $ ->
   $(document).on 'change', ['#sort_listing', '#distance_filter'], (evt) ->
     category = $('#listings').data('categoryId')
     subcategory = $('#listings').data('subcategoryId')
+    sortValue = $('#sort_listing option:selected').val()
+    distanceValue = $('#distance_filter option:selected').val()
 
     $.ajax
       url: 'ajax_sort',
@@ -13,8 +15,8 @@ $ ->
       data: {
         category_id: category
         subcategory_id: subcategory
-        sort: $('#sort_listing option:selected').val()
-        distance_filter: $('#distance_filter option:selected').val()
+        sort: sortValue
+        distance_filter: distanceValue
       }
       error: (jqXHR, textStatus, errorThrown) ->
         console.log("AJAX Error: #{textStatus}")
