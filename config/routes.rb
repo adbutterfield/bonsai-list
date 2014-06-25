@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+ Rails.application.routes.draw do
   get 'ajax_sort' => 'marketplace#ajax_sort'
   get 'marketplace/ajax_sort' => 'marketplace#ajax_sort'
   get 'marketplace/:category_id/ajax_sort' => 'marketplace#ajax_sort'
@@ -19,25 +19,22 @@ Rails.application.routes.draw do
   resources :categories
 
   devise_for :users
+
+  scope path: '/temp', controller: :temp_views do
+    get 'messages_index'   => :messages_index
+    get 'messages_show'    => :messages_show
+    get 'offers_index'     => :offers_index
+    get 'offers_show'      => :offers_show
+    get 'photos'           => :photos
+    get 'profile'          => :profile
+    get 'user_marketplace' => :user_marketplace
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
   root 'static_pages#home'
   get 'home'                  => 'users#home',          as: 'user_root'
-  get 'messages'              => 'messages#index',      as: 'messages'
-  get 'message'               => 'messages#show',       as: 'message'
-  # get '/messages/:id'            => 'messages#show',       as: 'message'
-  get 'profile'               => 'users#profile',       as: 'profile'
-  get 'profile/photos'        => 'users#photos',        as: 'photo'
-  get 'profile/marketplace'   => 'users#marketplace',   as: 'user_marketplace'
-  # get '/:id'               => 'users#profile',       as: 'profile'
-  # get '/:id/photos'        => 'users#photos',        as: 'photo'
-  # get '/:id/marketplace'   => 'users#marketplace',   as: 'user_marketplace'
-  # get '/marketplace'           => 'products#marketplace',   as: 'marketplace'
-  resources :offers
-  resources :products
-  get 'offers/show'            => 'offers#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

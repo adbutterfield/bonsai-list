@@ -1,0 +1,128 @@
+<div class="off-canvas-wrap ">
+  <div class="inner-wrap">
+    <%= render partial: "topbar" %>
+    <aside class="left-off-canvas-menu">
+      <%= render partial: "offcanvas_nav" %>
+    </aside>
+    <section class="main-section">
+      <%= render partial: "hero" %>
+      <div class="row">
+        <!-- Nav Sidebar -->
+        <div class="small-12 medium-5 large-4 columns hide-for-small">
+        <%= render partial: "home_nav" %>
+        </div>
+        <!-- Messages -->
+        <div class="small-12 medium-7 large-8 columns">
+          <div class="row collapse">
+            <div class="small-8 medium-9 columns">
+              <%= text_field(:post, :title, size: 20, placeholder: "Search offers...") %>
+            </div>
+            <div class="small-4 medium-3 columns">
+              <%= button_tag "Search", class: "postfix bon-button" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns panel">
+              <h4>New Offers!</h4>
+            </div>
+          </div>
+          <!-- Message -->
+          <div class="row">
+            <div class="small-3 medium-2 columns message-pic">
+              <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+            </div>
+            <div class="small-9 medium-10 columns message-block left">
+              <p class="message-name"><a href="#">Product Title, Awesome Black Pine!!!</a></p>
+              <p class="message-date">Tuesday 2:45 PM</p>
+              <div class="row">
+                <div class="small-12 columns">
+                  <p><em>4 New Offers!</em></p>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="small-3 medium-2 columns message-pic">
+              <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+            </div>
+            <div class="small-9 medium-10 columns message-block">
+              <p class="message-name"><a href="#">Product Title, Awesome Black Pine!!!</a></p>
+              <p class="message-date">Tuesday 2:45 PM</p>
+              <div class="row">
+                <div class="small-12 columns">
+                  <p><em>3 New People Interested!</em></p>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <div class="small-3 medium-2 columns message-pic">
+              <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+            </div>
+            <div class="small-9 medium-10 columns message-block">
+              <p class="message-name"><a href="#">Product Title, Awesome Black Pine!!!</a></p>
+              <p class="message-date">Tuesday 2:45 PM</p>
+              <div class="row">
+                <div class="small-12 columns">
+                  <p><em>1 New person interested!</em></p>
+                </div>
+              </div>
+            </div>
+            <hr />
+          </div> <!-- End Message -->
+          <div class="row">
+            <div class="small-12 columns panel">
+              <h4>Seen Offers</h4>
+            </div>
+          </div>
+          <!-- Message -->
+          <div class="row">
+            <div class="small-3 medium-2 columns message-pic">
+              <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+            </div>
+            <div class="small-9 medium-10 columns message-block left">
+              <p class="message-name"><a href="#">Product Title, Awesome Black Pine!!!</a></p>
+              <p class="message-date">Tuesday 2:45 PM</p>
+<!--               <div class="row">
+                <div class="small-12 columns">
+                  <p> Bacon ipsum dolor sit amet nulla ham qui sint nyan...</p>
+                </div>
+              </div> -->
+            </div>
+            <hr />
+            <div class="small-3 medium-2 columns message-pic">
+              <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+            </div>
+            <div class="small-9 medium-10 columns message-block">
+              <p class="message-name"><a href="#">Product Title, Awesome Black Pine!!!</a></p>
+              <p class="message-date">Tuesday 2:45 PM</p>
+<!--               <div class="row">
+                <div class="small-12 columns">
+                  <p> Bacon ipsum dolor sit amet nulla ham qui sint nyan...</p>
+                </div>
+              </div> -->
+            </div>
+            <hr />
+            <div class="small-3 medium-2 columns message-pic">
+              <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+            </div>
+            <div class="small-9 medium-10 columns message-block">
+              <p class="message-name"><a href="#">Product Title, Awesome Black Pine!!!</a></p>
+              <p class="message-date">Tuesday 2:45 PM</p>
+<!--               <div class="row">
+                <div class="small-12 columns">
+                  <p> Bacon ipsum dolor sit amet nulla ham qui sint nyan...</p>
+                </div>
+              </div> -->
+            </div>
+            <hr />
+          </div> <!-- End Message -->
+          <div class="row">
+            <%= link_to "Load More", messages_path, class: "button radius expand bon-button" %>
+          </div>
+        </div> <!-- End Messages -->
+      </div>
+
+      <%= render partial: "footer" %>
+    </section>
+    <a class="exit-off-canvas"></a>
+  </div>
+</div>
