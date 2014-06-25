@@ -4,7 +4,9 @@ class ListingsController < ApplicationController
   before_action :set_location, only: :create
 
   def index
-    @listings = Listing.all
+    @categories = Category.includes(:subcategories).order(id: :asc)
+    # TODO don't filter by distance on this query
+    @listings = Listing.filter_listings(params, "")
   end
 
   def show
@@ -13,7 +15,7 @@ class ListingsController < ApplicationController
   def new
     @listing = current_user.listings.build
     @categories = Category.all
-    @subcategories = Subcategory.where('category_id =?', Category.first).order(id: :asc)
+    @subcategories = Subcategory.where('category_id = ?', Category.first).order(id: :asc)
   end
 
   def edit
