@@ -1,17 +1,20 @@
  Rails.application.routes.draw do
-  get 'ajax_sort' => 'marketplace#ajax_sort'
-  get 'marketplace/ajax_sort' => 'marketplace#ajax_sort'
-  get 'marketplace/:category_id/ajax_sort' => 'marketplace#ajax_sort'
+
+  root 'static_pages#home'
+  get 'home' => 'users#home', as: 'user_root'
+
+  get '(marketplace(/:category_id))/ajax_sort' => 'marketplace#ajax_sort'
 
   get 'marketplace/:category_id(/:subcategory_id)' => 'marketplace#index', as: 'marketplace_filter'
 
   get 'marketplace' => 'marketplace#index', as: 'marketplace'
-  # get 'marketplace/filter_listings' => 'marketplace#filter_listings', as: 'filter_listings'
+
   get 'listings/set_subcategories' => 'listings#set_subcategories', as: 'set_subcategories'
   get 'listings/:id/set_subcategories' => 'listings#set_subcategories'
 
   resources :listings
-  # get '/:category/:id' => 'listings#show' as: 'listing'
+  # TODO set better url for listing#show
+  # get '/:category/:subcategory_id/:id' => 'listings#show', as: 'listing'
   patch 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
 
   resources :subcategories
@@ -33,8 +36,7 @@
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'static_pages#home'
-  get 'home'                  => 'users#home',          as: 'user_root'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
