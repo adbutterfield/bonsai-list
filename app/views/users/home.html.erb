@@ -1,57 +1,40 @@
-<div class="off-canvas-wrap ">
-  <div class="inner-wrap">
-    <%= render partial: "topbar" %>
-    <aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
-        <%= render partial: "topbar_links" %>
-        <%#= render partial: "side_nav" %>
-      </ul>
-    </aside>
-    <section class="main-section">
-      <%= render partial: "hero" %>
-      <div class="row">
-        <!-- Nav Sidebar -->
-        <div class="small-12 medium-4 columns ">
-        <%= render partial: "home_nav" %>
-        </div>
-        <!-- Main Feed -->
-        <div class="small-12 medium-8 columns">
-        <%= link_to "Add new listing", new_listing_path, class: "button radius expand new-listing-button" %>
-          <h2>Current Listings</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Category</th>
-                <th>Published</th>
-                <th colspan="3"></th>
-              </tr>
-            </thead>
-
-            <tbody>
-              <% @listings.each do |listing| %>
-                <tr class="listing">
-                  <td><%= link_to listing.title, listing %></td>
-                  <td><%= "#{listing.category.name}/#{listing.subcategory.name }" %></td>
-                  <td><%= listing.published? %></td>
-                  <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-                  <td><%= link_to 'Remove', remove_listing_path(listing), method: :patch, data: { confirm: 'Are you sure?' } %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-
-        </div>
-        <!-- Right Sidebar -->
-        <!-- On small devices this column is hidden -->
-        <!-- <aside class="medium-3 columns hide-for-small">
-          <p><img src="http://placehold.it/300x440&text=[ad]" /></p>
-          <p><img src="http://placehold.it/300x440&text=[ad]" /></p>
-        </aside>  -->
-      </div>
-
-      <%= render partial: "footer" %>
-    </section>
-    <a class="exit-off-canvas"></a>
+<div class="row">
+  <!-- Nav Sidebar -->
+  <div class="small-12 medium-4 columns ">
+  <%= render partial: "home_nav" %>
   </div>
+  <!-- Main Feed -->
+  <div class="small-12 medium-8 columns">
+  <%= link_to "Add new listing", new_listing_path, class: "button radius expand new-listing-button" %>
+    <h2>Current Listings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Published</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @listings.each do |listing| %>
+          <tr class="listing">
+            <td><%= link_to listing.title, listing %></td>
+            <td><%= "#{listing.category.name}/#{listing.subcategory.name }" %></td>
+            <td><%= listing.published? %></td>
+            <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
+            <td><%= link_to 'Remove', remove_listing_path(listing), method: :patch, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <!-- Right Sidebar -->
+  <!-- On small devices this column is hidden -->
+  <!-- <aside class="medium-3 columns hide-for-small">
+    <p><img src="http://placehold.it/300x440&text=[ad]" /></p>
+    <p><img src="http://placehold.it/300x440&text=[ad]" /></p>
+  </aside>  -->
 </div>

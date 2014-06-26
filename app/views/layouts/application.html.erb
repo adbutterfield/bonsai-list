@@ -12,13 +12,31 @@
   </head>
 
   <body class="<%= controller.controller_name %>">
-    <% flash.each do |key, value| %>
-      <div class='flash' id='<%= key %>'>
-        <%= value %>
-      </div>
-    <% end %>
+    <div class="off-canvas-wrap">
+      <div class="inner-wrap">
+        <%= render partial: "topbar" %>
+        <aside class="left-off-canvas-menu">
+          <ul class="off-canvas-list">
+            <!-- Put Offcanvas stuff here -->
+            <%= render partial: "topbar_links" %>
+            <%= render partial: "marketplace_nav" if marketplace_page? %>
+          </ul>
+        </aside>
+        <section class="main-section">
+          <%= render partial: "hero" %>
+          <% flash.each do |key, value| %>
+            <div class='flash' id='<%= key %>'>
+              <%= value %>
+            </div>
+          <% end %>
 
-    <%= yield %>
+          <%= yield %>
+
+          <%= render partial: "footer" %>
+        </section>
+        <a class="exit-off-canvas"></a>
+      </div>
+    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>

@@ -15,5 +15,6 @@ class TempViewsController < ApplicationController
   end
 
   def user_marketplace
+    @categories = Category.includes(:subcategories).order(id: :asc)
   end
 end
