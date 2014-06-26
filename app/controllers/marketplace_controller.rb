@@ -1,5 +1,6 @@
 class MarketplaceController < ApplicationController
   before_action :set_listings, only: [:index, :ajax_sort]
+
   def index
     @categories = Category.includes(:subcategories).order(id: :asc)
   end
@@ -17,6 +18,6 @@ class MarketplaceController < ApplicationController
     end
 
     def user_postcode
-      current_user.postcode
+      current_user.nil? ? params[:visitor_postcode] : current_user.postcode
     end
 end
