@@ -1,12 +1,10 @@
- Rails.application.routes.draw do
+Rails.application.routes.draw do
 
   root 'static_pages#home'
   get 'home' => 'users#home', as: 'user_root'
 
   get '(marketplace(/:category_id))/ajax_sort' => 'marketplace#ajax_sort'
-
   get 'marketplace/:category_id(/:subcategory_id)' => 'marketplace#index', as: 'marketplace_filter'
-
   get 'marketplace' => 'marketplace#index', as: 'marketplace'
 
   get 'listings/set_subcategories' => 'listings#set_subcategories', as: 'set_subcategories'
