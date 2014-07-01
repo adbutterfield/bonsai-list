@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :listings
+  has_many :listings, -> { where(remove: false) }
+  has_many :posted_listings, -> { where(remove: false, publish: true) }, class_name: 'Listing'
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -7,7 +8,4 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :firstname, :lastname, :postcode, presence: true
 
-  def current_listings
-    Listing.where(user_id: self.id, remove: false)
-  end
 end

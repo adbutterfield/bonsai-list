@@ -5,8 +5,7 @@ class ListingsController < ApplicationController
 
   def index
     @categories = Category.includes(:subcategories).order(id: :asc)
-    # TODO don't filter by distance on this query
-    @listings = Listing.filter_listings(params, "")
+    @listings = current_user.posted_listings
   end
 
   def show

@@ -7,7 +7,7 @@ class Listing < ActiveRecord::Base
   geocoded_by :location
   after_validation :geocode
 
-  scope :postable, -> { where(remove: false) }
+  scope :postable, -> { where(remove: false, publish: true) }
 
   def published?
     self.publish ? "Yes" : "No"
