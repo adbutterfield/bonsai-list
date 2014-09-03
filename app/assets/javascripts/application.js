@@ -24,6 +24,7 @@ $(function(){ $(document).foundation(); });
     navigator.geolocation.getCurrentPosition(showPosition);
   }
 })();
+
 function showPosition(position) {
   var result = [position.coords.latitude, position.coords.longitude];
   $.ajax({
