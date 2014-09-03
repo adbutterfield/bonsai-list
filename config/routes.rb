@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#home'
 
   get 'home' => 'users#home', as: 'user_root'
 
   get '(marketplace(/:category_id))/ajax_sort' => 'marketplace#ajax_sort'
   get 'marketplace/:category_id(/:subcategory_id)' => 'marketplace#index', as: 'marketplace_filter'
   get 'marketplace' => 'marketplace#index', as: 'marketplace'
+  post 'set_location' => 'marketplace#set_location', as: 'set_location'
 
   get 'listings/set_subcategories' => 'listings#set_subcategories', as: 'set_subcategories'
   get 'listings/:id/set_subcategories' => 'listings#set_subcategories'
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :categories
 
   devise_for :users
+
+  root 'static_pages#home'
 
   scope path: '/temp', controller: :temp_views do
     get 'messages_index'   => :messages_index
