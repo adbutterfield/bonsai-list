@@ -4,20 +4,9 @@
     <div class="panel">
       <%= render partial: "shared/marketplace_nav" %>
     </div>
-  </div>
-  <!-- End Side Bar -->
+  </div> <!-- End Side Bar -->
   <div class="small-12 medium-8 large-9 columns">
     <%= render partial: "marketplace_search_filter" %>
-    <% if current_user.nil? %>
-    <div class="row">
-      <div class="small-4 columns">
-        <p>Please enter your zip code</p>
-      </div>
-      <div class="small-2 columns left">
-        <%= text_field_tag :visitor_postcode, params[:visitor_postcode], :id => 'get_zip' %>
-      </div>
-    </div>
-    <% end %>
     <%= render partial: "shared/marketplace_items" %>
   </div>
 </div>
