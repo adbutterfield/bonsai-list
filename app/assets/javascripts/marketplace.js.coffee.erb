@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
+  # TODO implement the sort/filter for mobile
   $(document).on 'change', ['#sort_listing', '#mobile_sort_listing', '#distance_filter', '#mobile_distance_filter', '#get_zip'], (evt) ->
     category = $('#listings').data('categoryId')
     subcategory = $('#listings').data('subcategoryId')
