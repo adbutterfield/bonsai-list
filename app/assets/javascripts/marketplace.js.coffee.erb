@@ -20,11 +20,11 @@ $ ->
         distance_filter: distanceValue
         visitor_postcode: visitorPostcode
       }
-      error: (jqXHR, textStatus, errorThrown) ->
-        console.log("AJAX Error: #{textStatus}")
-        console.log(visitorPostcode)
+      # error: (jqXHR, textStatus, errorThrown) ->
+      #   console.log("AJAX Error: #{textStatus}")
+      #   console.log(visitorPostcode)
 
-      success: (data, textStatus, jqXHR) ->
-        console.log("Dynamic listing sort OK!")
-        console.log(visitorPostcode)
+      # success: (data, textStatus, jqXHR) ->
+      #   console.log("Dynamic listing sort OK!")
+      #   console.log(visitorPostcode)
 
