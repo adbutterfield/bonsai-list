@@ -12,31 +12,19 @@
   </head>
 
   <body class="<%= controller.controller_name %>">
-    <div class="off-canvas-wrap">
-      <div class="inner-wrap">
-        <%= render partial: "topbar" %>
-        <aside class="left-off-canvas-menu">
-          <ul class="off-canvas-list">
-            <!-- Put Offcanvas stuff here -->
-            <%= render partial: "topbar_links" %>
-            <%= render partial: "shared/marketplace_nav" if marketplace_page? %>
-          </ul>
-        </aside>
-        <section class="main-section">
-          <%= render partial: "hero" %>
-          <% flash.each do |key, value| %>
-            <div class='flash' id='<%= key %>'>
-              <%= value %>
-            </div>
-          <% end %>
 
-          <%= yield %>
-
-          <%= render partial: "footer" %>
-        </section>
-        <a class="exit-off-canvas"></a>
+    <%= render partial: "topbar" %>
+    <%= render partial: "hero" %>
+    <% flash.each do |key, value| %>
+      <div class='flash' id='<%= key %>'>
+        <%= value %>
       </div>
-    </div>
+    <% end %>
+
+    <%= yield %>
+
+    <%= render partial: "footer" %>
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>

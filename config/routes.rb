@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root 'static_pages#home'
+
   get 'home' => 'users#home', as: 'user_root'
 
   get '(marketplace(/:category_id))/ajax_sort' => 'marketplace#ajax_sort'

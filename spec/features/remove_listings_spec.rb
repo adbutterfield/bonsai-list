@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Creating Listings' do
+feature 'Removing Listings' do
   let!(:user) { FactoryGirl.create(:user) }
   before do
     sign_in_as!(user)
