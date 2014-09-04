@@ -15,21 +15,20 @@
 //= require foundation
 //= require listings
 //= require marketplace
+//= require jquery_cookie
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
 
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  }
+if ($.cookie('location')){
+  console.log("Cookie set");
+} else {
+  (function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  })();
 };
-
-// (function getLocation() {
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(showPosition);
-//   }
-// })();
 
 function showPosition(position) {
   $.ajax({
@@ -38,10 +37,11 @@ function showPosition(position) {
     dataType: 'script',
     data: { coordinates: [position.coords.latitude, position.coords.longitude] },
     error: function(){
-        console.log("AJAX Error:");
+      console.log("AJAX Error:");
     },
     success: function(){
       console.log("Dynamic geolocation set OK!");
+      $.cookie('location', 'set');
       location.reload();
     }
   });
