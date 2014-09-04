@@ -19,14 +19,19 @@
 
 $(function(){ $(document).foundation(); });
 
-(function getLocation() {
+function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   }
-})();
+};
+
+// (function getLocation() {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(showPosition);
+//   }
+// })();
 
 function showPosition(position) {
-  var result = [position.coords.latitude, position.coords.longitude];
   $.ajax({
     url: 'set_location',
     type: 'POST',
@@ -37,6 +42,7 @@ function showPosition(position) {
     },
     success: function(){
       console.log("Dynamic geolocation set OK!");
+      location.reload();
     }
   });
 }
