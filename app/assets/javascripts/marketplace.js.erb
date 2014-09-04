@@ -1,0 +1,50 @@
+$(function(){
+  // # TODO implement the sort/filter for mobile
+
+  $(document).on('change', ['#sort_listing', '#mobile_sort_listing', '#distance_filter', '#mobile_distance_filter', '#get_zip'], function(event){
+
+    var category = $('#listings').data('categoryId');
+    var subcategory = $('#listings').data('subcategoryId');
+    var sortValue = $('#sort_listing option:selected').val();
+    var distanceValue = $('#distance_filter option:selected').val();
+
+    $.ajax({
+      url: 'ajax_sort',
+      type: 'GET',
+      dataType: 'script',
+      data: {
+        category_id: category,
+        subcategory_id: subcategory,
+        sort: sortValue,
+        distance_filter: distanceValue,
+      },
+    });
+  });
+
+  if ($.cookie('location')){
+    console.log("Cookie set");
+  } else {
+    (function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      }
+    })();
+  };
+
+  function showPosition(position) {
+    $.ajax({
+      url: 'set_location',
+      type: 'POST',
+      dataType: 'script',
+      data: { coordinates: [position.coords.latitude, position.coords.longitude] },
+      error: function(){
+        console.log("AJAX Error:");
+      },
+      success: function(){
+        console.log("Dynamic geolocation set OK!");
+        $.cookie('location', 'set');
+        location.reload();
+      }
+    });
+  }
+});
