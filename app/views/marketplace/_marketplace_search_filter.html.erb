@@ -36,11 +36,7 @@
           <p class="filter-label">Distance:</p>
         </div>
         <div class="medium-6 columns no-padding">
-          <% if user_signed_in? or session[:coordinates] %>
-            <%= select_tag :distance_filter, options_for_select([["All", "10000"], ["500 Miles", "500"], ["100 Miles", "100"], ["50 Miles", "50"]], ), :id => 'distance_filter', :class => 'filter-sort' %>
-          <% else %>
-            <button class="location-button" onclick="getLocation()">Share location</button>
-          <% end %>
+          <%= select_tag :distance_filter, options_for_select([["All", "10000"], ["500 Miles", "500"], ["100 Miles", "100"], ["50 Miles", "50"]], ), :id => 'distance_filter', :class => 'filter-sort' %>
         </div>
         <div class="hide-for-small medium-1 columns filter-pipe">
           <span>|</span>
