@@ -18,4 +18,25 @@
 //= require jquery_cookie
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){
+
+  $(document).foundation();
+
+  if ($.cookie('location')){
+    console.log("Cookie set");
+  } else {
+    (function getLocation() {
+      if (navigator.geolocation) {
+        $( "body" ).addClass( "opaque" )
+        navigator.geolocation.getCurrentPosition(showPosition);
+      }
+    })();
+  };
+
+  function showPosition(position) {
+    $.cookie('location', [position.coords.latitude, position.coords.longitude] );
+    $( "body" ).removeClass( "opaque" )
+    location.reload();
+  }
+
+});
