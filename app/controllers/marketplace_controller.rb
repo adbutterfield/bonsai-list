@@ -13,22 +13,13 @@ class MarketplaceController < ApplicationController
     end
   end
 
-  def set_location
-    session[:coordinates] = params[:coordinates]
-    head :ok
-  end
-
   private
 
     def set_listings
       @listings = Listing.filter_listings(params, user_coordinates)
     end
 
-    # def user_postcode
-    #   current_user.nil? ? params[:visitor_postcode] : current_user.postcode
-    # end
-
     def user_coordinates
-      current_user.nil? ? session[:coordinates] : current_user.postcode
+      current_user.nil? ? cookies[:location] : current_user.address
     end
 end
