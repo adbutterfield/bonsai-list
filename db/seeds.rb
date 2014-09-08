@@ -25,38 +25,38 @@ require 'faker'
 # Subcategory.create!(name: "Medium", category_id: pots.id)
 # Subcategory.create!(name: "Large", category_id: pots.id)
 
-10.times do
-  Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, subcategory_id: 10)
-end
+# 10.times do
+#   Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, subcategory_id: 10)
+# end
 
-10.times do
-  Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, subcategory_id: 11)
-end
+# 10.times do
+#   Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, subcategory_id: 11)
+# end
 
-10.times do
-  Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, subcategory_id: 12)
-end
+# 10.times do
+#   Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, subcategory_id: 12)
+# end
 
-10.times do
-  Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, subcategory_id: 13)
-end
+# 10.times do
+#   Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, subcategory_id: 13)
+# end
 
-10.times do
-  Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, subcategory_id: 14)
-end
+# 10.times do
+#   Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, subcategory_id: 14)
+# end
 
-10.times do
-  Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, subcategory_id: 15)
-end
+# 10.times do
+#   Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, subcategory_id: 15)
+# end
 
-10.times do
-  Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, subcategory_id: 16)
-end
+# 10.times do
+#   Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, subcategory_id: 16)
+# end
 
-10.times do
-  Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, subcategory_id: 17)
-end
+# 10.times do
+#   Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, subcategory_id: 17)
+# end
 
-10.times do
-  Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, subcategory_id: 18)
-end
+# 10.times do
+#   Listing.create!(user_id: 1, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, subcategory_id: 18)
+# end
