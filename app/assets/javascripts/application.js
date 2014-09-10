@@ -27,7 +27,7 @@ $(function(){
   } else {
     (function getLocation() {
       if (navigator.geolocation) {
-        $( "body" ).addClass( "opaque" )
+        $( "body" ).addClass( "opaque" );
         navigator.geolocation.getCurrentPosition(showPosition);
       }
     })();
