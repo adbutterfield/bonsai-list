@@ -46,10 +46,13 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-autotest'
   gem 'faker'
+
 end
 
 group :test do
   gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'poltergeist'
   # gem 'guard-rspec'
   # gem 'launchy'
 end
