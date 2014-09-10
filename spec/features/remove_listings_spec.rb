@@ -18,7 +18,7 @@ feature 'Removing Listings' do
     # expect(page).to have_content('Are you sure?')
     # click_button "OK"
 
-    expect(page.current_url).to eql(user_root_url)
+    expect(page.current_path).to eql(user_root_path)
     expect(page).to have_content('Listing was successfully removed.')
     expect(page).not_to have_content(@listing.title)
 
