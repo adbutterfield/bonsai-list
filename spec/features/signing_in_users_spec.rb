@@ -17,5 +17,25 @@ feature 'Signing in User' do
 
   end
 
-  # TODO test for invalid information
+  scenario "with invalid password" do
+    visit new_user_session_path
+
+    fill_in 'Email', with: @user.email
+    fill_in 'Password', with: "wrong_passord"
+
+    click_button 'Sign In'
+
+    expect(page).to have_content "Invalid email or password."
+  end
+
+   scenario "with invalid email" do
+    visit new_user_session_path
+
+    fill_in 'Email', with: "wrong_email"
+    fill_in 'Password', with: @user.password
+
+    click_button 'Sign In'
+
+    expect(page).to have_content "Invalid email or password."
+  end
 end
