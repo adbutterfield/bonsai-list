@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
 
   # after_sign_out_path_for TODO
 
+  def after_sign_in_path_for(resource)
+    user_root_path
+  end
+
   protected
 
   def configure_permitted_parameters
