@@ -25,7 +25,7 @@ feature 'Creating Listings' do
 
     expect(Listing.count).to eq 1
 
-    expect(page.current_url).to eql(user_root_url)
+    expect(page.current_path).to eql(user_root_path)
 
     expect(page).to have_content('Listing was successfully created.')
   end
