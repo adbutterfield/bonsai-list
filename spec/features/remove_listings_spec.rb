@@ -3,20 +3,21 @@ require 'rails_helper'
 feature 'Removing Listings' do
   let!(:user) { FactoryGirl.create(:user) }
   before do
+    Capybara.current_driver = :selenium
+
     sign_in_as!(user)
     FactoryGirl.create(:category, name: 'Trees')
     FactoryGirl.create(:subcategory, name: 'Coniferous')
     @listing = FactoryGirl.create(:listing, user: user)
   end
 
+  @javascript
   scenario "can remove a listing" do
     visit user_root_path
     expect(page).to have_content(@listing.title)
 
     click_link "Remove"
-    # Can't test for the alert notice with Capybara
-    # expect(page).to have_content('Are you sure?')
-    # click_button "OK"
+    page.driver.browser.switch_to.alert.accept
 
     expect(page.current_path).to eql(user_root_path)
     expect(page).to have_content('Listing was successfully removed.')
