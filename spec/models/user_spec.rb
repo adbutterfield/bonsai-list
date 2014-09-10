@@ -8,10 +8,22 @@ RSpec.describe User, :type => :model do
     expect(user).to be_valid
   end
 
+  it "has one address" do
+    expect(FactoryGirl.build(:user)).to respond_to(:address)
+  end
+
   describe "validations" do
     [:firstname, :lastname].each do |attr|
       it "is invalid without a #{attr}" do
-        expect(FactoryGirl.build(:user, attr => nil)).not_to be_valid
+        expect(FactoryGirl.build(:user, attr => nil)).to_not be_valid
+      end
+    end
+
+    [:city, :state, :postcode, :country].each do |attr|
+      it "is invalid without address attribute: #{attr}" do
+        user = FactoryGirl.build(:user)
+        user.address = FactoryGirl.build(:address, user: user, attr => nil)
+        expect(user).to_not be_valid
       end
     end
   end
