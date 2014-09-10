@@ -53,6 +53,7 @@ group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'poltergeist'
+  gem 'database_cleaner'
   # gem 'guard-rspec'
   # gem 'launchy'
 end
