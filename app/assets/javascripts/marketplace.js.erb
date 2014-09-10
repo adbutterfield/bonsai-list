@@ -1,7 +1,7 @@
 $(function(){
-  // # TODO implement the sort/filter for mobile
+  // TODO implement the sort/filter for mobile
 
-  $(document).on('change', ['#sort_listing', '#mobile_sort_listing', '#distance_filter', '#mobile_distance_filter', '#get_zip'], function(event){
+  $('#sort_listing, #distance_filter').on('change', function(){
 
     var category = $('#listings').data('categoryId');
     var subcategory = $('#listings').data('subcategoryId');
