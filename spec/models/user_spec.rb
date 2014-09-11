@@ -27,4 +27,14 @@ RSpec.describe User, :type => :model do
       end
     end
   end
+
+  describe "geocoding" do
+    it "should geocode address before new user save" do
+      user = FactoryGirl.build(:user)
+      user.address = FactoryGirl.build(:address)
+      user.save
+      expect(user.address.latitude).to_not be_nil
+      expect(user.address.longitude).to_not be_nil
+    end
+  end
 end
