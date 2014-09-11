@@ -24,7 +24,6 @@ feature 'Removing Listings' do
     expect(page).not_to have_content(@listing.title)
   end
 
-
   @javascript
   scenario "can remove a listing" do
     visit user_root_path
