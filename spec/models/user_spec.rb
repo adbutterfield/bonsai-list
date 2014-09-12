@@ -2,10 +2,11 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
 
-  subject(:user) { FactoryGirl.create(:user) }
+  subject(:user) { FactoryGirl.create(:user_with_address) }
 
   it "has a valid factory" do
     expect(user).to be_valid
+    expect(user.address.city).to_not be_nil
   end
 
   it "has one address" do
@@ -28,13 +29,4 @@ RSpec.describe User, :type => :model do
     end
   end
 
-  describe "geocoding" do
-    it "should geocode address before new user save" do
-      user = FactoryGirl.build(:user)
-      user.address = FactoryGirl.build(:address)
-      user.save
-      expect(user.address.latitude).to_not be_nil
-      expect(user.address.longitude).to_not be_nil
-    end
-  end
 end
