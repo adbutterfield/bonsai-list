@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:firstname, :lastname, :postcode, :email, :password, :password_confirmation, :remember_me, address_attributes: [ :id, :user_id, :city, :state, :postcode, :country ]) }
+    devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:firstname, :lastname, :postcode, :email, :password, :password_confirmation, :remember_me, address_attributes: [ :id, :user_id, :city, :state, :postcode, :country, :longitude, :latitude ]) }
 
     devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :firstname, :lastname, :postcode, :email, :password, :remember_me) }
     # TOTO implement and test update address
