@@ -1,7 +1,6 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_listing, only: [:show, :edit, :update, :destroy, :remove]
-  before_action :set_location, only: :create
 
   def index
     @categories = Category.includes(:subcategories).order(id: :asc)
@@ -24,6 +23,7 @@ class ListingsController < ApplicationController
 
   def create
     @listing = current_user.listings.build(listing_params)
+    @listing.set_latitude_and_longitude(current_user)
     respond_to do |format|
       if @listing.save
         format.html { redirect_to user_root_url, notice: 'Listing was successfully created.' }
@@ -68,10 +68,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:title, :description, :price, :shippable, :publish, :location, :remove, :user_id, :category_id, :subcategory_id)
+      params.require(:listing).permit(:title, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :subcategory_id)
     end
 
-    def set_location
-      params[:listing][:location] = current_user.postcode
-    end
 end

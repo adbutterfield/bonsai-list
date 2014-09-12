@@ -2,10 +2,8 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   belongs_to :subcategory
-  validates :title, :description, :price, :location, :category, :subcategory, :user, presence: true
+  validates :title, :description, :price, :category, :subcategory, :user_id, :latitude, :longitude, presence: true
   validates :shippable, :publish, :remove, inclusion: { in: [true, false] }
-  geocoded_by :location
-  after_validation :geocode
 
   scope :postable, -> { where(remove: false, publish: true) }
 
@@ -31,6 +29,11 @@ class Listing < ActiveRecord::Base
   #     return Listing.postable.near(user_postcode, params[:distance_filter], :order => params[:sort])
   #   end
   # end
+
+  def set_latitude_and_longitude(current_user)
+    self.latitude = current_user.address.latitude
+    self.longitude = current_user.address.longitude
+  end
 
   # TODO use logged in user coordinates
   def self.filter_listings(params, coordinates)
