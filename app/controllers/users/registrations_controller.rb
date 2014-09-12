@@ -12,6 +12,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       @state_name   = @address.state
       @country_name = @address.country
       @post_code    = @address.postal_code
+      @latitude, @longitude = cookies[:location].split(',').map(&:to_f)
     end
-
 end
