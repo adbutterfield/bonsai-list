@@ -12,8 +12,9 @@ FactoryGirl.define do
     latitude { Faker::Address.latitude }
     longitude { Faker::Address.longitude }
     user
+
     # TODO test geocode
-    location { user.postcode }
+
     category
     subcategory
   end
