@@ -1,5 +1,5 @@
-<%= content_tag :div, id: "listings",
-                      :class => "row",
+<%= content_tag :ul, id: "listings",
+                      :class => "small-block-grid-1 medium-block-grid-2 large-block-grid-3",
                       data: { category_id: params[:category_id], subcategory_id: params[:subcategory_id] } do %>
   <%= render partial: @listings %>
 <% end %>
