@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  http_basic_authenticate_with name: "bonchan", password: "bonbon"
+  http_basic_authenticate_with name: ENV['LOGIN_NAME'], password: ENV['LOGIN_PASS']
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
