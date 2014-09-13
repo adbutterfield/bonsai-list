@@ -7,6 +7,8 @@ class Listing < ActiveRecord::Base
 
   scope :postable, -> { where(remove: false, publish: true) }
 
+  reverse_geocoded_by :latitude, :longitude
+
   def published?
     self.publish ? "Yes" : "No"
   end
