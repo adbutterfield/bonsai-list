@@ -1,10 +1,10 @@
 @font-face {
   font-family: "foundation-icons";
-  src: font-path("foundation-icons.eot");
-  src: font-path("foundation-icons.eot?#iefix") format("embedded-opentype"),
-       font-path("foundation-icons.woff") format("woff"),
-       font-path("foundation-icons.ttf") format("truetype"),
-       font-path("foundation-icons.svg#fontcustom") format("svg");
+  src: url(font-path("foundation-icons.eot"));
+  src: url(font-path("foundation-icons.eot?#iefix")) format("embedded-opentype"),
+       url(font-path("foundation-icons.woff")) format("woff"),
+       url(font-path("foundation-icons.ttf")) format("truetype"),
+       url(font-path("foundation-icons.svg#fontcustom")) format("svg");
   font-weight: normal;
   font-style: normal;
 }
