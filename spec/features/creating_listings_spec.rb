@@ -34,5 +34,7 @@ feature 'Creating Listings' do
     expect(page.current_path).to eql(user_root_path)
 
     expect(page).to have_content('Listing was successfully created.')
+    expect(page).to have_content(listing.title)
+
   end
 end
