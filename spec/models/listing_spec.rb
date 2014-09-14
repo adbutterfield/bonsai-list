@@ -29,4 +29,14 @@ RSpec.describe Listing, :type => :model do
     end
   end
 
+  describe "#location" do
+    it "should return a string with the city and state of the user who posted" do
+      user = FactoryGirl.create(:user_with_address)
+      listing = FactoryGirl.build(:listing, user: user)
+      listing.set_latitude_and_longitude
+      listing.save
+      expect(listing.location).to eq("#{user.address.city}, #{user.address.state}")
+    end
+  end
+
 end
