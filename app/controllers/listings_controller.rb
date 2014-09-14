@@ -51,8 +51,11 @@ class ListingsController < ApplicationController
   end
 
   def remove
-    @listing.update(remove: true)
-    redirect_to user_root_url, notice: 'Listing was successfully removed.'
+    if @listing.remove_listing
+      redirect_to user_root_url, notice: 'Listing was successfully removed.'
+    else
+      redirect_to :back
+    end
   end
 
   def set_subcategories
