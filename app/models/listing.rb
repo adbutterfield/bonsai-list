@@ -23,6 +23,10 @@ class Listing < ActiveRecord::Base
     "#{self.user.address.city}, #{self.user.address.state}"
   end
 
+  def remove_listing
+    self.update(remove: true)
+  end
+
   # def self.filter_listings(params, user_postcode)
   #   params[:sort] ||= "created_at desc"
   #   params[:distance_filter] ||= "50"
