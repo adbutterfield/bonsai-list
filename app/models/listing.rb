@@ -32,9 +32,9 @@ class Listing < ActiveRecord::Base
   #   end
   # end
 
-  def set_latitude_and_longitude(current_user)
-    self.latitude = current_user.address.latitude
-    self.longitude = current_user.address.longitude
+  def set_latitude_and_longitude
+    self.latitude = self.user.address.latitude
+    self.longitude = self.user.address.longitude
   end
 
   # TODO use logged in user coordinates
