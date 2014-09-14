@@ -37,6 +37,10 @@ class Listing < ActiveRecord::Base
     self.longitude = self.user.address.longitude
   end
 
+  def location
+    "#{self.user.address.city}, #{self.user.address.state}"
+  end
+
   # TODO use logged in user coordinates
   def self.filter_listings(params, coordinates)
     params[:sort] ||= "created_at desc"
