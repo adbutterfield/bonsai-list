@@ -14,6 +14,15 @@ class Listing < ActiveRecord::Base
     self.publish ? "Yes" : "No"
   end
 
+  def set_latitude_and_longitude
+    self.latitude = self.user.address.latitude
+    self.longitude = self.user.address.longitude
+  end
+
+  def location
+    "#{self.user.address.city}, #{self.user.address.state}"
+  end
+
   # def self.filter_listings(params, user_postcode)
   #   params[:sort] ||= "created_at desc"
   #   params[:distance_filter] ||= "50"
@@ -32,15 +41,6 @@ class Listing < ActiveRecord::Base
   #     return Listing.postable.near(user_postcode, params[:distance_filter], :order => params[:sort])
   #   end
   # end
-
-  def set_latitude_and_longitude
-    self.latitude = self.user.address.latitude
-    self.longitude = self.user.address.longitude
-  end
-
-  def location
-    "#{self.user.address.city}, #{self.user.address.state}"
-  end
 
   # TODO use logged in user coordinates
   def self.filter_listings(params, coordinates)
