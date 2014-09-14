@@ -23,7 +23,7 @@ class ListingsController < ApplicationController
 
   def create
     @listing = current_user.listings.build(listing_params)
-    @listing.set_latitude_and_longitude(current_user)
+    @listing.set_latitude_and_longitude
     respond_to do |format|
       if @listing.save
         format.html { redirect_to user_root_url, notice: 'Listing was successfully created.' }
