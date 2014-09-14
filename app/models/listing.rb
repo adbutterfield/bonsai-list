@@ -4,6 +4,7 @@ class Listing < ActiveRecord::Base
   belongs_to :subcategory
   validates :title, :description, :price, :category, :subcategory, :user_id, :latitude, :longitude, presence: true
   validates :shippable, :publish, :remove, inclusion: { in: [true, false] }
+  validates :price, numericality: true
 
   scope :postable, -> { where(remove: false, publish: true) }
 
