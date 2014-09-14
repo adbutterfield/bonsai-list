@@ -28,7 +28,7 @@ RSpec.describe Listing, :type => :model do
   end
 
   describe "#set_latitude_and_longitude" do
-    it "should set latitude and longitude of the current_user" do
+    it "sets latitude and longitude of the current_user" do
       # currently, faker makes lat and lon strings, an open pull request may soon fix that
       # https://github.com/stympy/faker/pull/246
       expect(@listing.longitude).to eq(@user.address.longitude.to_f)
@@ -37,7 +37,7 @@ RSpec.describe Listing, :type => :model do
   end
 
   describe "#location" do
-    it "should return a string with the city and state of the user who posted" do
+    it "returns a string with the city and state of the user who posted" do
       expect(@listing.location).to eq("#{@user.address.city}, #{@user.address.state}")
     end
   end
