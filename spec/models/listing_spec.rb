@@ -42,4 +42,11 @@ RSpec.describe Listing, :type => :model do
     end
   end
 
+  describe "#remove_listing" do
+    it "sets the remove attribute to true " do
+      @listing.remove_listing
+      expect(@listing.remove).to eq(true)
+    end
+  end
+
 end
