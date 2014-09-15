@@ -15,11 +15,13 @@
 
     <%= render partial: "topbar" %>
     <%= render partial: "hero" %>
-    <% flash.each do |key, value| %>
-      <div class='flash' id='<%= key %>'>
-        <%= value %>
-      </div>
-    <% end %>
+    <div class="row">
+      <% flash.each do |key, value| %>
+        <div class='flash small-12 columns' id='<%= key %>'>
+          <p class="text-center"><%= value %></p>
+        </div>
+      <% end %>
+    </div>
 
     <%= yield %>
 
