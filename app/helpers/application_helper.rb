@@ -14,7 +14,6 @@ module ApplicationHelper
   end
 
   def page_title(name)
-    content_for(:title) { name }
-    # content_tag("h1", name)
+    content_for(:title) { name << " | Bonsai List"}
   end
 end
