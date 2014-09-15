@@ -4,13 +4,13 @@ module ApplicationHelper
   end
 
   def marketplace_page?
-    # controller_name == "marketplace"
-    current_page?(controller: 'marketplace')
+    controller_name == "marketplace"
+    # current_page?(controller: 'marketplace')
   end
 
   def home_page?
-    # controller_name == "users" && action_name == "home"
-    current_page?(controller: 'users', action: 'home')
+    controller_name == "users" && action_name == "home"
+    # current_page?(controller: 'users', action: 'home')
   end
 
   def page_title(name)
