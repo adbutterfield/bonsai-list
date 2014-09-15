@@ -14,6 +14,7 @@ RSpec.describe "listings/show" do
     expect(rendered).to have_content(listing.title)
     expect(rendered).to have_content(listing.description)
     expect(rendered).to have_content(listing.price)
+    expect(rendered).to have_content(user.full_name)
     expect(rendered).to have_content(user.address.city)
     expect(rendered).to have_content(user.address.state)
     expect(rendered).to have_content("Willing to ship")
