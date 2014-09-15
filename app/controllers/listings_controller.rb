@@ -44,9 +44,10 @@ class ListingsController < ApplicationController
   end
 
   def destroy
-    @listing.destroy
-    respond_to do |format|
-      format.html { redirect_to listings_url, notice: 'Listing was successfully destroyed.' }
+    if @listing.remove_listing
+      redirect_to user_root_url, notice: 'Listing was successfully removed.'
+    else
+      redirect_to :back
     end
   end
 
