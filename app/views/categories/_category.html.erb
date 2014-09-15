@@ -16,14 +16,14 @@
   <%# end %>
 </ul> -->
 
-<li><%= link_to category.name, {
+<li><%= link_to_unless_current category.name, {
   controller: 'marketplace',
   action: 'index',
   category_id: category.id } %></li>
 <ul>
   <% category.subcategories.each do |subcategory| %>
     <li>
-      <%= link_to subcategory.name, {
+      <%= link_to_unless_current subcategory.name, {
       controller: 'marketplace',
       action: 'index',
       subcategory_id: subcategory.id, category_id: subcategory.category_id } %>
