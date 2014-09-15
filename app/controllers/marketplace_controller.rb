@@ -1,7 +1,5 @@
 class MarketplaceController < ApplicationController
   before_action :set_listings, only: [:index, :ajax_sort]
-  after_action :set_listings, only: [:set_location]
-
 
   def index
     @categories = Category.includes(:subcategories).order(id: :asc)
@@ -16,10 +14,11 @@ class MarketplaceController < ApplicationController
   private
 
     def set_listings
-      @listings = Listing.filter_listings(params, user_coordinates)
+      @listings = Listing.filter_listings(params, coordinates)
     end
 
-    def user_coordinates
-      current_user.nil? ? cookies[:location] : current_user.address
+    def coordinates
+      "#{location.latitude}, #{location.longitude}"
     end
+
 end
