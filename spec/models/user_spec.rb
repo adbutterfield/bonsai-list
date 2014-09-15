@@ -34,4 +34,10 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  describe "#full_name" do
+    it "returns the full name of a user" do
+      expect(user.full_name).to eq("#{user.firstname} #{user.lastname}")
+    end
+  end
+
 end
