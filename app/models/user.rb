@@ -13,4 +13,7 @@ class User < ActiveRecord::Base
   validates :firstname, :lastname, presence: true
   validates :email, uniqueness: { case_sensitive: false }
 
+  def full_name
+    "#{self.firstname} #{self.lastname}"
+  end
 end
