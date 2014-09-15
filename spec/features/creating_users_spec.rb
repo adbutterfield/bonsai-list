@@ -4,8 +4,6 @@ feature 'Creating Listings' do
 
   scenario "creating a new user" do
 
-    # page.driver.set_cookie("location", "Cloverdale, California")
-
     visit new_user_registration_path
 
     fill_in "First name", with: "First"
