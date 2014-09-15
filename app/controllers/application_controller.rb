@@ -17,6 +17,18 @@ class ApplicationController < ActionController::Base
     user_root_path
   end
 
+  def location
+    if user_signed_in?
+      @location = current_user.address
+    else
+      if Rails.env.test? || Rails.env.development?
+        @location ||= Geocoder.search("50.78.167.161").first
+      else
+        @location ||= request.location
+      end
+    end
+  end
+
   protected
 
   def configure_permitted_parameters
