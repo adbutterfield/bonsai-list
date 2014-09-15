@@ -7,7 +7,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
     def set_address_variables
-      @address      = Geocoder.search(cookies[:location])[0]
+      @address      = request.location
       @city_name    = @address.city
       @state_name   = @address.state
       @country_name = @address.country
