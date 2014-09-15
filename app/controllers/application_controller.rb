@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       @location = current_user.address
     else
       if Rails.env.test? || Rails.env.development?
-        @location ||= Geocoder.search("50.78.167.161").first
+        @location ||= Geocoder.search("76.103.52.107").first
       else
         @location ||= request.location
       end
