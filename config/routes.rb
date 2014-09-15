@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :subcategories
 
-  resources :categories
+  resources :categories, except: [:index, :show]
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
