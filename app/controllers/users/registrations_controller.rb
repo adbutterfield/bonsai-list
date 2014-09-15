@@ -7,11 +7,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   private
     def set_address_variables
-      @address      = request.location
-      @city_name    = @address.city
-      @state_name   = @address.state
-      @country_name = @address.country
-      @post_code    = @address.postal_code
-      @latitude, @longitude = cookies[:location].split(',').map(&:to_f)
+      @city_name    = location.city
+      @state_name   = location.state
+      @country_name = location.country
+      @post_code    = location.postal_code
+      @latitude     = location.latitude
+      @longitude    = location.longitude
     end
 end
