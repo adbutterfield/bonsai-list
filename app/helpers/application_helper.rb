@@ -13,4 +13,8 @@ module ApplicationHelper
     current_page?(controller: 'users', action: 'home')
   end
 
+  def page_title(name)
+    content_for(:title) { name }
+    # content_tag("h1", name)
+  end
 end
