@@ -49,4 +49,16 @@ RSpec.describe Listing, :type => :model do
     end
   end
 
+  describe "postable scope" do
+    it "returns listings where publish is true and remove is false" do
+      postable_listing = FactoryGirl.create(:listing)
+      remove_true_listing = FactoryGirl.create(:listing, remove: true)
+      publish_false_listing = FactoryGirl.create(:listing, publish: false)
+      remove_true_publish_false_listing = FactoryGirl.create(:listing, remove: true, publish: false)
+
+      expect(Listing.postable).to eq [@listing, postable_listing]
+      expect(Listing.all).to eq [@listing, postable_listing, remove_true_listing, publish_false_listing, remove_true_publish_false_listing]
+    end
+  end
+
 end
