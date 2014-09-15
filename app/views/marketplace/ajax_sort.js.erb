@@ -1,1 +1,1 @@
-$("#listings").empty().append("<%= escape_javascript(render(:partial => @listings)) %>");
+$("#listings").empty().append("<%= escape_javascript(render(@listings) || no_listings_message) %>");
