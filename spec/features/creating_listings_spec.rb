@@ -30,6 +30,8 @@ feature 'Creating Listings' do
     expect(listing.title).to eq('Black Pine')
     expect(listing.description).to eq('It\'s a black pine')
     expect(listing.price).to eq(9.99)
+    expect(listing.publish).to eq(true)
+    expect(listing.published_at).to_not be_nil
 
     expect(page.current_path).to eql(user_root_path)
 
