@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 20140916033433) do
     t.string   "location"
     t.boolean  "shippable"
     t.boolean  "publish"
-    t.boolean  "remove",                                  default: false
+    t.boolean  "remove",         default: false
     t.integer  "user_id"
     t.integer  "category_id"
     t.integer  "subcategory_id"
