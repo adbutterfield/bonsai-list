@@ -1,6 +1,6 @@
 <% page_title "Sign Up" %>
 <div class="row">
-  <div class="small-12 medium-8 columns">
+  <div class="small-12 medium-5 columns">
     <h2>Sign up</h2>
 
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
@@ -9,41 +9,42 @@
       <%= f.hidden_field :longitude, value: @user.address.longitude %>
 
       <div class="row">
-        <div class="medium-4 columns"><%= f.label :firstname, "First name" %>
+        <div class="smaill-12 medium-6 columns"><%= f.label :firstname, "First name" %>
         <%= f.text_field :firstname, :autofocus => true %></div>
 
-        <div class="medium-4 columns"><%= f.label :lastname, "Last name" %>
+        <div class="smaill-12 medium-6 columns"><%= f.label :lastname, "Last name" %>
         <%= f.text_field :lastname %></div>
-
-        <div class="medium-4 columns"><%= f.label :email, "Email address" %>
+      </div>
+      <div class="row">
+        <div class="smaill-12 columns"><%= f.label :email, "Email address" %>
         <%= f.email_field :email %></div>
       </div>
+
       <%= f.fields_for :address, @user.address do |addr| %>
         <p>Address</p>
         <div class="row">
-          <div class="medium-3 columns"><%= addr.label :city %>
+          <div class="small-6 columns"><%= addr.label :city %>
           <%= addr.text_field :city, value: @user.address.city %></div>
 
-          <div class="medium-3 columns"><%= addr.label :state %>
-          <%= addr.text_field :state, value: @user.address.state %></div>
-
-          <div class="medium-3 columns"><%= addr.label :postcode %>
+          <div class="small-6 columns"><%= addr.label :postcode %>
           <%= addr.text_field :postcode, value: @user.address.postcode %></div>
 
-          <div class="medium-3 columns"><%= addr.label :country %>
+          <div class="small-6 columns"><%= addr.label :state %>
+          <%= addr.text_field :state, value: @user.address.state %></div>
+
+          <div class="small-6 columns"><%= addr.label :country %>
           <%= addr.text_field :country, value: @user.address.country %></div>
         </div>
       <% end %>
       <div class="row">
-        <div class="medium-6 columns"><%= f.label :password %>
+        <div class="small-12 columns"><%= f.label :password %>
         <%= f.password_field :password %></div>
 
-        <div class="medium-6 columns"><%= f.label :password_confirmation %>
+        <div class="small-12 columns"><%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation %></div>
       </div>
 
-      <div><%= f.submit "Sign up" %></div>
+      <div><%= f.submit "Sign up", :class => "button tiny" %></div>
     <% end %>
   </div>
 </div>
-<%= render "users/shared/links" %>
