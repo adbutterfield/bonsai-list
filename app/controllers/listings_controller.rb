@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, except: :show
+  before_action :verify_user, only: [:edit, :update, :destroy, :remove]
   before_action :set_listing, only: [:show, :edit, :update, :destroy, :remove]
 
   def index
@@ -79,6 +80,11 @@ class ListingsController < ApplicationController
 
     def listing_params
       params.require(:listing).permit(:title, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :subcategory_id, :published_at)
+    end
+
+    def verify_user
+      user = Listing.find(params[:id]).user if params[:id]
+      redirect_to user_root_path, notice: "We can't find the page you're looking for..." unless current_user?(user)
     end
 
 end
