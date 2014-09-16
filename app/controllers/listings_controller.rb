@@ -24,6 +24,9 @@ class ListingsController < ApplicationController
   def create
     @listing = current_user.listings.build(listing_params)
     @listing.set_latitude_and_longitude
+    if params[:listing][:publish] == '1'
+      @listing.published_at = Time.now
+    end
     respond_to do |format|
       if @listing.save
         format.html { redirect_to user_root_url, notice: 'Listing was successfully created.' }
@@ -34,6 +37,9 @@ class ListingsController < ApplicationController
   end
 
   def update
+    if params[:listing][:publish] == '1' && @listing.published_at.nil?
+      params[:listing][:published_at] = Time.now
+    end
     respond_to do |format|
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
@@ -72,7 +78,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:title, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :subcategory_id)
+      params.require(:listing).permit(:title, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :subcategory_id, :published_at)
     end
 
 end
