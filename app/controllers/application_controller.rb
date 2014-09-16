@@ -29,13 +29,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def current_user?(user)
+    current_user == user
+  end
+
   protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:firstname, :lastname, :postcode, :email, :password, :password_confirmation, :remember_me, address_attributes: [ :id, :user_id, :city, :state, :postcode, :country, :longitude, :latitude ]) }
 
-    devise_parameter_sanitizer.for(:sign_in) { |u| u.permit(:login, :firstname, :lastname, :postcode, :email, :password, :remember_me) }
-    # TOTO implement and test update address
+    # TODO implement and test update address
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:firstname, :lastname, :postcode, :email, :password, :password_confirmation, :current_password) }
   end
 end
