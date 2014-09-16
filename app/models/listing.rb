@@ -34,12 +34,12 @@ class Listing < ActiveRecord::Base
     if params[:category_id].present?
       if params[:subcategory_id].present?
         return Listing.postable
-              .where('category_id = ? AND subcategory_id = ?', params[:category_id], params[:subcategory_id])
-              .near(coordinates, params[:distance_filter], :order => params[:sort])
+          .where('category_id = ? AND subcategory_id = ?', params[:category_id], params[:subcategory_id])
+          .near(coordinates, params[:distance_filter], :order => params[:sort])
       else
         return Listing.postable
-              .where('category_id = ?', params[:category_id])
-              .near(coordinates, params[:distance_filter], :order => params[:sort])
+          .where('category_id = ?', params[:category_id])
+          .near(coordinates, params[:distance_filter], :order => params[:sort])
       end
     else
       return Listing.postable.near(coordinates, params[:distance_filter], :order => params[:sort])
