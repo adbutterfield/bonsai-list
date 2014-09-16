@@ -12,36 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
 
   <div class="field">
-    <%= f.label "Category" %><br>
+    <%= f.label "Category" %>
     <%= f.collection_radio_buttons :category_id, @categories, :id, :name, { checked: @categories.first.id }, { id: 'categories_radio' } %>
   </div>
 
   <div class="field">
-    <%= f.label "Sub-category" %><br>
+    <%= f.label "Sub-category" %>
     <div id="subcategories_radio" >
       <%= f.collection_radio_buttons :subcategory_id, @subcategories, :id, :name %>
     </div>
   </div>
 
   <div class="field">
-    <%= f.label :shippable, "Willing to ship?" %><br>
+    <%= f.label :shippable, "Willing to ship?" %>
     <%= f.check_box :shippable %>
   </div>
   <div class="field">
-    <%= f.label :publish, "Publish now?" %><br>
+    <%= f.label :publish, "Publish now?" %>
     <%= f.check_box :publish %>
   </div>
 
