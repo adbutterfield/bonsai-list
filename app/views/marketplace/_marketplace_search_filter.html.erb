@@ -1,46 +1,30 @@
 <div class="row">
   <div id="filter-bar" class="small-12 columns panel">
     <div class="row">
-      <div class="hide-for-medium-up small-12 columns">
-        <div class="small-4 columns">
-          <p>Order by:</p>
+
+      <div class="small-12 medium-6 large-4 columns">
+        <div class="small-6 medium-5 columns no-padding">
+          <p class="left-label">Order by:</p>
         </div>
-        <!-- TODO implement sort for mobile-->
-        <div class="small-8 columns">
-          <%= select_tag :sort, options_for_select([["Newest", "created_at desc"], ["Low Price", "price asc"], ["High Price", "price desc"]], ), :id => 'mobile_sort_listing', :class => 'filter-sort' %>
-        </div>
-      </div>
-      <div class="hide-for-small medium-6 large-4 columns">
-        <div class="medium-5 columns no-padding">
-          <p class="filter-label left-label">Order by:</p>
-        </div>
-        <div class="medium-6 columns no-padding">
+        <div class="small-6 columns no-padding">
           <%= select_tag :sort, options_for_select([["Newest", "created_at desc"], ["Low Price", "price asc"], ["High Price", "price desc"]], ), :id => 'sort_listing', :class => 'filter-sort' %>
         </div>
-        <div class="medium-1 columns filter-pipe">
-          <span class="filter-pipe">|</span>
+        <div class="medium-1 columns filter-pipe hide-for-small">
+          <span>|</span>
         </div>
       </div>
       <hr class="hide-for-medium-up hr-order-by-mobile" />
-      <div class="hide-for-medium-up small-12 columns">
-        <div class="small-4 columns">
-          <p>Distance:</p>
+      <div class="small-12 medium-6 large-3 columns">
+        <div class="small-6 columns no-padding">
+          <p class="hide-for-small distance-label">Distance:</p>
+          <p class="hide-for-medium-up mobile-distance-label">Distance:</p>
         </div>
-        <!-- TODO implement filter for mobile -->
-        <div class="small-8 columns">
-          <%= select_tag :distance_filter, options_for_select([["All", "10000"], ["500 Miles", "500"], ["100 Miles", "100"], ["50 Miles", "50"]], ), :id => 'mobile_distance_filter', :class => 'filter-sort' %>
+        <div class="small-6 columns no-padding">
+          <%= select_tag :distance_filter, options_for_select([["All", "10000"], ["500 mi", "500"], ["100 mi", "100"], ["50 mi", "50"]], ), :id => 'distance_filter', :class => 'filter-sort' %>
         </div>
-      </div>
-      <div class="hide-for-small medium-6 large-3 columns no-padding">
-        <div class="medium-5 columns no-padding">
-          <p class="filter-label">Distance:</p>
-        </div>
-        <div class="medium-6 columns no-padding">
-          <%= select_tag :distance_filter, options_for_select([["All", "10000"], ["500 Miles", "500"], ["100 Miles", "100"], ["50 Miles", "50"]], ), :id => 'distance_filter', :class => 'filter-sort' %>
-        </div>
-        <div class="hide-for-small medium-1 columns filter-pipe">
+        <!-- <div class="hide-for-medium-down medium-1 columns filter-pipe">
           <span>|</span>
-        </div>
+        </div> -->
       </div>
       <hr class="hide-for-medium-up hr-distance-mobile" />
       <div id="" class="small-12 medium-12 large-5 columns">
