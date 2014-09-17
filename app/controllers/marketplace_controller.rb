@@ -14,7 +14,11 @@ class MarketplaceController < ApplicationController
   private
 
     def set_listings
-      @listings = Listing.filter_listings(params, coordinates)
+      if params[:search].blank?
+        @listings = Listing.filter_by(params, coordinates)
+      else
+        @listings = Listing.search_by(params[:search]).filter_by(params, coordinates)
+      end
     end
 
     def coordinates
