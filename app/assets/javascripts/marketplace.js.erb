@@ -1,6 +1,6 @@
 $(function(){
-  $('.bon-button').on('click', function(){
 
+  function searchFliterSort (){
     var search = $('.marketplace-search').val();
     var category = $('#listings').data('categoryId');
     var subcategory = $('#listings').data('subcategoryId');
@@ -18,26 +18,10 @@ $(function(){
         distance_filter: distanceValue
       },
     });
+  }
+  $('.bon-button').on('click', searchFliterSort);
 
-  })
+  $('#sort_listing, #distance_filter').on('change', searchFliterSort);
 
-  $('#sort_listing, #distance_filter').on('change', function(){
-
-    var category = $('#listings').data('categoryId');
-    var subcategory = $('#listings').data('subcategoryId');
-    var sortValue = $('#sort_listing option:selected').val();
-    var distanceValue = $('#distance_filter option:selected').val();
-
-    $.ajax({
-      url: 'ajax_sort',
-      type: 'GET',
-      dataType: 'script',
-      data: {
-        category_id: category,
-        subcategory_id: subcategory,
-        sort: sortValue,
-        distance_filter: distanceValue
-      },
-    });
-  });
+  $('#search').on('keyup', searchFliterSort);
 });
