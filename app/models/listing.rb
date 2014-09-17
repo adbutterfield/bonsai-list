@@ -1,6 +1,10 @@
 class Listing < ActiveRecord::Base
   include PgSearch
-  pg_search_scope :search_by, :against => [:title, :description]
+  pg_search_scope :search_by,
+                  :against => [:title, :description],
+                  :using => {
+                    :tsearch => {:prefix => true}
+                  }
 
   belongs_to :user
   belongs_to :category
