@@ -17,7 +17,7 @@ class MarketplaceController < ApplicationController
       if params[:search].blank?
         @listings = Listing.filter_by(params, coordinates)
       else
-        @listings = Listing.search_by(params[:search]).filter_by(params, coordinates)
+        @listings = Listing.filter_by(params, coordinates).search_by(params[:search])
       end
     end
 
