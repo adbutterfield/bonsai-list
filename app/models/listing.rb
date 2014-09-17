@@ -1,4 +1,7 @@
 class Listing < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :search_by, :against => [:title, :description]
+
   belongs_to :user
   belongs_to :category
   belongs_to :subcategory
@@ -27,7 +30,7 @@ class Listing < ActiveRecord::Base
     self.update(remove: true)
   end
 
-  def self.filter_listings(params, coordinates)
+  def self.filter_by(params, coordinates)
     params[:sort] ||= "created_at desc"
     params[:distance_filter] ||= "5000"
 
