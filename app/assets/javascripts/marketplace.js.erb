@@ -1,5 +1,25 @@
 $(function(){
-  // TODO implement the sort/filter for mobile
+  $('.bon-button').on('click', function(){
+
+    var search = $('.marketplace-search').val();
+    var category = $('#listings').data('categoryId');
+    var subcategory = $('#listings').data('subcategoryId');
+    var sortValue = $('#sort_listing option:selected').val();
+    var distanceValue = $('#distance_filter option:selected').val();
+    $.ajax({
+      url: 'ajax_sort',
+      type: 'GET',
+      dataType: 'script',
+      data: {
+        search: search,
+        category_id: category,
+        subcategory_id: subcategory,
+        sort: sortValue,
+        distance_filter: distanceValue
+      },
+    });
+
+  })
 
   $('#sort_listing, #distance_filter').on('change', function(){
 
