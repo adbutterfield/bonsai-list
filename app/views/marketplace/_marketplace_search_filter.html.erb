@@ -22,18 +22,15 @@
         <div class="small-6 columns no-padding">
           <%= select_tag :distance_filter, options_for_select([["All", "10000"], ["500 mi", "500"], ["100 mi", "100"], ["50 mi", "50"]], ), :id => 'distance_filter', :class => 'filter-sort' %>
         </div>
-        <!-- <div class="hide-for-medium-down medium-1 columns filter-pipe">
-          <span>|</span>
-        </div> -->
       </div>
       <hr class="hide-for-medium-up hr-distance-mobile" />
       <div id="" class="small-12 medium-12 large-5 columns">
         <div class="row collapse">
           <div id="filter-search" class="small-9 columns">
-            <%= text_field_tag :search, params[:search], :class => "", :placeholder => "Search" %>
+            <%= text_field_tag :search, params[:search], :class => "marketplace-search", :placeholder => "Search" %>
           </div>
           <div class="small-3 columns">
-            <%= button_tag "Search", class: "postfix product-search-button bon-button" %>
+            <%= submit_tag "Search", class: "postfix product-search-button bon-button" %>
           </div>
         </div>
       </div>
