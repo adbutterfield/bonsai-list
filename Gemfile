@@ -34,7 +34,9 @@ gem 'foundation-rails'
 
 gem 'devise'
 
-gem "geocoder"
+gem 'geocoder'
+
+gem 'mailboxer'
 
 group :development do
   gem 'better_errors'
