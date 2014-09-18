@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916033433) do
+ActiveRecord::Schema.define(version: 20140917223124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,14 +40,13 @@ ActiveRecord::Schema.define(version: 20140916033433) do
   create_table "listings", force: true do |t|
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",          precision: 10, scale: 2
+    t.decimal  "price",        precision: 10, scale: 2
     t.string   "location"
     t.boolean  "shippable"
     t.boolean  "publish"
-    t.boolean  "remove",         default: false
+    t.boolean  "remove",                                default: false
     t.integer  "user_id"
     t.integer  "category_id"
-    t.integer  "subcategory_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "latitude"
@@ -57,17 +56,7 @@ ActiveRecord::Schema.define(version: 20140916033433) do
 
   add_index "listings", ["category_id"], name: "index_listings_on_category_id", using: :btree
   add_index "listings", ["latitude", "longitude"], name: "index_listings_on_latitude_and_longitude", using: :btree
-  add_index "listings", ["subcategory_id"], name: "index_listings_on_subcategory_id", using: :btree
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
-
-  create_table "subcategories", force: true do |t|
-    t.string   "name"
-    t.integer  "category_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "firstname"

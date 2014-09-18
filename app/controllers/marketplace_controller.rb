@@ -2,7 +2,7 @@ class MarketplaceController < ApplicationController
   before_action :set_listings, only: [:index, :ajax_sort]
 
   def index
-    @categories = Category.includes(:subcategories).order(id: :asc)
+    @categories = Category.order(id: :asc)
   end
 
   def ajax_sort

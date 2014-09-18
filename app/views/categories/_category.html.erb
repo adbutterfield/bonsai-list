@@ -1,32 +1,6 @@
-<!-- Ajax version
-<li><%#= link_to category.name, {
-  controller: 'marketplace',
-  action: 'filter_listings',
-  category_id: category.id,
-  remote: true } %></li>
-<ul>
-  <%# category.subcategories.each do |subcategory| %>
-    <li>
-      <%#= link_to subcategory.name, {
-      controller: 'marketplace',
-      action: 'filter_listings',
-      subcategory_id: subcategory.id,
-      remote: true } %>
-    </li>
-  <%# end %>
-</ul> -->
-
-<li><%= link_to_unless_current category.name, {
+<li>
+  <%= link_to_unless_current category.name, {
   controller: 'marketplace',
   action: 'index',
-  category_id: category.id } %></li>
-<ul>
-  <% category.subcategories.each do |subcategory| %>
-    <li>
-      <%= link_to_unless_current subcategory.name, {
-      controller: 'marketplace',
-      action: 'index',
-      subcategory_id: subcategory.id, category_id: subcategory.category_id } %>
-    </li>
-  <% end %>
-</ul>
+  category_id: category.id } %>
+</li>

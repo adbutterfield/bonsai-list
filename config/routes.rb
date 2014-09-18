@@ -4,18 +4,12 @@ Rails.application.routes.draw do
   get 'home' => 'users#home', as: 'user_root'
 
   get '(marketplace(/:category_id))/ajax_sort' => 'marketplace#ajax_sort'
-  get 'marketplace/:category_id(/:subcategory_id)' => 'marketplace#index', as: 'marketplace_filter'
+  get 'marketplace/:category_id' => 'marketplace#index', as: 'marketplace_filter'
   get 'marketplace' => 'marketplace#index', as: 'marketplace'
-
-  get 'listings/set_subcategories' => 'listings#set_subcategories', as: 'set_subcategories'
-  get 'listings/:id/set_subcategories' => 'listings#set_subcategories'
 
   resources :listings
   # TODO set better url for listing#show
-  # get '/:category/:subcategory_id/:id' => 'listings#show', as: 'listing'
   patch 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
-
-  resources :subcategories
 
   resources :categories, except: [:index, :show]
 

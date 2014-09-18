@@ -5,7 +5,6 @@ feature 'Creating Listings' do
   before do
     sign_in_as!(user)
     trees = FactoryGirl.create(:category, name: 'Trees')
-    FactoryGirl.create(:subcategory, category: trees, name: 'Coniferous')
   end
 
   scenario "can create a listing" do
@@ -19,7 +18,6 @@ feature 'Creating Listings' do
     fill_in 'Price', with: 9.99
     # Capybara cannot find the 'Trees' radio button, but it's chosen by default.
     # choose 'Trees'
-    choose 'Coniferous'
     check 'Willing to ship?'
     check 'Publish now?'
 

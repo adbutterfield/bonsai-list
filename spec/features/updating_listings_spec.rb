@@ -5,7 +5,6 @@ feature 'Updating Listings' do
   before do
     sign_in_as!(user)
     trees = FactoryGirl.create(:category, name: 'Trees')
-    FactoryGirl.create(:subcategory, category: trees, name: 'Coniferous')
   end
 
   scenario "sets published_at when updated to publish true" do

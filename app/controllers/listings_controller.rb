@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
   before_action :set_listing, only: [:show, :edit, :update, :destroy, :remove]
 
   def index
-    @categories = Category.includes(:subcategories).order(id: :asc)
+    @categories = Category.order(id: :asc)
     @listings = current_user.posted_listings
   end
 
@@ -14,12 +14,10 @@ class ListingsController < ApplicationController
   def new
     @listing = current_user.listings.build
     @categories = Category.all
-    @subcategories = Subcategory.where('category_id = ?', Category.first).order(id: :asc)
   end
 
   def edit
     @categories = Category.all
-    @subcategories = Subcategory.where(category_id: @listing.category_id).order(id: :asc)
   end
 
   def create
@@ -66,20 +64,13 @@ class ListingsController < ApplicationController
     end
   end
 
-  def set_subcategories
-    @subcategories = Subcategory.where("category_id = ?", params[:category_id]).order(id: :asc)
-    respond_to do |format|
-      format.js
-    end
-  end
-
   private
     def set_listing
       @listing = Listing.find(params[:id])
     end
 
     def listing_params
-      params.require(:listing).permit(:title, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :subcategory_id, :published_at)
+      params.require(:listing).permit(:title, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :published_at)
     end
 
     def verify_user

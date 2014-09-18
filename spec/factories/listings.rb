@@ -16,6 +16,5 @@ FactoryGirl.define do
     # TODO test geocode
 
     category
-    subcategory
   end
 end

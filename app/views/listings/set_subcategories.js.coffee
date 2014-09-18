@@ -1,1 +1,0 @@
-$("#subcategories_radio").empty().append("<%= escape_javascript(render(:partial => @subcategories)) %>")

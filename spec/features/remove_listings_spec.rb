@@ -7,7 +7,6 @@ feature 'Removing Listings' do
 
     sign_in_as!(user)
     FactoryGirl.create(:category, name: 'Trees')
-    FactoryGirl.create(:subcategory, name: 'Coniferous')
     @listing = FactoryGirl.create(:listing, user: user)
   end
 

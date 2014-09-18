@@ -30,13 +30,6 @@
   </div>
 
   <div class="field">
-    <%= f.label "Sub-category" %>
-    <div id="subcategories_radio" >
-      <%= f.collection_radio_buttons :subcategory_id, @subcategories, :id, :name %>
-    </div>
-  </div>
-
-  <div class="field">
     <%= f.label :shippable, "Willing to ship?" %>
     <%= f.check_box :shippable %>
   </div>

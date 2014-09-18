@@ -3,7 +3,6 @@ $(function(){
   function searchFliterSort (){
     var search = $('.marketplace-search').val();
     var category = $('#listings').data('categoryId');
-    var subcategory = $('#listings').data('subcategoryId');
     var sortValue = $('#sort_listing option:selected').val();
     var distanceValue = $('#distance_filter option:selected').val();
     $.ajax({
@@ -13,7 +12,6 @@ $(function(){
       data: {
         search: search,
         category_id: category,
-        subcategory_id: subcategory,
         sort: sortValue,
         distance_filter: distanceValue
       },
