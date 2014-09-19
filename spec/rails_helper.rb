@@ -51,10 +51,13 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
   config.include FactoryGirl::Syntax::Methods
-  # config.include Devise::TestHelpers, type: :controller
   # config.include ControllerMacros, type: :controller
   config.include AuthenticationHelpers, type: :feature
+
   # config.include SessionHelpers, type: :controller
+
+  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :view
 
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
