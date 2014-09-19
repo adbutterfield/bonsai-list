@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'marketplace/:category_id' => 'marketplace#index', as: 'marketplace_filter'
   get 'marketplace' => 'marketplace#index', as: 'marketplace'
 
+  post 'im_interested/:id' => 'conversations#im_interested', as: 'im_interested'
+
   resources :listings
   # TODO set better url for listing#show
   patch 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
