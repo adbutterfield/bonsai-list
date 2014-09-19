@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  acts_as_messageable
+
   has_one :address
   validates_associated :address
   has_many :listings, -> { where(remove: false) }
@@ -15,5 +17,9 @@ class User < ActiveRecord::Base
 
   def full_name
     "#{self.firstname} #{self.lastname}"
+  end
+
+  def mailboxer_email(object)
+    self.email
   end
 end
