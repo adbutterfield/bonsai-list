@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   get 'home' => 'users#home', as: 'user_root'
 
   get '(marketplace(/:category_id))/ajax_sort' => 'marketplace#ajax_sort'
@@ -8,6 +7,8 @@ Rails.application.routes.draw do
   get 'marketplace' => 'marketplace#index', as: 'marketplace'
 
   post 'im_interested/:id' => 'conversations#im_interested', as: 'im_interested'
+
+  get 'messages' => 'messages#index', as: 'messages'
 
   resources :listings
   # TODO set better url for listing#show
