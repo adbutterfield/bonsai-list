@@ -14,6 +14,15 @@ class MessagesController < ApplicationController
     redirect_to listing
   end
 
+  def reply
+    conversation = Mailboxer::Conversation.find(params[:id])
+    current_user.reply_to_conversation(conversation, params[:reply][:body])
+    @reply = conversation.messages.reverse.last
+    respond_to do |format|
+      format.js
+    end
+  end
+
   # **** this is the conversation ****
   # gets the last conversation (chronologically, the first in the inbox)
   # current_user.mailbox.inbox(unread: true).first
