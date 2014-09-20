@@ -2,8 +2,6 @@ class MessagesController < ApplicationController
 
   def index
     @new_messages = current_user.mailbox.inbox
-
-    @sent_messages = current_user.mailbox.sentbox
   end
 
   def show
@@ -20,6 +18,27 @@ class MessagesController < ApplicationController
     conversation = Mailboxer::Conversation.find(params[:id])
     current_user.reply_to_conversation(conversation, params[:reply][:body])
     @reply = conversation.messages.reverse.last
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def inbox
+    @messages = current_user.mailbox.inbox
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def sent_box
+    @messages = current_user.mailbox.sentbox
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def trash_box
+    @messages = current_user.mailbox.trash
     respond_to do |format|
       format.js
     end
