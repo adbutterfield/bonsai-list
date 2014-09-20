@@ -8,6 +8,12 @@ class MessagesController < ApplicationController
     @conversation = Mailboxer::Conversation.find(params[:id]).messages.reverse
   end
 
+  def im_interested
+    listing = Listing.find(params[:id])
+    current_user.send_message(listing.user, message_body, message_subject(listing))
+    redirect_to listing
+  end
+
   # **** this is the conversation ****
   # gets the last conversation (chronologically, the first in the inbox)
   # current_user.mailbox.inbox(unread: true).first
