@@ -8,19 +8,26 @@
     </div>
   </div>
   <div class="row">
-    <div class="small-12 columns">
+    <div id="home-nav" class="small-12 columns">
       <!-- <hr class="home-nav-hr" />
       <h5 class="title"><i class="fi-list-thumbnails"></i> <%#= link_to "Feed", user_root_path %></h5> -->
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-home"></i> <%= link_to "Home", user_root_path %></h5>
+      <h5 class="title"><i class="fi-home"></i> <%= link_to_unless_current "Home", user_root_path %></h5>
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-price-tag"></i> <%= link_to "My Listings", listings_path %></h5>
+      <h5 class="title"><i class="fi-price-tag"></i> <%= link_to_unless_current "My Listings", listings_path %></h5>
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-mail"></i> <%= link_to "Messages", messages_path %></h5>
+      <h5 class="title"><i class="fi-mail"></i> <%= link_to_unless_current "Messages", messages_path %></h5>
+      <% if messages_page? %>
+        <ul>
+          <li><%= link_to "Inbox", inbox_path, remote: true %></li>
+          <li><%= link_to "Sent", sent_path, remote: true %></li>
+          <li><%= link_to "Trash", trash_path, remote: true %></li>
+        </ul>
+      <% end %>
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-burst-sale"></i> <%= link_to "Offers", offers_index_path %></h5>
+      <h5 class="title"><i class="fi-burst-sale"></i> <%= link_to_unless_current "Offers", offers_index_path %></h5>
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-widget"></i> <%= link_to "Settings", edit_user_registration_path %></h5>
+      <h5 class="title"><i class="fi-widget"></i> <%= link_to_unless_current "Settings", edit_user_registration_path %></h5>
       <!-- <h5 class="title"><a href="#"><i class="fi-photo"></i> Photos</a></h5>
       <hr class="home-nav-hr" />
       <h5 class="title"><a href="#"><i class="fi-torsos"></i> Connections</a></h5> -->
