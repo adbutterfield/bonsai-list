@@ -2,6 +2,8 @@ class MessagesController < ApplicationController
 
   def index
     @new_messages = current_user.mailbox.inbox
+
+    @sent_messages = current_user.mailbox.sentbox
   end
 
   def show
@@ -21,6 +23,16 @@ class MessagesController < ApplicationController
     respond_to do |format|
       format.js
     end
+  end
+
+  private
+
+  def message_body
+    params[:body] || "Please let me know if it's still for sale!"
+  end
+
+  def message_subject(listing)
+    params[:subject] || "#{current_user.full_name} is interested in your #{listing.title}!"
   end
 
   # **** this is the conversation ****
