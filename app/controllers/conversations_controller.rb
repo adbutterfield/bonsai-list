@@ -35,14 +35,6 @@ class ConversationsController < ApplicationController
 
   private
 
-  def message_body
-    params[:body] || "Please let me know if it's still for sale!"
-  end
-
-  def message_subject(listing)
-    params[:subject] || "#{current_user.full_name} is interested in your #{listing.title}!"
-  end
-
   def mailbox
     @mailbox ||= current_user.mailbox
   end
