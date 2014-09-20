@@ -12,25 +12,18 @@
         <%= button_tag "Search", class: "postfix bon-button" %>
       </div>
     </div>
-    <div class="row">
-      <div class="small-12 columns panel">
-        <h4>Inbox</h4>
+    <div id="message-box">
+      <div class="row">
+        <div class="small-12 columns panel">
+          <h4>Inbox</h4>
+        </div>
       </div>
-    </div>
-    <div class="row">
-      <%= (render partial: 'message', collection: @new_messages, as: :conversation) || "No messages" %>
-    </div>
-
-    <div class="row">
-      <div class="small-12 columns panel">
-        <h4>Sent</h4>
+      <div class="row">
+        <%= (render partial: 'message', collection: @new_messages, as: :conversation) || "No messages" %>
       </div>
-    </div>
-    <div class="row">
-      <%= (render partial: 'message', collection: @sent_messages, as: :conversation) || "No messages" %>
-    </div>
-    <div class="row">
-      <%= link_to "Load More", messages_index_path, class: "button radius expand bon-button" %>
+      <div class="row">
+        <%= link_to "Load More", messages_index_path, class: "button radius expand bon-button" %>
+      </div>
     </div>
   </div>
 </div>
