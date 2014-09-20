@@ -6,9 +6,12 @@ Rails.application.routes.draw do
   get 'marketplace/:category_id' => 'marketplace#index', as: 'marketplace_filter'
   get 'marketplace' => 'marketplace#index', as: 'marketplace'
 
-  post 'im_interested/:id' => 'conversations#im_interested', as: 'im_interested'
+  post 'im_interested/:id' => 'messages#im_interested', as: 'im_interested'
 
   get 'messages' => 'messages#index', as: 'messages'
+  get 'messages/:id' => 'messages#show', as: 'message'
+
+  post 'messages/:id' => 'messages#reply',  as: 'reply_message'
 
   resources :listings
   # TODO set better url for listing#show
