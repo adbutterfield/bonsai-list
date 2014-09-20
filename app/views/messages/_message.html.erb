@@ -2,11 +2,11 @@
   <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
 </div>
 <div class="small-9 medium-10 columns message-block left">
-  <p class="message-name"><a href="#"><%= conversation.messages.first.sender.full_name %></a></p>
-  <p class="message-date"><%= conversation.messages.first.created_at.strftime('%A %b %e %l:%M %P') %></p>
+  <p class="message-name"><a href="#"><%= conversation.messages.last.sender.full_name %></a></p>
+  <p class="message-date"><%= conversation.messages.last.created_at.strftime('%A %b %e %l:%M %P') %></p>
   <div class="row">
     <div class="small-12 columns">
-      <p class=""><%= conversation.subject %></p>
+      <p class="<%= 'read_message' if conversation.receipts_for(current_user).first.is_unread? %>"><%= link_to conversation.subject, message_path(conversation) %></p>
     </div>
   </div>
 </div>
