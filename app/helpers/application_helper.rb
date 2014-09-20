@@ -13,6 +13,10 @@ module ApplicationHelper
     # current_page?(controller: 'users', action: 'home')
   end
 
+  def messages_page?
+    controller_name == "messages"
+  end
+
   def page_title(name)
     content_for(:title) { name << " | Bonsai List"}
   end
