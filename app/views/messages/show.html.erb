@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="small-12 medium-5 large-4 columns hide-for-small">
+    <%= render partial: "shared/home_nav" %>
+  </div>
+
+  <div class="small-12 medium-7 large-8 columns">
+
+    <div id="message-box" class="row">
+      <%= render partial: 'receipt', collection: @conversation, as: :message %>
+    </div>
+
+    <div class="row">
+      <%= form_tag reply_message_path, remote: true do %>
+        <div class="small-10 columns">
+          <%= text_field(:reply, :body, size: 20, placeholder: "Write a message...") %>
+        </div>
+        <div class="small-2 columns no-padding">
+          <%= submit_tag "Reply", :class => "small bon-button reply-button", id: "reply-button" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
