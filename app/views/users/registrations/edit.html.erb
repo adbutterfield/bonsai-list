@@ -1,67 +1,75 @@
 <div class="row">
-  <div class="small-12 columns">
-    <h1>Update your info</h1>
+  <div class="small-12 medium-5 large-4 columns hide-for-small">
+    <%= render partial: "shared/home_nav" %>
   </div>
-</div>
-<div class="row">
-  <div class="small-12 medium-6 large-5 columns">
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-      <%= devise_error_messages! %>
 
-      <%= f.label :firstname, "First name" %>
-      <%= f.text_field :firstname, :autofocus => true %>
+  <div class="small-12 medium-7 large-8 columns">
+    <div class="row">
+      <div class="small-12 columns">
+        <h1>Update your info</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 medium-6 columns">
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+          <%= devise_error_messages! %>
 
-      <%= f.label :lastname, "Last name" %>
-      <%= f.text_field :lastname %>
+          <%= f.label :firstname, "First name" %>
+          <%= f.text_field :firstname, :autofocus => true %>
 
-      <%= f.label :email %>
-      <%= f.email_field :email %>
+          <%= f.label :lastname, "Last name" %>
+          <%= f.text_field :lastname %>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-      <% end %>
+          <%= f.label :email %>
+          <%= f.email_field :email %>
 
-      <%= f.fields_for :address, @user.address do |addr| %>
-        <p>Address</p>
-        <div class="row">
-          <div class="small-12 medium-6 columns"><%= addr.label :city %>
-          <%= addr.text_field :city, value: @user.address.city %></div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
 
-          <div class="small-12 medium-6 columns"><%= addr.label :postcode %>
-          <%= addr.text_field :postcode, value: @user.address.postcode %></div>
-        </div>
-        <div class="row">
-          <div class="small-12 medium-6 columns left"><%= addr.label :state %>
-          <%= addr.text_field :state, value: @user.address.state %></div>
+          <%= f.fields_for :address, @user.address do |addr| %>
+            <p>Address</p>
+            <div class="row">
+              <div class="small-12 medium-6 columns"><%= addr.label :city %>
+              <%= addr.text_field :city, value: @user.address.city %></div>
 
-          <div class="small-12 medium-6 columns left"><%= addr.label :country %>
-          <%= addr.text_field :country, value: @user.address.country %></div>
-        </div>
-      <% end %>
-      <dl class="accordion" data-accordion>
-        <dd class="accordion-navigation">
-          <a href="#panel2">Reset password</a>
-          <div id="panel2" class="content">
-            <%= f.label :password %> <em>(leave blank if you don't want to change it)</em>
-            <%= f.password_field :password, :autocomplete => "off" %>
+              <div class="small-12 medium-6 columns"><%= addr.label :postcode %>
+              <%= addr.text_field :postcode, value: @user.address.postcode %></div>
+            </div>
+            <div class="row">
+              <div class="small-12 medium-6 columns left"><%= addr.label :state %>
+              <%= addr.text_field :state, value: @user.address.state %></div>
 
-            <%= f.label :password_confirmation %>
-            <%= f.password_field :password_confirmation %>
-          </div>
-        </dd>
-      </dl>
+              <div class="small-12 medium-6 columns left"><%= addr.label :country %>
+              <%= addr.text_field :country, value: @user.address.country %></div>
+            </div>
+          <% end %>
+          <dl class="accordion" data-accordion>
+            <dd class="accordion-navigation">
+              <a href="#panel2">Change password</a>
+              <div id="panel2" class="content">
+                <%= f.label :password %> <em>(leave blank if you don't want to change it)</em>
+                <%= f.password_field :password, :autocomplete => "off" %>
+
+                <%= f.label :password_confirmation %>
+                <%= f.password_field :password_confirmation %>
+              </div>
+            </dd>
+          </dl>
 
 
-      <%= f.label :current_password %> <em>(to confirm your changes)</em>
-      <%= f.password_field :current_password %>
+          <%= f.label :current_password %> <em>(to confirm your changes)</em>
+          <%= f.password_field :current_password %>
 
-      <%= f.submit "Update" %>
-    <% end %>
+          <%= f.submit "Update" %>
+        <% end %>
 
-    <h3>Cancel my account</h3>
+        <h3>Cancel my account</h3>
 
-    <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
+        <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
 
-    <%= link_to "Back", :back %>
+        <%= link_to "Back", :back %>
+      </div>
+    </div>
   </div>
 </div>
