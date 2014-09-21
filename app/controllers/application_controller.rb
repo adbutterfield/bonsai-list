@@ -5,11 +5,6 @@ class ApplicationController < ActionController::Base
 
   http_basic_authenticate_with name: ENV['LOGIN_NAME'], password: ENV['LOGIN_PASS']
 
-  unless Rails.env.production?
-    ENV['LOGIN_NAME'] = 'user'
-    ENV['LOGIN_PASS'] = 'pass'
-  end
-
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_up_path_for(resource)
