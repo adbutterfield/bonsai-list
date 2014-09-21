@@ -1,1 +1,2 @@
 $('#message-box').empty().append("<%= escape_javascript((render partial: 'inbox') || 'Inbox is empty') %>")
+$('#mailbox-links').empty().append("<%= escape_javascript(render partial: 'mailbox_links') %>")
