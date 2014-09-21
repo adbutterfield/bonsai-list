@@ -1,7 +1,7 @@
 <div class="panel">
   <div class="row">
-    <div class="small-4 columns home-nav-pic">
-      <a href="#"><img src="http://placehold.it/300x300&text=[img]" /></a>
+    <div class="small-4 columns home-nav-box">
+      <a href="#"><img class="home-nav-pic" src="http://placehold.it/300x300&text=[img]" /></a>
     </div>
     <div class="small-8 columns home-nav-name">
       <p><%= current_user.full_name %></p>
@@ -18,10 +18,10 @@
       <hr class="home-nav-hr" />
       <h5 class="title"><i class="fi-mail"></i> <%= link_to_unless_current "Messages", messages_path %></h5>
       <% if messages_page? %>
-        <ul>
-          <li><%= link_to "Inbox", inbox_path, remote: true %></li>
-          <li><%= link_to "Sent", sent_path, remote: true %></li>
-          <li><%= link_to "Trash", trash_path, remote: true %></li>
+        <ul id="mailbox-links">
+          <li>Inbox</li>
+          <li><%= link_to_unless_current "Sent", sent_path, remote: true %></li>
+          <li><%= link_to_unless_current "Trash", trash_path, remote: true %></li>
         </ul>
       <% end %>
       <hr class="home-nav-hr" />
