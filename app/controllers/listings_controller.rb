@@ -9,6 +9,8 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @message_subject = "#{current_user.full_name} is interested in your #{@listing.title}!"
+    @message_body = "Please let me know if it's still for sale!"
   end
 
   def new
