@@ -8,6 +8,7 @@ class Listing < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :category
+  has_many :inquiries, dependent: :destroy
   validates :title, :description, :price, :category, :user_id, :latitude, :longitude, presence: true
   validates :shippable, :publish, :remove, inclusion: { in: [true, false] }
   validates :price, numericality: true
@@ -31,6 +32,10 @@ class Listing < ActiveRecord::Base
 
   def remove_listing
     self.update(remove: true)
+  end
+
+  def not_already_inquired?(user)
+    self.inquiries.where(user_id: user.id).empty?
   end
 
   def self.filter_by(params, coordinates)
