@@ -13,25 +13,25 @@ feature 'Removing Listings' do
   @javascript
   scenario "can remove a listing" do
     visit user_root_path
-    expect(page).to have_content(@listing.title)
+    expect(page).to have_content(@listing.headline)
 
     click_link "Remove"
     page.driver.browser.switch_to.alert.accept
 
     expect(page.current_path).to eql(user_root_path)
     expect(page).to have_content('Listing was successfully removed.')
-    expect(page).not_to have_content(@listing.title)
+    expect(page).not_to have_content(@listing.headline)
   end
 
   @javascript
   scenario "can dismiss removing a listing" do
     visit user_root_path
-    expect(page).to have_content(@listing.title)
+    expect(page).to have_content(@listing.headline)
 
     click_link "Remove"
     page.driver.browser.switch_to.alert.dismiss
     expect(page.current_path).to eql(user_root_path)
 
-    expect(page).to have_content(@listing.title)
+    expect(page).to have_content(@listing.headline)
   end
 end

@@ -9,8 +9,11 @@ class ListingsController < ApplicationController
   end
 
   def show
-    @message_subject = "#{current_user.full_name} is interested in your #{@listing.title}!"
-    @message_body = "Please let me know if it's still for sale!"
+    @title = @listing.headline
+    if current_user
+      @message_subject = "#{current_user.full_name} is interested in your #{@listing.title}!"
+      @message_body = "Please let me know if it's still for sale!"
+    end
   end
 
   def new
@@ -72,7 +75,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:title, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :published_at)
+      params.require(:listing).permit(:headline, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :published_at)
     end
 
     def verify_user
