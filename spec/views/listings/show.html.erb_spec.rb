@@ -11,7 +11,7 @@ RSpec.describe "listings/show" do
   it "displays the listing" do
     render :template => 'listings/show'
 
-    expect(rendered).to have_content(listing.title)
+    expect(rendered).to have_content(listing.headline)
     expect(rendered).to have_content(listing.description)
     expect(rendered).to have_content(listing.price)
     expect(rendered).to have_content(user.full_name)

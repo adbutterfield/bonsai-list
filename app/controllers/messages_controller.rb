@@ -50,7 +50,7 @@ class MessagesController < ApplicationController
   end
 
   def message_subject(listing)
-    params[:subject] || "#{current_user.full_name} is interested in your #{listing.title}!"
+    params[:subject] || "#{current_user.full_name} is interested in your #{listing.headline}!"
   end
 
   # **** this is the conversation ****

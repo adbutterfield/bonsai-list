@@ -14,8 +14,8 @@ RSpec.describe "marketplace/index" do
 
   it "displays all the listings" do
     assign(:listings, [
-      FactoryGirl.create(:listing, title: "pine"),
-      FactoryGirl.create(:listing, title: "pot")
+      FactoryGirl.create(:listing, headline: "pine"),
+      FactoryGirl.create(:listing, headline: "pot")
     ])
 
     render

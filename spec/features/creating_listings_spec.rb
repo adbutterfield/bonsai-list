@@ -25,7 +25,7 @@ feature 'Creating Listings' do
 
     listing = Listing.last
 
-    expect(listing.title).to eq('Black Pine')
+    expect(listing.headline).to eq('Black Pine')
     expect(listing.description).to eq('It\'s a black pine')
     expect(listing.price).to eq(9.99)
     expect(listing.publish).to eq(true)
@@ -34,7 +34,7 @@ feature 'Creating Listings' do
     expect(page.current_path).to eql(user_root_path)
 
     expect(page).to have_content('Listing was successfully created.')
-    expect(page).to have_content(listing.title)
+    expect(page).to have_content(listing.headline)
 
   end
 end

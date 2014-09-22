@@ -21,7 +21,7 @@
       <tbody>
         <% @listings.each do |listing| %>
           <tr class="listing">
-            <td><%= link_to listing.title, listing %></td>
+            <td><%= link_to listing.headline, listing %></td>
             <td><%= "#{listing.category.name}" %></td>
             <td><%= listing.published? %></td>
             <td><%= link_to 'Edit', edit_listing_path(listing) %></td>

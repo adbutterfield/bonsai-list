@@ -3,7 +3,7 @@ require 'faker'
 
 FactoryGirl.define do
   factory :listing do
-    title "MyString"
+    headline "MyString"
     description "MyText"
     price "9.99"
     shippable true
