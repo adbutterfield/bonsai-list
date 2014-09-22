@@ -1,7 +1,8 @@
 class MessagesController < ApplicationController
 
   def index
-    @new_messages = current_user.mailbox.inbox
+    @messages = current_user.mailbox.inbox
+    @box_title = "Inbox"
   end
 
   def show
@@ -25,24 +26,19 @@ class MessagesController < ApplicationController
     end
   end
 
-  def inbox
-    @messages = current_user.mailbox.inbox
-    respond_to do |format|
-      format.js
-    end
-  end
-
   def sent_box
     @messages = current_user.mailbox.sentbox
+    @box_title = "Sent"
     respond_to do |format|
-      format.js
+      format.html { render :index }
     end
   end
 
   def trash_box
     @messages = current_user.mailbox.trash
+    @box_title = "Trash"
     respond_to do |format|
-      format.js
+      format.html { render :index }
     end
   end
 
