@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
   def mailboxer_email(object)
     self.email
   end
+
+  def not_already_inquired?(listing)
+    self.inquiries.where(listing_id: listing.id).empty?
+  end
 end
