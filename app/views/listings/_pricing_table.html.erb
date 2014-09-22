@@ -10,15 +10,7 @@
   <li class="price"><%= number_to_currency(@listing.price) %></li>
   <li class="bullet-item"><%= willing_to_ship?(@listing) %></li>
   <!-- <li class="cta-button"><%#= link_to "I'm interested!", im_interested_path(@listing), method: :post %></li> -->
-  <% if user_signed_in? %>
-    <% if current_user.not_already_inquired?(@listing) %>
-      <li class="cta-button"><a class="button" href="#" data-reveal-id="interestedModal">I'm interested!</a></li>
-    <% else %>
-      <li class="cta-button"><a class="button disabled">Inquiry sent!</a></li>
-    <% end %>
-  <% else %>
-    <li class="cta-button"><%= link_to "Sign in to inquire!", new_user_session_path, :class => "button" %></li>
-  <% end %>
+  <li class="cta-button"><%= pricing_table_button %></li>
 
   <div id="interestedModal" class="reveal-modal" data-reveal>
     <%= form_tag im_interested_path(@listing) do %>
