@@ -8,8 +8,7 @@ Rails.application.routes.draw do
 
   post 'im_interested/:id' => 'messages#im_interested', as: 'im_interested'
 
-  get  'messages'       => 'messages#index',     as: 'messages'
-  get  'messages/inbox' => 'messages#inbox',     as: 'inbox'
+  get  'messages/inbox' => 'messages#index',     as: 'messages'
   get  'messages/sent'  => 'messages#sent_box',  as: 'sent'
   get  'messages/trash' => 'messages#trash_box', as: 'trash'
   get  'messages/:id'   => 'messages#show',      as: 'message'
