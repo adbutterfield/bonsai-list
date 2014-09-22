@@ -1,5 +1,5 @@
 <ul class="pricing-table">
-  <li class="title"><%= @listing.title %></li>
+  <li class="title"><%= @listing.headline %></li>
   <li class="description"><%= @listing.description %></li>
  <!--  <li class="bullet-item">
     <p>Common name: Japanese Black Pine</p>
@@ -10,11 +10,14 @@
   <li class="price"><%= number_to_currency(@listing.price) %></li>
   <li class="bullet-item"><%= willing_to_ship?(@listing) %></li>
   <!-- <li class="cta-button"><%#= link_to "I'm interested!", im_interested_path(@listing), method: :post %></li> -->
-
-  <% if @listing.not_already_inquired?(current_user) %>
-    <li class="cta-button"><a class="button" href="#" data-reveal-id="interestedModal">I'm interested!</a></li>
+  <% if user_signed_in? %>
+    <% if current_user.not_already_inquired?(@listing) %>
+      <li class="cta-button"><a class="button" href="#" data-reveal-id="interestedModal">I'm interested!</a></li>
+    <% else %>
+      <li class="cta-button"><a class="button disabled">Inquiry sent!</a></li>
+    <% end %>
   <% else %>
-    <li class="cta-button"><a class="button disabled" >Inquiry sent!</a></li>
+    <li class="cta-button"><%= link_to "Sign in to inquire!", new_user_session_path, :class => "button" %></li>
   <% end %>
 
   <div id="interestedModal" class="reveal-modal" data-reveal>
