@@ -9,5 +9,28 @@
   <li class="bullet-item">Location: <%= @listing.location %></li>
   <li class="price"><%= number_to_currency(@listing.price) %></li>
   <li class="bullet-item"><%= willing_to_ship?(@listing) %></li>
-  <li class="cta-button"><%= link_to "I'm interested!", im_interested_path(@listing), method: :post %></li>
+  <!-- <li class="cta-button"><%#= link_to "I'm interested!", im_interested_path(@listing), method: :post %></li> -->
+
+  <% if @listing.not_already_inquired?(current_user) %>
+    <li class="cta-button"><a class="button" href="#" data-reveal-id="interestedModal">I'm interested!</a></li>
+  <% else %>
+    <li class="cta-button"><a class="button disabled" >Inquiry sent!</a></li>
+  <% end %>
+
+  <div id="interestedModal" class="reveal-modal" data-reveal>
+    <%= form_tag im_interested_path(@listing) do %>
+      <h2>Like it? Let them know your interested!</h2>
+      <div class="row">
+        <div class="small-12 medium-8 large-6 columns">
+          <p class="lead">Add a message</p>
+          <%= label_tag :subject %>
+          <%= text_field_tag :subject, @message_subject %>
+          <%= label_tag :body %>
+          <%= text_area_tag :body, @message_body %>
+        </div>
+      </div>
+      <a class="close-reveal-modal">&#215;</a>
+      <%= submit_tag "Send", :class => "button tiny listing-close-reveal-modal" %>
+    <% end %>
+  </div>
 </ul>
