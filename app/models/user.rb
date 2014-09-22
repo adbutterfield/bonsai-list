@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   validates_associated :address
   has_many :listings, -> { where(remove: false) }
   has_many :posted_listings, -> { where(remove: false, publish: true) }, class_name: 'Listing'
+  has_many :inquiries, dependent: :destroy
 
   accepts_nested_attributes_for :address, allow_destroy: true
 
