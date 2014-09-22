@@ -15,11 +15,11 @@
     <div id="message-box">
       <div class="row">
         <div class="small-12 columns panel">
-          <h4>Inbox</h4>
+          <h4><%= @box_title %></h4>
         </div>
       </div>
       <div class="row">
-        <%= (render partial: 'message', collection: @new_messages, as: :conversation) || "No messages" %>
+        <%= (render partial: 'message', collection: @messages, as: :conversation) || "No messages" %>
       </div>
       <div class="row">
         <%= link_to "Load More", messages_index_path, class: "button radius expand bon-button" %>
