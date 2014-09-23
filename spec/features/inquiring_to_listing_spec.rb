@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'Replying to Listings' do
+feature 'Inquiring to Listings' do
   before do
     @user = FactoryGirl.create(:user_with_address)
     sign_in_as!(@user)
