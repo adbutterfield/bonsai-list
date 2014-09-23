@@ -13,7 +13,7 @@ feature 'Creating Listings' do
 
     expect(page.current_path).to eql(new_listing_path)
 
-    fill_in 'Title', with: 'Black Pine'
+    fill_in 'Headline', with: 'Black Pine'
     fill_in 'Description', with: 'It\'s a black pine'
     fill_in 'Price', with: 9.99
     # Capybara cannot find the 'Trees' radio button, but it's chosen by default.
