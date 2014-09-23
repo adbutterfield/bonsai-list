@@ -16,7 +16,7 @@ RSpec.describe Listing, :type => :model do
   end
 
   describe "validations" do
-    [:headline, :description, :price, :category, :longitude, :latitude, :user_id]. each do |attr|
+    [:headline, :description, :price, :category, :longitude, :latitude, :user_id, :sale_type]. each do |attr|
       it "is invalid without a #{attr}" do
         expect(FactoryGirl.build(:listing, attr => nil)).to_not be_valid
       end

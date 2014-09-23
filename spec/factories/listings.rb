@@ -9,6 +9,7 @@ FactoryGirl.define do
     shippable true
     publish true
     remove false
+    sale_type "sale"
     latitude { Faker::Address.latitude }
     longitude { Faker::Address.longitude }
     user

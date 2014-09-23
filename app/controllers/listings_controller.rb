@@ -75,7 +75,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:headline, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :published_at)
+      params.require(:listing).permit(:headline, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :sale_type, :published_at)
     end
 
     def verify_user

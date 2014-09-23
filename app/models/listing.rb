@@ -9,7 +9,7 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   has_many :inquiries, dependent: :destroy
-  validates :headline, :description, :price, :category, :user_id, :latitude, :longitude, presence: true
+  validates :headline, :description, :price, :category, :user_id, :latitude, :longitude, :sale_type, presence: true
   validates :shippable, :publish, :remove, inclusion: { in: [true, false] }
   validates :price, numericality: true
 
