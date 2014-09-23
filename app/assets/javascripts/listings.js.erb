@@ -1,5 +1,12 @@
 $(function(){
   $('.listing-close-reveal-modal').on('click', function (){
     $('#interestedModal').foundation('reveal', 'close');
-  })
+  });
+
+  $('.fi-info').hover(function (){
+    $(this).addClass('fi-info-hover');
+  }, function (){
+    $(this).removeClass('fi-info-hover');
+  });
+
 });
