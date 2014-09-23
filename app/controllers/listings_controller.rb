@@ -2,6 +2,7 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :verify_user, only: [:edit, :update, :destroy, :remove]
   before_action :set_listing, only: [:show, :edit, :update, :destroy, :remove]
+  before_action :set_categories, only: [:new, :edit]
 
   def index
     @categories = Category.order(id: :asc)
@@ -18,11 +19,9 @@ class ListingsController < ApplicationController
 
   def new
     @listing = current_user.listings.build
-    @categories = Category.all
   end
 
   def edit
-    @categories = Category.all
   end
 
   def create
@@ -31,12 +30,11 @@ class ListingsController < ApplicationController
     if params[:listing][:publish] == '1'
       @listing.published_at = Time.now
     end
-    respond_to do |format|
-      if @listing.save
-        format.html { redirect_to user_root_url, notice: 'Listing was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @listing.save
+      redirect_to user_root_url, notice: 'Listing was successfully created.'
+    else
+      @categories = Category.all
+      render :new
     end
   end
 
@@ -81,6 +79,10 @@ class ListingsController < ApplicationController
     def verify_user
       user = Listing.find(params[:id]).user if params[:id]
       redirect_to user_root_path, notice: "We can't find the page you're looking for..." unless current_user?(user)
+    end
+
+    def set_categories
+      @categories = Category.all
     end
 
 end
