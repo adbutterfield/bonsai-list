@@ -18,6 +18,6 @@ module ApplicationHelper
   end
 
   def page_title(name)
-    content_for(:title) { name + " | Bonsai List"}
+    content_for(:title) { name + " | bonsai list"}
   end
 end
