@@ -22,6 +22,10 @@
           <%= text_field_tag :subject, @message_subject %>
           <%= label_tag :body %>
           <%= text_area_tag :body, @message_body %>
+          <% if @listing.sale_type == "offer" %>
+            <%= label_tag :offer %>
+            <%= text_field_tag :offer %>
+          <% end %>
         </div>
       </div>
       <a class="close-reveal-modal">&#215;</a>
