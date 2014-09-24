@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
 
   def im_interested
     listing = Listing.find(params[:id])
-    Inquiry.create(listing_id: listing.id, user_id: current_user.id)
+    Inquiry.create(listing_id: listing.id, user_id: current_user.id, offer: params[:offer])
     current_user.send_message(listing.user, message_body, message_subject(listing))
     redirect_to listing
   end
