@@ -6,6 +6,7 @@ feature 'Inquiring to Listings' do
     sign_in_as!(@user)
     @other_user = FactoryGirl.create(:user_with_address)
     @sale_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @other_user, sale_type: "sale")
+    @offer_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @other_user, sale_type: "offer")
   end
 
   scenario "can notify other user of being interested a listing", js: true do
@@ -22,4 +23,21 @@ feature 'Inquiring to Listings' do
 
   end
 
+  scenario "can make an offer on a listing", js: true do
+
+    visit listing_path(@offer_listing)
+
+    click_link "Make offer!"
+    fill_in "Offer", with: 20.99
+
+    click_button "Send"
+
+    expect(page).to have_content("Inquiry sent!")
+
+    expect(@offer_listing.inquiries.last.offer).to eq 20.99
+
+    expect(@other_user.mailbox.inbox(unread: true).count).to eq 1
+    expect(@user.mailbox.sentbox.count).to eq 1
+
+  end
 end
