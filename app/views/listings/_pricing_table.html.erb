@@ -9,7 +9,6 @@
   <li class="bullet-item">Location: <%= @listing.location %></li>
   <li class="price"><%= number_to_currency(@listing.price) %></li>
   <li class="bullet-item"><%= willing_to_ship?(@listing) %></li>
-  <!-- <li class="cta-button"><%#= link_to "I'm interested!", im_interested_path(@listing), method: :post %></li> -->
   <li class="cta-button"><%= pricing_table_button %></li>
 
   <div id="interestedModal" class="reveal-modal" data-reveal>
