@@ -8,9 +8,9 @@
 $(function(){
 
   $(document).foundation();
-  var barHeight = ($( window ).height() - 85);
+  // var barHeight = ($( window ).height() - 85);
   // var breakPoint =  $( document ).height() - $( window ).height() - 85
-  $("#mobile-icon-bar").sticky({ topSpacing: barHeight });
+  // $("#mobile-icon-bar").sticky({ topSpacing: barHeight });
 
   // $( document ).scroll(function (){
   //   if ( $( document ).scrollTop() >= breakPoint ){
@@ -19,5 +19,18 @@ $(function(){
   //   }
   //   // if
   // });
+
+  $(window).on("load", function () {
+    var footer = $("#footer");
+    var pos = footer.position();
+    var height = $(window).height();
+    height = height - pos.top;
+    height = height - footer.height();
+    if (height > 0) {
+      footer.css({
+        'margin-top': height + 'px'
+      });
+    }
+  });
 
 });
