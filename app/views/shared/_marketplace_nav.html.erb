@@ -1,2 +1,6 @@
-<li><label><%= link_to 'Categories', marketplace_path %></label></li>
-<%= render partial: @categories %>
+<label class="marketplace-nav-title"><%= link_to_unless_current 'All Listings', marketplace_path %></label>
+<hr class="nav-hr" />
+Categories
+<ul>
+  <%= render partial: @categories %>
+</ul>
