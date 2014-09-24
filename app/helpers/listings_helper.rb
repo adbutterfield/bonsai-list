@@ -10,7 +10,11 @@ module ListingsHelper
   def pricing_table_button
     if user_signed_in?
       if current_user.not_already_inquired?(@listing)
-        return "<a class='button' href='#' data-reveal-id='interestedModal'>I'm interested!</a>".html_safe
+        if @listing.sale_type == "sale"
+          return "<a class='button' href='#' data-reveal-id='interestedModal'>I'm interested!</a>".html_safe
+        else
+          return "<a class='button' href='#' data-reveal-id='interestedModal'>Make offer!</a>".html_safe
+        end
       else
         return "<a class='button disabled'>Inquiry sent!</a>".html_safe
       end
