@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   scope path: '/temp', controller: :temp_views do
     get 'photos'           => :photos
     get 'profile'          => :profile
-    get 'user_marketplace' => :user_marketplace
   end
 
 end
