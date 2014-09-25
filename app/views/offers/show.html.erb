@@ -1,0 +1,122 @@
+<div class="row">
+  <!-- Nav Sidebar -->
+  <div class="small-12 medium-5 large-4 columns">
+    <img src="http://placehold.it/610x610&text=Thumbnail">
+    <%= render partial: "pricing_table" %>
+  </div>
+  <!-- Messages -->
+  <div class="small-12 medium-7 large-8 columns">
+<!--           <div class="row collapse">
+      <div class="small-8 medium-9 columns">
+        <%#= text_field(:post, :title, size: 20, placeholder: "Search offers...") %>
+      </div>
+      <div class="small-4 medium-3 columns">
+        <%#= button_tag "Search", class: "postfix bon-button" %>
+      </div>
+    </div> -->
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>New Offers!</h4>
+      </div>
+    </div>
+    <!-- Message -->
+    <div class="row">
+      <div class="small-3 medium-2 columns message-pic">
+        <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+      </div>
+      <div class="small-9 medium-10 columns message-block left">
+        <p class="message-name"><a href="#">Buyer Namenamename</a></p>
+        <p class="message-date">Tuesday 2:45 PM</p>
+        <div class="row">
+          <div class="small-12 columns">
+            <p><strong>Offer: $100.00</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="small-12 medium-9 large-6 columns">
+        <%= link_to "<i class='fi-like'></i> Accept".html_safe, offers_show_path, class: "button radius bon-button offers-page-button" %>
+        <%= link_to "<i class='fi-mail'></i> Message".html_safe, offers_show_path, class: "button radius bon-button offers-page-button" %>
+      </div>
+      <hr />
+      <div class="small-3 medium-2 columns message-pic">
+        <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+      </div>
+      <div class="small-9 medium-10 columns message-block">
+        <p class="message-name"><a href="#">Buyer Namenamename</a></p>
+        <p class="message-date">Tuesday 2:45 PM</p>
+        <div class="row">
+          <div class="small-12 columns">
+            <p><strong>Is interested</strong></p>
+          </div>
+        </div>
+      </div>
+      <div class="small-12 columns">
+        <%= link_to "<i class='fi-mail'></i> Message".html_safe, offers_show_path, class: "button radius bon-button offers-page-button" %>
+      </div>
+      <hr />
+      <div class="small-3 medium-2 columns message-pic">
+        <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+      </div>
+      <div class="small-9 medium-10 columns message-block">
+        <p class="message-name"><a href="#">Buyer Namenamename</a></p>
+        <p class="message-date">Tuesday 2:45 PM</p>
+        <div class="row">
+          <div class="small-12 columns">
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <hr />
+    </div> <!-- End Message -->
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>Seen Offers</h4>
+      </div>
+    </div>
+    <!-- Message -->
+    <div class="row">
+      <div class="small-3 medium-2 columns message-pic">
+        <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+      </div>
+      <div class="small-9 medium-10 columns message-block left">
+        <p class="message-name"><a href="#">Buyer Namenamename</a></p>
+        <p class="message-date">Tuesday 2:45 PM</p>
+<!--               <div class="row">
+          <div class="small-12 columns">
+            <p> Bacon ipsum dolor sit amet nulla ham qui sint nyan...</p>
+          </div>
+        </div> -->
+      </div>
+      <hr />
+      <div class="small-3 medium-2 columns message-pic">
+        <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+      </div>
+      <div class="small-9 medium-10 columns message-block">
+        <p class="message-name"><a href="#">Buyer Namenamename</a></p>
+        <p class="message-date">Tuesday 2:45 PM</p>
+<!--               <div class="row">
+          <div class="small-12 columns">
+            <p> Bacon ipsum dolor sit amet nulla ham qui sint nyan...</p>
+          </div>
+        </div> -->
+      </div>
+      <hr />
+      <div class="small-3 medium-2 columns message-pic">
+        <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+      </div>
+      <div class="small-9 medium-10 columns message-block">
+        <p class="message-name"><a href="#">Buyer Namenamename</a></p>
+        <p class="message-date">Tuesday 2:45 PM</p>
+<!--               <div class="row">
+          <div class="small-12 columns">
+            <p> Bacon ipsum dolor sit amet nulla ham qui sint nyan...</p>
+          </div>
+        </div> -->
+      </div>
+      <hr />
+    </div> <!-- End Message -->
+    <div class="row">
+      <%= link_to "Load More", messages_index_path, class: "button radius expand bon-button" %>
+    </div>
+  </div> <!-- End Messages -->
+</div>
