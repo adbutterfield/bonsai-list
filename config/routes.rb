@@ -27,10 +27,6 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   scope path: '/temp', controller: :temp_views do
-    get 'messages_index'   => :messages_index
-    get 'messages_show'    => :messages_show
-    get 'offers_index'     => :offers_index
-    get 'offers_show'      => :offers_show
     get 'photos'           => :photos
     get 'profile'          => :profile
     get 'user_marketplace' => :user_marketplace
