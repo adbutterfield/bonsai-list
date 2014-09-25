@@ -2,6 +2,7 @@ class MarketplaceController < ApplicationController
   before_action :set_listings, only: [:index, :ajax_sort]
 
   def index
+    @category = Category.find(params[:category_id]).name if params[:category_id]
     @categories = Category.order(id: :asc)
   end
 
