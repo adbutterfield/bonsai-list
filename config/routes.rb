@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get  'messages/:id'   => 'messages#show',      as: 'message'
   post 'messages/:id'   => 'messages#reply',     as: 'reply_message'
 
-
+  resources :offers, only: [:index, :show]
 
   resources :listings
   # TODO set better url for listing#show
