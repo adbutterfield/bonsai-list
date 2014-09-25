@@ -21,10 +21,11 @@ class MessagesController < ApplicationController
   def reply
     conversation = Mailboxer::Conversation.find(params[:id])
     current_user.reply_to_conversation(conversation, params[:reply][:body])
-    @reply = conversation.messages.reverse.last
-    respond_to do |format|
-      format.js
-    end
+    redirect_to message_path(conversation)
+    # @reply = conversation.messages.reverse.last
+    # respond_to do |format|
+    #   format.js
+    # end
   end
 
   def sent_box

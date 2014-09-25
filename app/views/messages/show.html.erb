@@ -10,7 +10,7 @@
     </div>
 
     <div class="row">
-      <%= form_tag reply_message_path, remote: true do %>
+      <%= form_tag reply_message_path do %>
         <div class="small-10 columns">
           <%= text_field(:reply, :body, size: 20, placeholder: "Write a message...") %>
         </div>
