@@ -1,4 +1,6 @@
 class MessagesController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :verify_user!, only: [:show, :reply]
 
   def index
     @messages = current_user.mailbox.inbox
@@ -6,9 +8,10 @@ class MessagesController < ApplicationController
   end
 
   def show
-    conversation = Mailboxer::Conversation.find(params[:id])
-    conversation.mark_as_read(current_user)
-    @messages = conversation.messages.reverse
+    @conversation = Mailboxer::Conversation.find(params[:id])
+    @conversation.mark_as_read(current_user)
+    @messages = @conversation.messages.reverse
+    raise
   end
 
   def im_interested
@@ -52,6 +55,12 @@ class MessagesController < ApplicationController
 
   def message_subject(listing)
     params[:subject] || "#{current_user.full_name} is interested in your #{listing.headline}!"
+  end
+
+  def verify_user!
+    conversation = Mailboxer::Conversation.find(params[:id])
+
+    redirect_to user_root_path, notice: "We can't find the page you're looking for..." unless conversation.participants.include?(current_user)
   end
 
 end
