@@ -19,7 +19,8 @@
   color: #d8d8d8;
   margin-top: 4px;
   max-width: 5px;
-  padding: 0;
+  padding-right: 0;
+  padding-left: 15;
 }
 
 #filter-search input {
@@ -52,4 +53,13 @@ p {
 
 .hr-distance-medium {
   margin: 5px 0;
+}
+
+.hr-categories-mobile {
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.accordion .accordion-navigation > a, .accordion dd > a {
+  padding: 8px 5px;
 }
