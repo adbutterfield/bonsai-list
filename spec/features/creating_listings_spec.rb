@@ -18,12 +18,14 @@ feature 'Creating Listings' do
     fill_in 'Price', with: 9.99
     # Capybara cannot find the 'Trees' radio button, but it's chosen by default.
     # choose 'Trees'
+    choose 'listing_sale_type_sale'
     check 'Willing to ship?'
     check 'Publish now?'
 
     click_button 'Save Listing'
 
     listing = Listing.last
+    expect(Listing.count).to eq 1
 
     expect(listing.headline).to eq('Black Pine')
     expect(listing.description).to eq('It\'s a black pine')
