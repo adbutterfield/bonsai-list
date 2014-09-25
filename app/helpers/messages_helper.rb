@@ -7,4 +7,8 @@ module MessagesHelper
       return conversation.messages.last.body
     end
   end
+
+  def recipient(conversation)
+    conversation.participants.find { |p| p != current_user }
+  end
 end
