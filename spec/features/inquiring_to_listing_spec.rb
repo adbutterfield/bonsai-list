@@ -5,7 +5,6 @@ feature 'Inquiring to Listings' do
     @user = FactoryGirl.create(:user_with_address)
     sign_in_as!(@user)
     @other_user = FactoryGirl.create(:user_with_address)
-    @user_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @user, sale_type: "sale")
     @sale_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @other_user, sale_type: "sale")
     @offer_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @other_user, sale_type: "offer")
   end
@@ -43,10 +42,20 @@ feature 'Inquiring to Listings' do
   end
 
   scenario "can't make an inquiry on your own listing" do
-
-    visit listing_path(@user_listing)
+    user_sale_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @user, sale_type: "sale")
+    visit listing_path(user_sale_listing)
 
     expect(page).to_not have_content("I'm interested!")
+    expect(page).to have_content("Edit listing")
+
+  end
+
+  scenario "can't make an offer on your own listing" do
+    user_offer_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @user, sale_type: "sale")
+    visit listing_path(user_offer_listing)
+
+    expect(page).to_not have_content("Make offer!")
+    expect(page).to have_content("Edit listing")
 
   end
 end
