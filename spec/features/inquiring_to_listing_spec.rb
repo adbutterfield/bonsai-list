@@ -5,6 +5,7 @@ feature 'Inquiring to Listings' do
     @user = FactoryGirl.create(:user_with_address)
     sign_in_as!(@user)
     @other_user = FactoryGirl.create(:user_with_address)
+    @user_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @user, sale_type: "sale")
     @sale_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @other_user, sale_type: "sale")
     @offer_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @other_user, sale_type: "offer")
   end
@@ -38,6 +39,14 @@ feature 'Inquiring to Listings' do
 
     expect(@other_user.mailbox.inbox(unread: true).count).to eq 1
     expect(@user.mailbox.sentbox.count).to eq 1
+
+  end
+
+  scenario "can't make an inquiry on your own listing" do
+
+    visit listing_path(@user_listing)
+
+    expect(page).to_not have_content("I'm interested!")
 
   end
 end
