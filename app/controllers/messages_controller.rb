@@ -11,7 +11,6 @@ class MessagesController < ApplicationController
     @conversation = Mailboxer::Conversation.find(params[:id])
     @conversation.mark_as_read(current_user)
     @messages = @conversation.messages.reverse
-    raise
   end
 
   def im_interested
