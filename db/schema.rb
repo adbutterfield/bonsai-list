@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140923230335) do
+ActiveRecord::Schema.define(version: 20140926053126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,9 +42,11 @@ ActiveRecord::Schema.define(version: 20140923230335) do
     t.integer  "listing_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "offer",      precision: 10, scale: 2
+    t.decimal  "offer",           precision: 10, scale: 2
+    t.integer  "conversation_id"
   end
 
+  add_index "inquiries", ["conversation_id"], name: "index_inquiries_on_conversation_id", using: :btree
   add_index "inquiries", ["listing_id"], name: "index_inquiries_on_listing_id", using: :btree
   add_index "inquiries", ["user_id"], name: "index_inquiries_on_user_id", using: :btree
 
