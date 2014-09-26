@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
   def show
     @title = @listing.headline
     if current_user
-      @message_subject = "#{current_user.full_name} is interested in your #{@listing.headline}!"
+
       @message_body = "Please let me know if it's still for sale!"
     end
   end
