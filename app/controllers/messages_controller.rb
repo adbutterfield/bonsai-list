@@ -13,21 +13,10 @@ class MessagesController < ApplicationController
     @messages = @conversation.messages.reverse
   end
 
-  def im_interested
-    listing = Listing.find(params[:id])
-    Inquiry.create(listing_id: listing.id, user_id: current_user.id, offer: params[:offer])
-    current_user.send_message(listing.user, message_body, message_subject(listing))
-    redirect_to listing
-  end
-
   def reply
     conversation = Mailboxer::Conversation.find(params[:id])
     current_user.reply_to_conversation(conversation, params[:reply][:body])
     redirect_to message_path(conversation)
-    # @reply = conversation.messages.reverse.last
-    # respond_to do |format|
-    #   format.js
-    # end
   end
 
   def sent_box
@@ -47,14 +36,6 @@ class MessagesController < ApplicationController
   end
 
   private
-
-  def message_body
-    params[:body] || "Please let me know if it's still for sale!"
-  end
-
-  def message_subject(listing)
-    params[:subject] || "#{current_user.full_name} is interested in your #{listing.headline}!"
-  end
 
   def verify_user!
     conversation = Mailboxer::Conversation.find(params[:id])
