@@ -63,3 +63,15 @@ p {
 .accordion .accordion-navigation > a, .accordion dd > a {
   padding: 8px 5px;
 }
+
+@media only screen and (min-width: 40.063em) {
+  .distance-filter-padding {
+    padding-left: 0px
+  }
+}
+
+@media only screen and (min-width: 64.063em) {
+  .distance-filter-padding {
+    padding-right: 0px
+  }
+}
