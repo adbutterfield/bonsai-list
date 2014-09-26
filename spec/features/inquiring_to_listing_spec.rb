@@ -18,6 +18,10 @@ feature 'Inquiring to Listings' do
 
     expect(page).to have_content("Inquiry sent!")
 
+    conversation = Mailboxer::Conversation.last
+    inquiry = Inquiry.last
+    expect(inquiry.conversation_id).to eq conversation.id
+
     expect(@other_user.mailbox.inbox(unread: true).count).to eq 1
     expect(@user.mailbox.sentbox.count).to eq 1
 
@@ -33,6 +37,10 @@ feature 'Inquiring to Listings' do
     click_button "Send"
 
     expect(page).to have_content("Inquiry sent!")
+
+    conversation = Mailboxer::Conversation.last
+    inquiry = Inquiry.last
+    expect(inquiry.conversation_id).to eq conversation.id
 
     expect(@offer_listing.inquiries.last.offer).to eq 20.99
 
