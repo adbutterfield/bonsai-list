@@ -1,0 +1,23 @@
+<div class="small-3 medium-2 columns message-pic">
+  <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+</div>
+<div class="small-9 medium-10 columns message-block left">
+  <p class="message-name"><a href="#"><%= inquiry.user.full_name %></a></p>
+  <p class="message-date"><%= inquiry.created_at %></p>
+  <div class="row">
+    <div class="small-12 columns">
+      <% if inquiry.listing.is_offer? %>
+        <p><strong>Offer: <%= inquiry.offer %></strong></p>
+      <% else %>
+        <p><strong>Is interested</strong></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="small-12 medium-9 large-6 columns">
+  <% if inquiry.listing.is_offer? %>
+    <%= link_to "<i class='fi-like'></i> Accept".html_safe, offers_path, :class => "button radius bon-button offers-page-button" %>
+  <% end %>
+  <%= link_to "<i class='fi-mail'></i> Message".html_safe, offers_path, :class => "button radius bon-button offers-page-button" %>
+</div>
+<hr />
