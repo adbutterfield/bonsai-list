@@ -4,7 +4,8 @@
   </div>
 
   <div class="small-12 medium-7 large-8 columns">
-
+    <h4><%= @messages.first.subject %></h4>
+    <hr />
     <div id="message-box" class="row">
       <%= render partial: 'receipt', collection: @messages, as: :message %>
     </div>
