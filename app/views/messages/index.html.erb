@@ -19,7 +19,7 @@
         </div>
       </div>
       <div class="row">
-        <%= (render partial: 'message', collection: @new_messages, as: :conversation) || no_messages %>
+        <%= (render partial: 'message', collection: @messages, as: :conversation) || no_messages %>
       </div>
       <% if inbox? %>
         <div class="row">
