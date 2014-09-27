@@ -38,9 +38,8 @@ class Listing < ActiveRecord::Base
     self.sale_type == "offer"
   end
 
-  def self.inquired_on(current_user)
-    Listing.joins(:inquiries).where(user_id: current_user.id).group('listings.id').having('COUNT(inquiries.id) > 0').order(created_at: :desc)
-    # Listing.includes(:inquiries).group('inquiries.id, listings.id').having('COUNT(inquiries.id) > 0').references(:inquiries).order('inquiries.created_at ASC')
+  def offers
+    Inquiry.where(listing_id: self.id)
   end
 
   def self.filter_by(params, coordinates)
