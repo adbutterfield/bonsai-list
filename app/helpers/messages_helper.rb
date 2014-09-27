@@ -11,4 +11,12 @@ module MessagesHelper
   def recipient(conversation)
     conversation.participants.find { |p| p != current_user }
   end
+
+  def no_messages
+    '<p class="centered-text no-messages">No messages</p>'.html_safe
+  end
+
+  def inbox?
+    controller_name == 'messages' && action_name == 'index'
+  end
 end
