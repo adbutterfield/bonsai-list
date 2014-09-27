@@ -6,11 +6,12 @@ Rails.application.routes.draw do
   get 'marketplace/:category_id' => 'marketplace#index', as: 'marketplace_filter'
   get 'marketplace' => 'marketplace#index', as: 'marketplace'
 
-  get  'messages/inbox' => 'messages#index',     as: 'messages'
-  get  'messages/sent'  => 'messages#sent_box',  as: 'sent'
-  get  'messages/trash' => 'messages#trash_box', as: 'trash'
-  get  'messages/:id'   => 'messages#show',      as: 'message'
-  post 'messages/:id'   => 'messages#reply',     as: 'reply_message'
+  get  'messages/inbox'     => 'messages#index',     as: 'messages'
+  get  'messages/sent'      => 'messages#sent_box',  as: 'sent'
+  get  'messages/trash'     => 'messages#trash_box', as: 'trash'
+  get  'messages/:id'       => 'messages#show',      as: 'message'
+  post 'messages/:id'       => 'messages#reply',     as: 'reply_message'
+  post 'messages/:id/trash' => 'messages#trash',     as: 'trash_message'
 
   post 'inquiries/:id' => 'inquiries#create',    as: 'inquiries'
 
