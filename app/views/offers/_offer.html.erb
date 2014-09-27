@@ -1,0 +1,17 @@
+<div class="small-3 medium-2 columns message-pic">
+  <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+</div>
+<div class="small-9 medium-10 columns message-block left">
+  <p class="message-name"><%= offer.headline %></p>
+  <!-- <p class="message-date">Tuesday 2:45 PM</p> -->
+  <div class="row">
+    <div class="small-12 columns">
+      <% if offer.is_offer? %>
+        <p><em><%= pluralize(offer.inquiries.count, "Offer") %>!</em></p>
+      <% else %>
+        <p><em><%= pluralize(offer.inquiries.count, "Person")%> Interested!</em></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<hr />
