@@ -28,7 +28,11 @@ class User < ActiveRecord::Base
     self.inquiries.where(listing_id: listing.id).empty?
   end
 
-  def offers
-    Listing.joins(:inquiries).where(user_id: self.id).group('listings.id').having('COUNT(inquiries.id) > 0').order(created_at: :desc)
+  def new_offers
+    Listing.joins(:inquiries).where(user_id: self.id).where('inquiries.is_seen = false').group('listings.id').having('COUNT(inquiries.id) > 0').order(created_at: :desc)
+  end
+
+  def seen_offers
+    Listing.joins(:inquiries).where(user_id: self.id).where('inquiries.is_seen = true').group('listings.id').having('COUNT(inquiries.id) > 0').order(created_at: :desc)
   end
 end
