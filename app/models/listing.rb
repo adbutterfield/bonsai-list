@@ -34,6 +34,15 @@ class Listing < ActiveRecord::Base
     self.update(remove: true)
   end
 
+  def is_offer?
+    self.sale_type == "offer"
+  end
+
+  def self.inquired_on(current_user)
+    Listing.joins(:inquiries).where(user_id: current_user.id).group('listings.id').having('COUNT(inquiries.id) > 0').order(created_at: :desc)
+    # Listing.includes(:inquiries).group('inquiries.id, listings.id').having('COUNT(inquiries.id) > 0').references(:inquiries).order('inquiries.created_at ASC')
+  end
+
   def self.filter_by(params, coordinates)
     params[:sort] ||= "created_at desc"
     params[:distance_filter] ||= "5000"
