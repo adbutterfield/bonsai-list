@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
-  before_filter :authenticate_user!
-  before_filter :verify_user!, only: [:show, :reply]
+  before_action :authenticate_user!
+  before_action :verify_user!, only: [:show, :reply, :trash]
 
   def index
     @messages = current_user.mailbox.inbox(unread: true)
