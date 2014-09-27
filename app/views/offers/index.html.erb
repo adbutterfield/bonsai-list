@@ -20,45 +20,7 @@
     </div>
     <!-- Message -->
     <div class="row">
-      <div class="small-3 medium-2 columns message-pic">
-        <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
-      </div>
-      <div class="small-9 medium-10 columns message-block left">
-        <p class="message-name"><a href="#">Product Title, Awesome Black Pine!!!</a></p>
-        <p class="message-date">Tuesday 2:45 PM</p>
-        <div class="row">
-          <div class="small-12 columns">
-            <p><em>4 New Offers!</em></p>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="small-3 medium-2 columns message-pic">
-        <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
-      </div>
-      <div class="small-9 medium-10 columns message-block">
-        <p class="message-name"><a href="#">Product Title, Awesome Black Pine!!!</a></p>
-        <p class="message-date">Tuesday 2:45 PM</p>
-        <div class="row">
-          <div class="small-12 columns">
-            <p><em>3 New People Interested!</em></p>
-          </div>
-        </div>
-      </div>
-      <hr />
-      <div class="small-3 medium-2 columns message-pic">
-        <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
-      </div>
-      <div class="small-9 medium-10 columns message-block">
-        <p class="message-name"><a href="#">Product Title, Awesome Black Pine!!!</a></p>
-        <p class="message-date">Tuesday 2:45 PM</p>
-        <div class="row">
-          <div class="small-12 columns">
-            <p><em>1 New person interested!</em></p>
-          </div>
-        </div>
-      </div>
-      <hr />
+      <%= (render partial: 'offer', collection: @offer_listings) || "No offers" %>
     </div> <!-- End Message -->
     <div class="row">
       <div class="small-12 columns panel">
