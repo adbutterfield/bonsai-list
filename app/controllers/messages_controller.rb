@@ -3,7 +3,7 @@ class MessagesController < ApplicationController
   before_filter :verify_user!, only: [:show, :reply]
 
   def index
-    @new_messages = current_user.mailbox.inbox(unread: true)
+    @messages = current_user.mailbox.inbox(unread: true)
     @read_messages = current_user.mailbox.inbox(unread: false)
     @box_title = "Inbox"
   end
@@ -18,6 +18,12 @@ class MessagesController < ApplicationController
     conversation = Mailboxer::Conversation.find(params[:id])
     current_user.reply_to_conversation(conversation, params[:reply][:body])
     redirect_to message_path(conversation)
+  end
+
+  def trash
+    conversation = Mailboxer::Conversation.find(params[:id])
+    conversation.move_to_trash(current_user)
+    redirect_to messages_path
   end
 
   def sent_box
