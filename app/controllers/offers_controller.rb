@@ -5,7 +5,9 @@ class OffersController < ApplicationController
 
   def index
     # TODO fix n+1 query for getting inquiry count
-    @offer_listings = current_user.offers
+    @new_listing_offers = current_user.new_offers
+    @seen_listing_offers = current_user.seen_offers
+
   end
 
   def show
