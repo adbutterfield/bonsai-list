@@ -19,4 +19,12 @@ module MessagesHelper
   def inbox?
     controller_name == 'messages' && action_name == 'index'
   end
+
+  def sent_box?
+    controller_name == 'messages' && action_name == 'sent_box'
+  end
+
+  def not_trash?
+    controller_name == 'messages' && action_name != 'trash_box'
+  end
 end
