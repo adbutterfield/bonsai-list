@@ -7,9 +7,9 @@
   <div class="row">
     <div class="small-12 columns">
     <% if listing.is_offer? %>
-      <p><em><%= link_to pluralize(listing.inquiries.not_seen.count, "Offer") << '!', offer_path(listing) %></em></p>
+      <p><em><%= link_to pluralize(listing.inquiries.not_seen.count, "New Offer") << '!', offer_path(listing) %></em></p>
     <% else %>
-      <p><em><%= link_to pluralize(listing.inquiries.not_seen.count, "Person") << ' Interested!', offer_path(listing)%></em></p>
+      <p><em><%= link_to pluralize(listing.inquiries.not_seen.count, "New Person") << ' Interested!', offer_path(listing)%></em></p>
     <% end %>
     </div>
   </div>
