@@ -38,8 +38,12 @@ class Listing < ActiveRecord::Base
     self.sale_type == "offer"
   end
 
-  def offers
-    Inquiry.where(listing_id: self.id)
+  def new_offers
+    Inquiry.where(listing_id: self.id).not_seen
+  end
+
+  def seen_offers
+    Inquiry.where(listing_id: self.id).seen
   end
 
   def self.filter_by(params, coordinates)
