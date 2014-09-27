@@ -3,7 +3,7 @@
 </div>
 <div class="small-9 medium-10 columns message-block left">
   <p class="message-name"><a href="#"><%= inquiry.user.full_name %></a></p>
-  <p class="message-date"><%= inquiry.created_at %></p>
+  <p class="message-date"><%= inquiry.created_at.strftime('%A %b %e %l:%M %P') %></p>
   <div class="row">
     <div class="small-12 columns">
       <% if inquiry.listing.is_offer? %>
@@ -18,6 +18,6 @@
   <% if inquiry.listing.is_offer? %>
     <%= link_to "<i class='fi-like'></i> Accept".html_safe, offers_path, :class => "button radius bon-button offers-page-button" %>
   <% end %>
-  <%= link_to "<i class='fi-mail'></i> Message".html_safe, offers_path, :class => "button radius bon-button offers-page-button" %>
+  <%= link_to "<i class='fi-mail'></i> Message".html_safe, message_path(inquiry.conversation_id), :class => "button radius bon-button offers-page-button" %>
 </div>
 <hr />
