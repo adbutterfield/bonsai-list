@@ -7,6 +7,7 @@ class OffersController < ApplicationController
   end
 
   def show
-
+    @listing = Listing.find(params[:id])
+    @inquiries = @listing.offers
   end
 end
