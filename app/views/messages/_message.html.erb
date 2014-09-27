@@ -4,15 +4,17 @@
 <div class="small-9 medium-10 columns message-block left">
   <div class="row">
     <div class="small-10 columns">
-      <% if action_name == "sent_box" %>
+      <% if sent_box? %>
         <p class="message-name"><a href="#"><%= truncate(recipient(conversation).full_name, length: 33) %></a></p>
       <% else %>
         <p class="message-name"><a href="#"><%= truncate(conversation.messages.last.sender.full_name, length: 33) %></a></p>
       <% end %>
     </div>
-    <div class="small-1 columns">
-      <%= link_to "<i class='fi-trash'></i>".html_safe, messages_path, :class => "trash-link" %>
-    </div>
+    <% if not_trash? %>
+      <div class="small-1 columns">
+        <%= link_to "<i class='fi-trash'></i>".html_safe, trash_message_path(conversation), :class => "trash-link", method: :post, data: { confirm: 'Are you sure you want to trash this message?' } %>
+      </div>
+    <% end %>
     <div class="small-12 columns">
       <p class=" <%= 'read_message' unless conversation.receipts_for(current_user).first.is_unread? %>"><%= link_to conversation.subject, message_path(conversation) %></p>
     </div>
