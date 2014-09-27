@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
   def not_already_inquired?(listing)
     self.inquiries.where(listing_id: listing.id).empty?
   end
+
+  def offers
+    Listing.joins(:inquiries).where(user_id: self.id).group('listings.id').having('COUNT(inquiries.id) > 0').order(created_at: :desc)
+  end
 end
