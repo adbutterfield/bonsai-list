@@ -1,0 +1,20 @@
+<li class="hide-for-medium-up">
+  <%= link_to "<i class='fi-home'></i> Home".html_safe, user_root_path %>
+</li>
+<li class="hide-for-medium-up">
+  <%= link_to "<i class='fi-price-tag'></i> My Listings".html_safe, listings_path %>
+</li>
+<li class="hide-for-medium-up has-dropdown">
+  <%= link_to "<i class='fi-mail'></i> Messages".html_safe, messages_path %>
+  <ul class="dropdown">
+    <li><%= link_to "Inbox", messages_path %></li>
+    <li><%= link_to "Sent", sent_path %></li>
+    <li><%= link_to "Trash", trash_path %></li>
+  </ul>
+</li>
+<li class="hide-for-medium-up">
+  <%= link_to "<i class='fi-burst-sale'></i> Offers".html_safe, offers_path %>
+</li>
+<li class="hide-for-medium-up">
+  <%= link_to "<i class='fi-wrench'></i> Settings".html_safe, edit_user_registration_path %>
+</li>
