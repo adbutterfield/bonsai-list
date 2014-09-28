@@ -7,7 +7,6 @@ class OffersController < ApplicationController
     # TODO fix n+1 query for getting inquiry count
     @new_listing_offers = current_user.new_offers
     @seen_listing_offers = current_user.seen_offers
-
   end
 
   def show
