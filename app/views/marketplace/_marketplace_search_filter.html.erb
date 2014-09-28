@@ -1,20 +1,7 @@
 <div class="row">
   <div id="filter-bar" class="small-12 columns panel">
     <div class="row">
-      <div class="small-12 columns hide-for-medium-up">
-        <dl class="accordion" data-accordion>
-          <dd class="accordion-navigation">
-            <a href="#panel2">Select Category</a>
-            <div id="panel2" class="content">
-              <ul>
-                <%= link_to_unless_current "All listings", marketplace_path %>
-                <%= render partial: @categories %>
-              </ul>
-            </div>
-          </dd>
-        </dl>
-        <hr class="hide-for-medium-up hr-categories-mobile" />
-      </div>
+      <%= render partial: "shared/category_accordion_mobile" %>
       <div class="small-12 medium-6 large-4 columns">
         <div class="small-6 medium-5 columns no-padding">
           <p class="left-label">Order by:</p>
@@ -37,7 +24,7 @@
         </div>
         <hr class="hide-for-medium-up hr-distance-mobile" />
       </div>
-      <div id="" class="small-12 medium-12 large-5 columns">
+      <div class="small-12 medium-12 large-5 columns">
       <hr class="show-for-medium-only hr-distance-medium" />
         <div class="row collapse">
           <div id="filter-search" class="small-9 columns">
