@@ -1,0 +1,14 @@
+<div class="small-12 columns hide-for-medium-up">
+  <dl class="accordion" data-accordion>
+    <dd class="accordion-navigation">
+      <a href="#panel2">Select Category</a>
+      <div id="panel2" class="content">
+        <ul>
+          <%= link_to_unless_current "All listings", marketplace_path %>
+          <%= render partial: @categories %>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+  <hr class="hide-for-medium-up hr-categories-mobile" />
+</div>
