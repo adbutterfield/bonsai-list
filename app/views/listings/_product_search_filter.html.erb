@@ -1,31 +1,30 @@
 <div class="row">
-  <div id="filter-bar" class="small-12 large-12 columns panel">
-    <div class="hide-for-medium-up small-12 columns">
-      <div class="small-4 columns">
-        <p>Order by:</p>
+  <div id="filter-bar" class="small-12 columns panel">
+    <div class="row">
+      <%= render partial: "shared/category_accordion_mobile" %>
+      <div class="small-12 medium-6 large-5 columns">
+        <div class="small-6 medium-5 columns no-padding">
+          <p class="left-label">Order by:</p>
+        </div>
+        <div class="small-6 columns no-padding">
+          <%= select_tag :sort, options_for_select([["Newest", "created_at desc"], ["Low Price", "price asc"], ["High Price", "price desc"]], ), :id => 'sort_listing', :class => 'filter-sort' %>
+        </div>
+        <div class="medium-1 columns filter-pipe hide-for-small">
+          <span>|</span>
+        </div>
+        <hr class="hide-for-medium-up hr-order-by-mobile" />
       </div>
-      <div class="small-8 columns">
-        <%= select_tag :sort, options_for_select([["Newest", "name"], ["Price", "most_recent"]], ), :class => 'filter-sort' %>
-      </div>
-    </div>
-    <div class="hide-for-small medium-6 large-4 columns">
-      <div class="medium-5 columns no-padding">
-        <p class="filter-label left-label">Order by:</p>
-      </div>
-      <div class="medium-6 columns no-padding">
-        <%= select_tag :sort, options_for_select([["Newest", "name"], ["Price", "most_recent"]], ), :class => 'filter-sort' %>
-      </div>
-      <div class="medium-1 columns filter-pipe">
-        <span class="filter-pipe">|</span>
-      </div>
-    </div>
-    <hr class="hide-for-medium-up hr-distance-mobile" />
-    <div class="row collapse">
-      <div id="filter-search" class="small-9 medium-4 large-6 columns">
-        <%= text_field_tag :search, params[:search], :class => "", :placeholder => "Search" %>
-      </div>
-      <div class="small-3 medium-2 columns">
-        <%= button_tag "Search", class: "postfix bon-button product-search-button" %>
+
+      <div class="small-12 medium-6 large-7 columns my-listings-search-bar">
+
+        <div class="row collapse">
+          <div id="filter-search" class="small-9 columns">
+            <%= text_field_tag :search, params[:search], :class => "marketplace-search", :placeholder => "Search" %>
+          </div>
+          <div class="small-3 columns">
+            <%= submit_tag "Search", :class => "postfix product-search-button bon-button", id: "search-button" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
