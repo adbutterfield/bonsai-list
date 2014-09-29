@@ -9,4 +9,27 @@ $(function(){
     $(this).removeClass('fi-info-hover');
   });
 
+  function searchFliterSort (){
+    var search = $('.marketplace-search').val();
+    var category = $('#listings').data('categoryId');
+    var sortValue = $('#sort_listing option:selected').val();
+    var distanceValue = $('#distance_filter option:selected').val();
+    $.ajax({
+      url: 'listing_ajax_sort',
+      type: 'GET',
+      dataType: 'script',
+      data: {
+        search: search,
+        category_id: category,
+        sort: sortValue,
+        distance_filter: distanceValue
+      },
+    });
+  }
+  $('#search-button').on('click', searchFliterSort);
+
+  $('#sort_listing, #distance_filter').on('change', searchFliterSort);
+
+  $('#search').on('keyup', searchFliterSort);
+
 });
