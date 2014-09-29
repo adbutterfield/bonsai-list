@@ -1,10 +1,8 @@
 <div class="row">
-  <!-- Nav Sidebar -->
   <div class="small-12 medium-5 large-4 columns">
     <img src="http://placehold.it/610x610&text=Thumbnail">
     <%= render partial: "shared/pricing_table" %>
   </div>
-  <!-- Messages -->
   <div class="small-12 medium-7 large-8 columns">
 <!--           <div class="row collapse">
       <div class="small-8 medium-9 columns">
@@ -19,16 +17,15 @@
         <h4>New Offers!</h4>
       </div>
     </div>
-    <!-- Message -->
     <div class="row">
       <%= (render partial: 'inquiry', collection: @new_inquiries) || no_offers %>
-    </div> <!-- End Message -->
+    </div>
     <div class="row">
       <div class="small-12 columns panel">
         <h4>Seen Offers</h4>
       </div>
     </div>
-    <!-- Message -->
+
     <div class="row">
       <%= (render partial: 'inquiry', collection: @seen_inquiries) || no_offers %>
 
@@ -46,9 +43,6 @@
       </div>
       <hr /> -->
 
-    </div> <!-- End Message -->
-    <div class="row">
-      <%= link_to "Load More", messages_path, :class => "button radius expand bon-button" %>
     </div>
-  </div> <!-- End Messages -->
+  </div>
 </div>

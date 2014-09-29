@@ -1,9 +1,7 @@
 <div class="row">
-  <!-- Nav Sidebar -->
   <div class="small-12 medium-5 large-4 columns hide-for-small">
   <%= render partial: "shared/home_nav" %>
   </div>
-  <!-- Messages -->
   <div class="small-12 medium-7 large-8 columns">
     <div class="row collapse">
       <div class="small-8 medium-9 columns">
@@ -18,16 +16,14 @@
         <h4>New Offers!</h4>
       </div>
     </div>
-    <!-- Message -->
     <div class="row">
       <%= (render partial: 'new_listing_offer', collection: @new_listing_offers, as: :listing) || no_offers %>
-    </div> <!-- End Message -->
+    </div>
     <div class="row">
       <div class="small-12 columns panel">
         <h4>Seen Offers</h4>
       </div>
     </div>
-    <!-- Message -->
     <div class="row">
       <%= (render partial: 'seen_listing_offer', collection: @seen_listing_offers, as: :listing) || no_offers %>
 
@@ -45,9 +41,6 @@
       </div>
       <hr /> -->
 
-    </div> <!-- End Message -->
-    <div class="row">
-      <%= link_to "Load More", messages_path, :class => "button radius expand bon-button" %>
     </div>
-  </div> <!-- End Messages -->
+  </div>
 </div>

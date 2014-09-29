@@ -31,9 +31,6 @@
           <%= (render partial: 'message', collection: @read_messages, as: :conversation) || no_messages %>
         </div>
       <% end %>
-      <div class="row">
-        <%= link_to "Load More", messages_path, :class => "button radius expand bon-button" %>
-      </div>
     </div>
   </div>
 </div>
