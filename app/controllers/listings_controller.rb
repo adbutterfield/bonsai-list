@@ -2,17 +2,21 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :verify_user!, only: [:edit, :update, :destroy, :remove]
   before_action :set_listing, only: [:show, :edit, :update, :destroy, :remove]
-  before_action :set_categories, only: [:new, :edit]
+  before_action :set_categories, only: [:index, :new, :edit]
+  before_action :set_listings, only: [:index, :ajax_sort]
 
   def index
-    @categories = Category.order(id: :asc)
-    @listings = current_user.posted_listings
+  end
+
+  def ajax_sort
+    respond_to do |format|
+      format.js
+    end
   end
 
   def show
     @title = @listing.headline
     if current_user
-
       @message_body = "Please let me know if it's still for sale!"
     end
   end
@@ -74,6 +78,10 @@ class ListingsController < ApplicationController
       @listing = Listing.find(params[:id])
     end
 
+    def set_listings
+      @listings = current_user.filter_listings_by(params)
+    end
+
     def listing_params
       params.require(:listing).permit(:headline, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :sale_type, :published_at)
     end
@@ -84,7 +92,7 @@ class ListingsController < ApplicationController
     end
 
     def set_categories
-      @categories = Category.all
+      @categories = Category.order(id: :asc)
     end
 
 end
