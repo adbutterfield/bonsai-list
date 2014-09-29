@@ -1,0 +1,29 @@
+<div id="profile-banner" class="row">
+  <div id="profile-pic-box" class="small-4 medium-2 columns no-padding">
+    <img id="profile-pic" src="http://placehold.it/240x240&text=Thumbnail">
+  </div>
+  <div id="profile-name-column" class="small-7 medium-9 columns no-padding">
+    <h4 id="profile-name" class="text-left"><%= @user.full_name %></h4>
+    <div class="row">
+      <div class="small-10 medium-5 large-4 columns">
+        <a href="#" data-reveal-id="sendMessageModal" class="button radius small bon-button profile-button"><i class="fi-mail"></i> Send Message</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="sendMessageModal" class="reveal-modal" data-reveal>
+  <%= form_tag send_message_path(@user) do %>
+    <h2>Send a message!</h2>
+    <div class="row">
+      <div class="small-12 medium-8 large-6 columns">
+        <%= label_tag :subject %>
+        <%= text_area_tag :subject %>
+        <%= label_tag :body, "Message" %>
+        <%= text_area_tag :body %>
+      </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+    <%= submit_tag "Send", :class => "button tiny listing-close-reveal-modal" %>
+  <% end %>
+</div>
