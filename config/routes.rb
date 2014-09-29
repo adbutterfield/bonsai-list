@@ -16,7 +16,8 @@ Rails.application.routes.draw do
 
   resources :offers, only: [:index, :show]
 
-  resources :listings
+  get 'listings(/:category_id)' => 'listings#index', as: 'listings'
+  resources :listings, except: [:index]
   # TODO set better url for listing#show
   patch 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
 
