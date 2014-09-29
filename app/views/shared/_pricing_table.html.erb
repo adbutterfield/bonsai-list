@@ -7,7 +7,9 @@
     <p>Japanese: 黒松 (Kuromatsu)</p>
   </li> -->
   <li class="bullet-item">Location: <%= @listing.location %></li>
-  <li class="price"><%= number_to_currency(@listing.price) %></li>
+  <% unless @listing.is_offer? %>
+    <li class="price"><%= number_to_currency(@listing.price) %></li>
+  <% end %>
   <li class="bullet-item"><%= willing_to_ship?(@listing) %></li>
   <li class="cta-button"><%= pricing_table_button %></li>
 
