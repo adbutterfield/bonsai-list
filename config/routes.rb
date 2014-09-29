@@ -7,13 +7,13 @@ Rails.application.routes.draw do
   get 'marketplace/:id(/category(/:category_id))/marketplace_ajax_sort' => 'marketplace#ajax_sort'
   get 'marketplace/:id(/category/:category_id)/' => 'marketplace#show', as: 'user_marketplace'
 
-  get  'messages/inbox'     => 'messages#index',     as: 'messages'
-  get  'messages/sent'      => 'messages#sent_box',  as: 'sent'
-  get  'messages/trash'     => 'messages#trash_box', as: 'trash'
-  post 'messages/send'      => 'messages#send',      as: 'send_message'
-  get  'messages/:id'       => 'messages#show',      as: 'message'
-  post 'messages/:id'       => 'messages#reply',     as: 'reply_message'
-  post 'messages/:id/trash' => 'messages#trash',     as: 'trash_message'
+  get  'messages/inbox'     => 'messages#index',        as: 'messages'
+  get  'messages/sent'      => 'messages#sent_box',     as: 'sent'
+  get  'messages/trash'     => 'messages#trash_box',    as: 'trash'
+  post 'messages/send'      => 'messages#send_message', as: 'send_message'
+  get  'messages/:id'       => 'messages#show',         as: 'message'
+  post 'messages/:id'       => 'messages#reply',        as: 'reply_message'
+  post 'messages/:id/trash' => 'messages#trash',        as: 'trash_message'
 
   post 'inquiries/:id' => 'inquiries#create',    as: 'inquiries'
 

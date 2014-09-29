@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @box_title = "Inbox"
   end
 
-  def send
+  def send_message
     user = User.find(params[:id])
     current_user.send_message(user, params[:body], params[:subject])
   end
