@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   get 'home' => 'users#home', as: 'user_root'
 
   get '(marketplace(/:category_id))/ajax_sort' => 'marketplace#ajax_sort'
-  get 'marketplace/:category_id' => 'marketplace#index', as: 'marketplace_filter'
-  get 'marketplace' => 'marketplace#index', as: 'marketplace'
+  get 'marketplace(/:category_id)' => 'marketplace#index', as: 'marketplace'
 
   get  'messages/inbox'     => 'messages#index',     as: 'messages'
   get  'messages/sent'      => 'messages#sent_box',  as: 'sent'
