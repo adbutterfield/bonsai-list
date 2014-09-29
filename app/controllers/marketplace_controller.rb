@@ -12,6 +12,10 @@ class MarketplaceController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
   private
 
     def set_listings
