@@ -20,4 +20,9 @@ module ApplicationHelper
   def page_title(name)
     content_for(:title) { name + " | bonsai list"}
   end
+
+  def marketplace_or_listings
+    return marketplace_path if controller_name == "marketplace"
+    return listings_path if controller_name == "listings"
+  end
 end
