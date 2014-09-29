@@ -25,5 +25,4 @@ class MarketplaceController < ApplicationController
     def coordinates
       "#{location.latitude}, #{location.longitude}"
     end
-
 end
