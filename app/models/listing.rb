@@ -46,6 +46,14 @@ class Listing < ActiveRecord::Base
     Inquiry.where(listing_id: self.id).seen
   end
 
+  def willing_to_ship?
+    if self.shippable
+      return "Willing to ship"
+    else
+      return "Not willing to ship"
+    end
+  end
+
   def self.filter_by(params, coordinates)
     params[:sort] ||= "created_at desc"
     params[:distance_filter] ||= "5000"
