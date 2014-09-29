@@ -5,9 +5,9 @@
   <div class="row">
     <div class="small-10 columns">
       <% if sent_box? %>
-        <p class="message-name"><a href="#"><%= truncate(recipient(conversation).full_name, length: 33) %></a></p>
+        <p class="message-name"><%= truncate(recipient(conversation).full_name, length: 33) %></p>
       <% else %>
-        <p class="message-name"><a href="#"><%= truncate(conversation.messages.last.sender.full_name, length: 33) %></a></p>
+        <p class="message-name"><%= truncate(conversation.messages.last.sender.full_name, length: 33) %></p>
       <% end %>
     </div>
     <% if not_trash? %>
