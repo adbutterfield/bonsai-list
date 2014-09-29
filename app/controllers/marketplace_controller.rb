@@ -1,5 +1,5 @@
 class MarketplaceController < ApplicationController
-  before_action :set_listings, only: [:index, :ajax_sort]
+  before_action :set_listings, only: [:index, :ajax_sort, :show]
 
   def index
     @category = Category.find(params[:category_id]).name if params[:category_id]
@@ -19,10 +19,19 @@ class MarketplaceController < ApplicationController
   private
 
     def set_listings
-      if params[:search].blank?
-        @listings = Listing.filter_by(params, coordinates)
+      if params[:id]
+        @user = User.find(params[:id])
+        if params[:search].blank?
+          @listings = @user.filter_listings_by(params)
+        else
+          @listings = @user.filter_listings_by(params).search_by(params[:search])
+        end
       else
-        @listings = Listing.filter_by(params, coordinates).search_by(params[:search])
+        if params[:search].blank?
+          @listings = Listing.filter_by(params, coordinates)
+        else
+          @listings = Listing.filter_by(params, coordinates).search_by(params[:search])
+        end
       end
     end
 
