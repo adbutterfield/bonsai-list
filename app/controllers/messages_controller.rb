@@ -8,6 +8,11 @@ class MessagesController < ApplicationController
     @box_title = "Inbox"
   end
 
+  def send
+    user = User.find(params[:id])
+    current_user.send_message(user, params[:body], params[:subject])
+  end
+
   def show
     @conversation = Mailboxer::Conversation.find(params[:id])
     @conversation.mark_as_read(current_user)
