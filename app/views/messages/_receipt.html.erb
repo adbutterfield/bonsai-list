@@ -2,7 +2,7 @@
   <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
 </div>
 <div class="small-9 medium-10 columns message-block left">
-  <p class="message-name"><a href="#"><%= message.sender.full_name %></a></p>
+  <p class="message-name"><%= link_to message.sender.full_name, user_marketplace_path(message.sender) %></p>
   <p class="message-date"><%= message.created_at.strftime('%A %b %e %l:%M %P') %></p>
   <div class="row">
     <div class="small-12 columns">
