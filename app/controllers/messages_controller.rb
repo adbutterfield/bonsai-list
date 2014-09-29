@@ -44,10 +44,10 @@ class MessagesController < ApplicationController
 
   private
 
-  def verify_user!
-    conversation = Mailboxer::Conversation.find(params[:id])
+    def verify_user!
+      conversation = Mailboxer::Conversation.find(params[:id])
 
-    redirect_to user_root_path, notice: "We can't find the page you're looking for..." unless conversation.participants.include?(current_user)
-  end
+      redirect_to user_root_path, notice: "We can't find the page you're looking for..." unless conversation.participants.include?(current_user)
+    end
 
 end

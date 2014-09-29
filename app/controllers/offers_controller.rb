@@ -17,12 +17,12 @@ class OffersController < ApplicationController
 
   private
 
-  def verify_user!
-    user = Listing.find(params[:id]).user if params[:id]
-    redirect_to user_root_path, notice: "We can't find the page you're looking for..." unless current_user?(user)
-  end
+    def verify_user!
+      user = Listing.find(params[:id]).user if params[:id]
+      redirect_to user_root_path, notice: "We can't find the page you're looking for..." unless current_user?(user)
+    end
 
-  def mark_as_seen
-    @new_inquiries.update_all(is_seen: true)
-  end
+    def mark_as_seen
+      @new_inquiries.update_all(is_seen: true)
+    end
 end

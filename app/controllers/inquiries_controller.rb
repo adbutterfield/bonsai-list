@@ -11,16 +11,16 @@ class InquiriesController < ApplicationController
 
   private
 
-  def message_body
-    params[:body] || "Please let me know if it's still for sale!"
-  end
-
-  def message_subject(listing)
-    if listing.is_offer?
-      return "#{current_user.full_name} made an offer of #{number_to_currency(params[:offer])}, on your #{listing.headline}!"
-    else
-      return "#{current_user.full_name} is interested in your #{listing.headline}!"
+    def message_body
+      params[:body] || "Please let me know if it's still for sale!"
     end
-  end
+
+    def message_subject(listing)
+      if listing.is_offer?
+        return "#{current_user.full_name} made an offer of #{number_to_currency(params[:offer])}, on your #{listing.headline}!"
+      else
+        return "#{current_user.full_name} is interested in your #{listing.headline}!"
+      end
+    end
 
 end
