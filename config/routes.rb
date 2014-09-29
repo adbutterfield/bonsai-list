@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '(marketplace(/category/:category_id))/marketplace_ajax_sort' => 'marketplace#ajax_sort'
   get 'marketplace(/category/:category_id)' => 'marketplace#index', as: 'marketplace'
-  get 'marketplace/:id' => 'marketplace#show', as: 'user_marketplace'
+  get 'marketplace/:id(/category/:category_id)' => 'marketplace#show', as: 'user_marketplace'
 
   get  'messages/inbox'     => 'messages#index',     as: 'messages'
   get  'messages/sent'      => 'messages#sent_box',  as: 'sent'
