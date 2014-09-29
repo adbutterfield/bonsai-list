@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get  'messages/inbox'     => 'messages#index',     as: 'messages'
   get  'messages/sent'      => 'messages#sent_box',  as: 'sent'
   get  'messages/trash'     => 'messages#trash_box', as: 'trash'
+  post 'messages/send'      => 'messages#send',      as: 'send_message'
   get  'messages/:id'       => 'messages#show',      as: 'message'
   post 'messages/:id'       => 'messages#reply',     as: 'reply_message'
   post 'messages/:id/trash' => 'messages#trash',     as: 'trash_message'
