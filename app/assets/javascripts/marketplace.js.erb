@@ -3,10 +3,10 @@ $(function(){
   function searchFliterSort (){
     var search = $('.marketplace-search').val();
     var category = $('#listings').data('categoryId');
-    var sortValue = $('#sort_listing option:selected').val();
-    var distanceValue = $('#distance_filter option:selected').val();
+    var sortValue = $('#marketplace-sort-listing option:selected').val();
+    var distanceValue = $('#marketplace-distance-filter option:selected').val();
     $.ajax({
-      url: 'ajax_sort',
+      url: 'marketplace_ajax_sort',
       type: 'GET',
       dataType: 'script',
       data: {
@@ -17,9 +17,9 @@ $(function(){
       },
     });
   }
-  $('#search-button').on('click', searchFliterSort);
+  $('#marketplace-search-button').on('click', searchFliterSort);
 
-  $('#sort_listing, #distance_filter').on('change', searchFliterSort);
+  $('#marketplace-sort-listing, #marketplace-distance-filter').on('change', searchFliterSort);
 
-  $('#search').on('keyup', searchFliterSort);
+  $('#marketplace-search').on('keyup', searchFliterSort);
 });
