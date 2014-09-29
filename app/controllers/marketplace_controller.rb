@@ -1,9 +1,9 @@
 class MarketplaceController < ApplicationController
   before_action :set_listings, only: [:index, :ajax_sort, :show]
+  before_action :set_categories, only: [:index, :show]
 
   def index
     @category = Category.find(params[:category_id]).name if params[:category_id]
-    @categories = Category.order(id: :asc)
   end
 
   def ajax_sort
@@ -13,7 +13,6 @@ class MarketplaceController < ApplicationController
   end
 
   def show
-
   end
 
   private
@@ -37,5 +36,9 @@ class MarketplaceController < ApplicationController
 
     def coordinates
       "#{location.latitude}, #{location.longitude}"
+    end
+
+    def set_categories
+      @categories = Category.order(id: :asc)
     end
 end
