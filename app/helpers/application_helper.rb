@@ -22,6 +22,7 @@ module ApplicationHelper
   end
 
   def marketplace_or_listings
+    return user_marketplace_path(@user) if @user
     return marketplace_path if controller_name == "marketplace"
     return listings_path if controller_name == "listings"
   end
