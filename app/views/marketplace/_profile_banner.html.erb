@@ -4,14 +4,16 @@
   </div>
   <div id="profile-name-column" class="small-7 medium-9 columns no-padding">
     <h4 id="profile-name" class="text-left"><%= @user.full_name %></h4>
-    <div class="row">
-      <div class="small-10 medium-5 large-4 columns">
-        <a href="#" data-reveal-id="sendMessageModal" class="button radius small bon-button profile-button"><i class="fi-mail"></i> Send Message</a>
+    <% if user_signed_in? %>
+      <div class="row">
+        <div class="small-10 medium-5 large-4 columns">
+          <a href="#" data-reveal-id="sendMessageModal" class="button radius small bon-button profile-button"><i class="fi-mail"></i> Send Message</a>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
-
+<% if user_signed_in? %>
 <div id="sendMessageModal" class="reveal-modal" data-reveal>
   <%= form_tag send_message_path(@user) do %>
     <h2>Send a message!</h2>
@@ -27,3 +29,4 @@
     <%= submit_tag "Send", :class => "button tiny listing-close-reveal-modal" %>
   <% end %>
 </div>
+<% end %>
