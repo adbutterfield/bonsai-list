@@ -39,16 +39,10 @@ class User < ActiveRecord::Base
   def filter_listings_by(params)
     params[:sort] ||= "created_at desc"
 
-    if params[:category_id].blank? && params[:search].blank?
+    if params[:category_id].present?
+      return self.posted_listings.where(category_id: params[:category_id]).order(params[:sort])
+    else
       return self.posted_listings.order(params[:sort])
-    elsif params[:category_id].present?
-      if params[:search].blank?
-        return self.posted_listings.where(category_id: params[:category_id]).order(params[:sort])
-      else
-        return self.posted_listings.where(category_id: params[:category_id]).search_by(params[:search]).order(params[:sort])
-      end
-    else # params[:category_id].blank? && params[:search].present?
-      return self.posted_listings.search_by(params[:search]).order(params[:sort])
     end
   end
 end

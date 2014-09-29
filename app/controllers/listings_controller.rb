@@ -79,7 +79,11 @@ class ListingsController < ApplicationController
     end
 
     def set_listings
-      @listings = current_user.filter_listings_by(params)
+      if params[:sort].blank?
+        @listings = current_user.filter_listings_by(params)
+      else
+        @listings = current_user.filter_listings_by(params).search_by(params[:search])
+      end
     end
 
     def listing_params
