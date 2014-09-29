@@ -1,0 +1,31 @@
+<div class="row">
+  <div id="filter-bar" class="small-12 columns panel">
+    <div class="row">
+      <%= render partial: "shared/category_accordion_mobile" %>
+      <div class="small-12 medium-6 large-5 columns">
+        <div class="small-6 medium-5 columns no-padding">
+          <p class="left-label">Order by:</p>
+        </div>
+        <div class="small-6 columns no-padding">
+          <%= select_tag :sort, options_for_select([["Newest", "created_at desc"], ["Low Price", "price asc"], ["High Price", "price desc"]], ), :id => 'marketplace-sort-listing', :class => 'filter-sort' %>
+        </div>
+        <div class="medium-1 columns filter-pipe hide-for-small">
+          <span>|</span>
+        </div>
+        <hr class="hide-for-medium-up hr-order-by-mobile" />
+      </div>
+
+      <div class="small-12 medium-6 large-7 columns my-listings-search-bar">
+
+        <div class="row collapse">
+          <div id="filter-search" class="small-9 columns">
+            <%= text_field_tag :search, params[:search], id: "marketplace-search", :class => "marketplace-search", :placeholder => "Search" %>
+          </div>
+          <div class="small-3 columns">
+            <%= submit_tag "Search", :class => "postfix product-search-button bon-button", id: "marketplace-search-button" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
