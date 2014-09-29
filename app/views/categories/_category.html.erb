@@ -1,6 +1,6 @@
 <li>
   <%= link_to_unless_current category.name, {
-  controller: 'marketplace',
+  controller: controller_name,
   action: 'index',
   category_id: category.id } %>
 </li>
