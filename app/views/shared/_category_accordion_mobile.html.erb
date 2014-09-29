@@ -4,8 +4,12 @@
       <a href="#panel2">Select Category</a>
       <div id="panel2" class="content">
         <ul>
-          <%= link_to_unless_current "All listings", marketplace_path %>
-          <%= render partial: @categories %>
+          <%= link_to_unless_current "All listings", marketplace_or_listings %>
+          <hr class="nav-hr" />
+          Categories
+          <ul>
+            <%= render partial: @categories %>
+          </ul>
         </ul>
       </div>
     </dd>
