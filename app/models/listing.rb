@@ -59,8 +59,9 @@ class Listing < ActiveRecord::Base
     params[:distance_filter] ||= "5000"
 
     if params[:category_id].present?
+      category = Category.friendly.find(params[:category_id])
       return Listing.postable
-        .where('category_id = ?', params[:category_id])
+        .where('category_id = ?', category.id)
         .near(coordinates, params[:distance_filter], :order => params[:sort])
     else
       return Listing.postable.near(coordinates, params[:distance_filter], :order => params[:sort])
