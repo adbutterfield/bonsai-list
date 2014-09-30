@@ -40,7 +40,8 @@ class User < ActiveRecord::Base
     params[:sort] ||= "created_at desc"
 
     if params[:category_id].present?
-      return self.posted_listings.where(category_id: params[:category_id]).order(params[:sort])
+      category = Category.friendly.find(params[:category_id])
+      return self.posted_listings.where(category_id: category.id).order(params[:sort])
     else
       return self.posted_listings.order(params[:sort])
     end
