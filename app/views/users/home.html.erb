@@ -22,7 +22,7 @@
           <div class="small-3 columns panel listing-list-panel left">
             <p class="centered-text"><%= link_to 'Edit', edit_listing_path(listing) %></p>
             <hr class="nav-hr" />
-            <p class="centered-text"><%= link_to 'Remove', remove_listing_path(listing), method: :patch, data: { confirm: 'Are you sure?' } %></p>
+            <p class="centered-text"><%= link_to 'Remove', remove_listing_path(listing), method: :patch, data: { confirm: 'Are you sure you want to remove this listing?' } %></p>
           </div>
         </div>
       </div>
