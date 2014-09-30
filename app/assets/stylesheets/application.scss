@@ -42,8 +42,8 @@
   background-color: #246020;
 }
 
-#marketplace-nav {
-
+.listing-list-panel {
+  padding: 10px;
 }
 
 .marketplace-nav-title {
@@ -112,6 +112,11 @@
 .fi-trash {
   color: #246020;
   font-size: large;
+}
+
+.listing-panel-link {
+  margin: 0;
+  padding: 5px;
 }
 
 #notice {
