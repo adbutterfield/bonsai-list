@@ -46,6 +46,14 @@ class Listing < ActiveRecord::Base
     Inquiry.where(listing_id: self.id).seen
   end
 
+  def seller_name
+    self.user.full_name
+  end
+
+  def seller
+    self.user
+  end
+
   def willing_to_ship?
     if self.shippable
       return "Willing to ship"
