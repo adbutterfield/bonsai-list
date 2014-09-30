@@ -1,15 +1,15 @@
+<% page_title "My Listings" %>
 <div class="row">
-  <!-- Side Bar -->
   <div id="marketplace-nav" class="medium-4 large-3 columns hide-for-small">
     <%= link_to "Add new listing", new_listing_path, :class => "button radius expand new-product-button" %>
     <div class="panel">
       <%= render partial: "shared/marketplace_nav" %>
     </div>
   </div>
-  <!-- End Side Bar -->
   <div class="small-12 medium-8 large-9 columns">
     <%= link_to "Add new listing", new_listing_path, :class => "button radius expand new-product-button hide-for-medium-up" %>
     <%= render partial: "shared/listing_search_filter" %>
+    <h1><%= @category %></h1>
     <%= render partial: "shared/marketplace_items" %>
   </div>
 </div>
