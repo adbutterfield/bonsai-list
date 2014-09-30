@@ -7,32 +7,3 @@
     <%= render partial: "shared/pricing_table" %>
   </div>
 </div>
-<div class="row panel top-margin">
-  <div class="small-12 columns">
-    <h3>Seller Information:</h3>
-  </div>
-  <div class="small-3 medium-2 columns seller-pic">
-    <img id="profile-pic" src="http://placehold.it/70x70&text=Thumbnail">
-  </div>
-  <div class="small-9 medium-10 columns seller-name">
-    <h4 class="text-left"><%= @listing.user.full_name %></h4>
-  </div>
-  <div class="small-12 columns">
-    <div class="row">
-      <div class="small-12 medium-6 large-4 columns">
-        <p><%= link_to "<i class='fi-shopping-cart'></i> Seller's Marketplace".html_safe, user_marketplace_path(@listing.user), :class => "button radius bon-button seller-button" %></p>
-      </div>
-<!--             <div class="small-12 medium-6 columns left">
-        <p><%#= link_to "<i class='fi-torso'></i> Seller's Profile".html_safe, profile_path, class: "button radius bon-button seller-button" %></p>
-      </div> -->
-    </div>
-  </div>
-</div>
-<!--       <div class="row">
-  <div class="small-6 medium-3 columns">
-    <a href="" class="button radius small bon-button profile-button"><i class="fi-torsos"></i> Connect</a>
-  </div>
-  <div class="small-6 medium-3 left columns">
-    <a href="" class="button radius small bon-button profile-button"><i class="fi-mail"></i> Message</a>
-  </div>
-</div> -->
