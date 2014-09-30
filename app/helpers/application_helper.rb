@@ -26,4 +26,8 @@ module ApplicationHelper
     return marketplace_path if controller_name == "marketplace"
     return listings_path if controller_name == "listings"
   end
+
+  def current_user_listing?
+    @listing.user == current_user
+  end
 end
