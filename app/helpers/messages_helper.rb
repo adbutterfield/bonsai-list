@@ -24,6 +24,10 @@ module MessagesHelper
     controller_name == 'messages' && action_name == 'sent_box'
   end
 
+  def trash_box?
+    controller_name == 'messages' && action_name == 'trash_box'
+  end
+
   def not_trash?
     controller_name == 'messages' && action_name != 'trash_box'
   end
