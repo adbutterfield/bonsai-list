@@ -1,4 +1,4 @@
-<%= page_title(@user.full_name) %>
+<% page_title(@user.full_name) %>
 <div class="row">
   <%= render partial: "profile_banner" %>
   <div id="marketplace-nav" class="medium-4 large-3 columns hide-for-small">
@@ -8,6 +8,7 @@
   </div>
   <div class="small-12 medium-8 large-9 columns">
     <%= render partial: "user_marketplace_search_filter" %>
+    <h1><%= @category %></h1>
     <%= render partial: "shared/marketplace_items" %>
   </div>
 </div>
