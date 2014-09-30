@@ -2,5 +2,5 @@
   <%= link_to_unless_current category.name, {
   controller: controller_name,
   action: action_name,
-  category_id: category.id } %>
+  category_id: category.name.downcase } %>
 </li>
