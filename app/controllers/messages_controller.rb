@@ -47,6 +47,13 @@ class MessagesController < ApplicationController
     end
   end
 
+  def empty_trash
+    current_user.mailbox.trash.each do |conversation|
+      conversation.mark_as_deleted current_user
+    end
+    redirect_to trash_path
+  end
+
   private
 
     def verify_user!
