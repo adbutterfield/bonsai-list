@@ -6,12 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # require 'faker'
-Category.delete_all
-trees = Category.create!(name: "Trees")
-pots  = Category.create!(name: "Pots")
-tools = Category.create!(name: "Tools")
-tables = Category.create!(name: "Tables")
-other = Category.create!(name: "Other")
+# Category.delete_all
+# trees = Category.create!(name: "Trees")
+# pots  = Category.create!(name: "Pots")
+# tools = Category.create!(name: "Tools")
+# tables = Category.create!(name: "Tables")
+# other = Category.create!(name: "Other")
 
 # Subcategory.delete_all
 # Subcategory.create!(name: "Coniferous", category_id: trees.id)
@@ -24,41 +24,14 @@ other = Category.create!(name: "Other")
 # Subcategory.create!(name: "Small", category_id: pots.id)
 # Subcategory.create!(name: "Medium", category_id: pots.id)
 # Subcategory.create!(name: "Large", category_id: pots.id)
+
 # Listing.delete_all
-# user = User.find(5)
 
-# 10.times do
-#   Listing.create!(user_id: user.id, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, latitude: user.address.latitude, longitude: user.address.longitude, latitude: user.address.latitude, longitude: user.address.longitude)
+# 100.times do
+#   user = User.find(rand(3..5))
+#   category = Category.find(rand(11..15))
+#   sale_type = category.id.even? ? "sale" : "offer"
+#   Listing.create!(user_id: user.id, headline: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), sale_type: sale_type, location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: category.id, latitude: user.address.latitude, longitude: user.address.longitude, latitude: user.address.latitude, longitude: user.address.longitude)
 # end
 
-# 10.times do
-#   Listing.create!(user_id: user.id, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, latitude: user.address.latitude, longitude: user.address.longitude)
-# end
 
-# 10.times do
-#   Listing.create!(user_id: user.id, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, latitude: user.address.latitude, longitude: user.address.longitude)
-# end
-
-# 10.times do
-#   Listing.create!(user_id: user.id, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, latitude: user.address.latitude, longitude: user.address.longitude)
-# end
-
-# 10.times do
-#   Listing.create!(user_id: user.id, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 6, latitude: user.address.latitude, longitude: user.address.longitude)
-# end
-
-# 10.times do
-#   Listing.create!(user_id: user.id, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, latitude: user.address.latitude, longitude: user.address.longitude)
-# end
-
-# 10.times do
-#   Listing.create!(user_id: user.id, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, latitude: user.address.latitude, longitude: user.address.longitude)
-# end
-
-# 10.times do
-#   Listing.create!(user_id: user.id, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, latitude: user.address.latitude, longitude: user.address.longitude)
-# end
-
-# 10.times do
-#   Listing.create!(user_id: user.id, title: Faker::Commerce.product_name, description: Faker::Lorem.sentence, price: rand(1..1000), location: Faker::Address.postcode, shippable: true, publish: true, remove: false, category_id: 7, latitude: user.address.latitude, longitude: user.address.longitude)
-# end
