@@ -1,9 +1,9 @@
 class MarketplaceController < ApplicationController
   before_action :set_listings, only: [:index, :ajax_sort, :show]
   before_action :set_categories, only: [:index, :show]
+  before_action :set_category, only: [:index, :show]
 
   def index
-    @category = Category.find(params[:category_id]).name if params[:category_id]
   end
 
   def ajax_sort
@@ -40,5 +40,9 @@ class MarketplaceController < ApplicationController
 
     def set_categories
       @categories = Category.order(id: :asc)
+    end
+
+    def set_category
+      @category = Category.friendly.find(params[:category_id]).name if params[:category_id]
     end
 end
