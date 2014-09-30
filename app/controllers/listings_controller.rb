@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
   before_action :set_listings, only: [:index, :ajax_sort]
 
   def index
+    @category = Category.friendly.find(params[:category_id]).name if params[:category_id]
   end
 
   def ajax_sort
