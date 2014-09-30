@@ -2,7 +2,7 @@ module ListingsHelper
 
   def pricing_table_button
     if user_signed_in?
-      if @listing.user == current_user
+      if current_user_listing?
         return link_to 'Edit listing', edit_listing_path(@listing), :class => "button"
       end
       if current_user.not_already_inquired?(@listing)
