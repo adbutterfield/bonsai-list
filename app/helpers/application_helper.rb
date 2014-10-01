@@ -4,7 +4,7 @@ module ApplicationHelper
   end
 
   def marketplace_page?
-    controller_name == "marketplace"
+    controller_name == "marketplace" && action_name == "index"
     # current_page?(controller: 'marketplace')
   end
 
