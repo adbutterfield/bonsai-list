@@ -24,8 +24,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = current_user.listings.build
-    Struct.new("SaleType", :id, :name)
-    @sale_types = [ Struct::SaleType.new(id: 'sale', name: 'Sell now?'), Struct::SaleType.new(id: 'offer', name: 'Take offers?') ]
+    @sale_types = [SaleType.new('sale', 'Sell now?'), SaleType.new('offer', 'Take offers?') ]
   end
 
   def edit
