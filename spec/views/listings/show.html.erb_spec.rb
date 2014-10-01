@@ -3,8 +3,8 @@ require "rails_helper"
 RSpec.describe "listings/show" do
 
   before do
-    user = FactoryGirl.create(:user_with_address)
-    @listing = FactoryGirl.create(:listing, user: user)
+    @user = FactoryGirl.create(:user_with_address)
+    @listing = FactoryGirl.create(:listing, user: @user)
     assign(:listing, @listing)
   end
 
@@ -14,9 +14,9 @@ RSpec.describe "listings/show" do
     expect(rendered).to have_content(@listing.headline)
     expect(rendered).to have_content(@listing.description)
     expect(rendered).to have_content(@listing.price)
-    expect(rendered).to have_content(user.full_name)
-    expect(rendered).to have_content(user.address.city)
-    expect(rendered).to have_content(user.address.state)
+    expect(rendered).to have_content(@user.full_name)
+    expect(rendered).to have_content(@user.address.city)
+    expect(rendered).to have_content(@user.address.state)
     expect(rendered).to have_content("Willing to ship")
   end
 
