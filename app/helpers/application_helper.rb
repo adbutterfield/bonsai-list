@@ -30,4 +30,8 @@ module ApplicationHelper
   def current_user_listing?
     @listing.user == current_user
   end
+
+  def set_controller_name
+    return Rails.env.test? ? "marketplace" : controller_name
+  end
 end
