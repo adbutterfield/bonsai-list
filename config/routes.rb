@@ -20,8 +20,8 @@ Rails.application.routes.draw do
 
   resources :offers, only: [:index, :show]
 
-  get '(my_listings(/category/:category_id))/listing_ajax_sort' => 'listings#ajax_sort'
-  get 'my_listings(/category/:category_id)' => 'listings#index', as: 'listings'
+  get '(listings(/category/:category_id))/listing_ajax_sort' => 'listings#ajax_sort'
+  get 'listings(/category/:category_id)' => 'listings#index', as: 'listings'
 
   resources :listings, except: [:index]
   # TODO set better url for listing#show
