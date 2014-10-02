@@ -39,6 +39,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:firstname, :lastname, :postcode, :email, :password, :password_confirmation, :remember_me, address_attributes: [ :id, :user_id, :city, :state, :postcode, :country, :longitude, :latitude ]) }
 
     # TODO implement and test update address
-    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:firstname, :lastname, :postcode, :email, :password, :password_confirmation, :current_password) }
+    devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:firstname, :lastname, :postcode, :email, :password, :password_confirmation, :current_password, address_attributes: [ :id, :user_id, :city, :state, :postcode, :country, :longitude, :latitude ]) }
   end
 end
