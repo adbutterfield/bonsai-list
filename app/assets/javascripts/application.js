@@ -2,7 +2,6 @@
 //= require jquery_ujs
 //= require foundation
 //= require marketplace
-//= require sticky_scroll
 //= require_tree .
 
 $(function(){
