@@ -2,11 +2,6 @@
   <li class="title"><%= @listing.headline %></li>
   <li class="description"><%= @listing.description %></li>
   <li class="bullet-item">Seller: <%= link_to @listing.seller_name, user_marketplace_path(@listing.seller) %></li>
- <!--  <li class="bullet-item">
-    <p>Common name: Japanese Black Pine</p>
-    <p>Species: <em>Pinus thunbergii</em></p>
-    <p>Japanese: 黒松 (Kuromatsu)</p>
-  </li> -->
   <li class="bullet-item">Location: <%= @listing.location %></li>
   <% unless @listing.is_offer? %>
     <li class="price"><%= number_to_currency(@listing.price) %></li>

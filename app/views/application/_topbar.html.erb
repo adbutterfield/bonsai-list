@@ -3,13 +3,10 @@
     <li class="name">
       <h1><%= link_to "bonsai list", root_path %></h1>
     </li>
-    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
   <section class="top-bar-section">
-    <!-- Right Nav Section -->
     <ul class="right">
-      <%#= render partial: "temp_links" %>
       <%= render partial: "topbar_links" %>
     </ul>
   </section>

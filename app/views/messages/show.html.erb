@@ -2,14 +2,12 @@
   <div class="small-12 medium-5 large-4 columns hide-for-small">
     <%= render partial: "shared/home_nav" %>
   </div>
-
   <div class="small-12 medium-7 large-8 columns">
     <h4><%= @messages.first.subject %></h4>
     <hr />
     <div id="message-box" class="row">
       <%= render partial: 'receipt', collection: @messages, as: :message %>
     </div>
-
     <div class="row">
       <%= form_tag reply_message_path do %>
         <div class="small-10 columns">

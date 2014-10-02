@@ -5,12 +5,10 @@ module ApplicationHelper
 
   def marketplace_page?
     controller_name == "marketplace" && action_name == "index"
-    # current_page?(controller: 'marketplace')
   end
 
   def home_page?
     controller_name == "users" && action_name == "home"
-    # current_page?(controller: 'users', action: 'home')
   end
 
   def messages_page?
