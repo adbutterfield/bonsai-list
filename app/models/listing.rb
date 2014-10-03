@@ -9,6 +9,8 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
   has_many :inquiries, dependent: :destroy
+  has_many :listing_images, dependent: :destroy
+  accepts_nested_attributes_for :listing_images
   validates :headline, :description, :price, :category, :user_id, :latitude, :longitude, :sale_type, presence: true
   validates :shippable, :publish, :remove, inclusion: { in: [true, false] }
   validates :price, numericality: true
@@ -44,6 +46,10 @@ class Listing < ActiveRecord::Base
 
   def new_offers
     Inquiry.where(listing_id: self.id).not_seen
+  end
+
+  def pics
+    self.listing_images
   end
 
   def seen_offers
