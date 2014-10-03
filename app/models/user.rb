@@ -36,6 +36,10 @@ class User < ActiveRecord::Base
     Listing.joins(:inquiries).where(user_id: self.id).where('inquiries.is_seen = true').group('listings.id').having('COUNT(inquiries.id) > 0').order(created_at: :desc)
   end
 
+  def sent_offers
+    Listing.includes(:inquiries).where("inquiries.user_id = ?", self.id).references(:inquiries)
+  end
+
   def filter_listings_by(params)
     params[:sort] ||= "created_at desc"
 
