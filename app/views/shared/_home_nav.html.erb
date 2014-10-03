@@ -23,7 +23,13 @@
         </ul>
       <% end %>
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-burst-sale"></i> <%= link_to_unless_current "Offers", offers_path %></h5>
+      <h5 class="title"><i class="fi-burst-sale"></i> <%= link_to_unless(offers_page?, "Offers", offers_path) %></h5>
+      <% if offers_page? %>
+        <ul>
+          <li><%= link_to_unless_current "Received", offers_path %></li>
+          <li><%= link_to_unless_current "Sent", sent_offers_path %></li>
+        </ul>
+      <% end %>
       <hr class="home-nav-hr" />
       <h5 class="title"><i class="fi-wrench"></i> <%= link_to_unless_current "Settings", edit_user_registration_path %></h5>
     </div>
