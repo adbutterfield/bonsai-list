@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   post 'inquiries/:id' => 'inquiries#create',    as: 'inquiries'
 
+  get 'offers/sent' => 'offers#sent', as: 'sent_offers'
   resources :offers, only: [:index, :show]
 
   get '(listings(/category/:category_id))/listing_ajax_sort' => 'listings#ajax_sort'
