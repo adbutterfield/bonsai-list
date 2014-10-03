@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140930031401) do
+ActiveRecord::Schema.define(version: 20141003062005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,15 @@ ActiveRecord::Schema.define(version: 20140930031401) do
   add_index "inquiries", ["conversation_id"], name: "index_inquiries_on_conversation_id", using: :btree
   add_index "inquiries", ["listing_id"], name: "index_inquiries_on_listing_id", using: :btree
   add_index "inquiries", ["user_id"], name: "index_inquiries_on_user_id", using: :btree
+
+  create_table "listing_images", force: true do |t|
+    t.integer  "listing_id"
+    t.string   "image"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "listing_images", ["listing_id"], name: "index_listing_images_on_listing_id", using: :btree
 
   create_table "listings", force: true do |t|
     t.string   "headline"
@@ -150,6 +159,7 @@ ActiveRecord::Schema.define(version: 20140930031401) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "pic"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
