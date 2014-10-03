@@ -1,7 +1,10 @@
 <% page_title @listing.headline %>
 <div class="row">
   <div class="small-12 medium-8 columns">
-    <img src="http://placehold.it/610x610&text=Thumbnail">
+    <!-- <img src="http://placehold.it/610x610&text=Thumbnail"> -->
+    <% @listing.pics.each do |pic| %>
+      <%= image_tag(pic.image) %>
+    <% end %>
   </div>
   <div class="small-12 medium-4 columns">
     <%= render partial: "shared/pricing_table" %>
