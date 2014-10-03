@@ -9,6 +9,10 @@ class OffersController < ApplicationController
     @seen_listing_offers = current_user.seen_offers
   end
 
+  def sent
+    @sent_listing_offers = current_user.sent_offers
+  end
+
   def show
     @listing = Listing.find(params[:id])
     @new_inquiries = @listing.new_offers
