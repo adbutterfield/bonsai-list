@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="small-12 medium-5 large-4 columns hide-for-small">
+  <%= render partial: "shared/home_nav" %>
+  </div>
+  <div class="small-12 medium-7 large-8 columns">
+    <div class="row collapse">
+      <div class="small-8 medium-9 columns">
+        <%= text_field(:post, :title, size: 20, placeholder: "Search offers...") %>
+      </div>
+      <div class="small-4 medium-3 columns">
+        <%= button_tag "Search", class: "postfix bon-button" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>Sent Offers</h4>
+      </div>
+    </div>
+    <div class="row">
+      <%= (render partial: 'sent_listing_offer', collection: @sent_listing_offers, as: :listing) || no_offers %>
+    </div>
+  </div>
+</div>
