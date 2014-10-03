@@ -15,6 +15,14 @@ module ApplicationHelper
     controller_name == "messages"
   end
 
+  def offers_page?
+    controller_name == "offers"
+  end
+
+  def offers_index?
+    controller_name == "offers" && action_name == "index"
+  end
+
   def page_title(name)
     content_for(:title) { name + " | bonsai list"}
   end
