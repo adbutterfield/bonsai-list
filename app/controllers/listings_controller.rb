@@ -24,10 +24,12 @@ class ListingsController < ApplicationController
 
   def new
     @listing = current_user.listings.build
+    @image = @listing.listing_images.build
     @sale_types = [SaleType.new('sale', 'Sell now?'), SaleType.new('offer', 'Take offers?') ]
   end
 
   def edit
+    @image = @listing.listing_images.build
   end
 
   def create
@@ -87,7 +89,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:headline, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :sale_type, :published_at)
+      params.require(:listing).permit(:headline, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :sale_type, :published_at, listing_images_attributes: [:id, :listing_id, :image])
     end
 
     def verify_user!
