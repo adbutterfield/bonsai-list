@@ -1,0 +1,12 @@
+<div class="small-3 medium-2 columns message-pic">
+  <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+</div>
+<div class="small-9 medium-10 columns message-block left">
+  <p class="message-name"><%= link_to listing.headline, listing_path(listing) %></p>
+  <div class="row">
+    <div class="small-12 columns">
+      <p>Inquiry sent: <%= listing.inquiry_sent_date %></p>
+    </div>
+  </div>
+</div>
+<hr />
