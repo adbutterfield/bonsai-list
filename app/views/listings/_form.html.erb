@@ -1,4 +1,4 @@
-<%= form_for(@listing) do |f| %>
+<%= form_for(@listing, multipart: true) do |f| %>
 <div class="row">
   <% if @listing.errors.any? %>
     <div id="error_explanation">
@@ -39,6 +39,11 @@
     <%= f.check_box :publish %>
     <%= f.label :publish, "Publish now?" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Check this box if you want to publish the listing right now.<br /><br />You can always pause a listing by unchecking this box later."><i class="fi-info"></i></span>
 
+    <%= f.fields_for @image do |i| %>
+      <%= i.label :image %>
+      <%= i.file_field :image, multiple: true, name: "listing[listing_images_attributes][][image]" %>
+      <%= i.file_field :image, multiple: true, name: "listing[listing_images_attributes][][image]" %>
+    <% end %>
     <div class="actions">
       <%= f.submit "Save Listing", :class => "button tiny" %>
     </div>
