@@ -24,7 +24,7 @@ class ListingsController < ApplicationController
 
   def new
     @listing = current_user.listings.build
-    @listing.listing_images.build
+    4.times { @listing.listing_images.build }
     @sale_types = [SaleType.new('sale', 'Sell now?'), SaleType.new('offer', 'Take offers?') ]
   end
 
