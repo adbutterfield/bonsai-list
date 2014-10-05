@@ -41,8 +41,8 @@
 
     <%= label_tag "Images" %>
     <%= f.fields_for :listing_images do |i| %>
-      <% if @listing.new_record? %>
-        <%= i.file_field :image, multiple: true, name: 'listing[listing_images][][image]' %>
+      <% if i.object.new_record? %>
+        <%= i.file_field :image %>
       <% else %>
         <%= image_tag(i.object.image.thumb) %>
         <%= i.check_box :_destroy %>
