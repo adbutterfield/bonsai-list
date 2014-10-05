@@ -1,15 +1,17 @@
 <% page_title @listing.headline %>
 <div class="row">
   <div class="small-12 medium-8 columns">
-    <div class="row">
-      <img src="http://placehold.it/655x655&text=Thumbnail">
+    <div class="row" id="listing-pic-main-row">
+      <%= image_tag(@listing.pics.first.image.main, :class => "th listing-pic-main") %>
     </div>
     <div class="row">
-      <div class="large-block-grid-4">
-        <% @listing.pics.each do |pic| %>
-          <%= image_tag(pic.image.thumb) %>
-        <% end %>
-      </div>
+      <ul class="clearing-thumbs" data-clearing>
+      <% @listing.pics.each do |pic| %>
+        <li>
+          <%= link_to image_tag(pic.image.thumb, :class => "listing-pic-thumb"), image_path(pic.image.main), :class => "th" %>
+        </li>
+      <% end %>
+      </ul>
     </div>
   </div>
   <div class="small-12 medium-4 columns">
