@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141003062005) do
+ActiveRecord::Schema.define(version: 20141005024156) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,11 +79,11 @@ ActiveRecord::Schema.define(version: 20141003062005) do
   create_table "listings", force: true do |t|
     t.string   "headline"
     t.text     "description"
-    t.decimal  "price",        precision: 10, scale: 2
+    t.decimal  "price",         precision: 10, scale: 2
     t.string   "location"
     t.boolean  "shippable"
     t.boolean  "publish"
-    t.boolean  "remove",                                default: false
+    t.boolean  "remove",                                 default: false
     t.integer  "user_id"
     t.integer  "category_id"
     t.datetime "created_at"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20141003062005) do
     t.float    "longitude"
     t.datetime "published_at"
     t.string   "sale_type"
+    t.integer  "main_image_id"
   end
 
   add_index "listings", ["category_id"], name: "index_listings_on_category_id", using: :btree
