@@ -20,7 +20,7 @@ class Listing < ActiveRecord::Base
   reverse_geocoded_by :latitude, :longitude
 
   def up_to_four
-    case self.listing_images.count
+    case self.listing_images.length
     when 0
       return 4
     when 1
