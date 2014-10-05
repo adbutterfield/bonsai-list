@@ -13,36 +13,49 @@
   <% end %>
 </div>
 <div class="row">
-  <div class="small-12 medium-6 columns">
+  <div class="small-12 medium-7 large-6 columns">
 
     <%= f.label :headline %>
     <%= f.text_field :headline %>
 
     <%= f.label :description %>
     <%= f.text_area :description %>
-
+    <hr />
     <%= f.label :sale_type, :class => 'inline-label' %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Select 'Sell now' if you want to give your listing a firm price.<br /><br />If you select 'Take offers', potential buyers will give you offers."><i class="fi-info"></i></span><br />
-    <%= f.radio_button(:sale_type, "sale") %>
-    <%= f.label "Sell now" %>
-    <%= f.radio_button(:sale_type, "offer") %>
-    <%= f.label "Take offers" %><br />
-
+    <div class="small-5 large-4 columns">
+      <%= f.radio_button(:sale_type, "sale") %>
+      <%= f.label "Sell now" %>
+    </div>
+    <div class="small-7 large-8 columns left">
+      <%= f.radio_button(:sale_type, "offer") %>
+      <%= f.label "Take offers" %><br />
+    </div>
     <%= f.label :price, :class => "inline-label" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Enter a price, even if you selected 'Take offers'.<br /><br />We won't display the price for listings you're taking offers on, but we'll use it to help search and sort listings."><i class="fi-info"></i></span>
     <%= f.text_field :price %>
-
+    <hr />
     <%= f.label "Category" %>
-    <%= f.collection_radio_buttons :category_id, @categories, :id, :name, { checked: @categories.first.id }, { id: 'categories_radio' } %><br />
-
-    <%= f.check_box :shippable %>
-    <%= f.label :shippable, "Willing to ship?" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Check this box if you are willing to ship the item to the buyer."><i class="fi-info"></i></span><br />
-
-    <%= f.check_box :publish %>
-    <%= f.label :publish, "Publish now?" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Check this box if you want to publish the listing right now.<br /><br />You can always pause a listing by unchecking this box later."><i class="fi-info"></i></span><br />
-
-    <%= label_tag "Photos", nil, :class => "inline-label" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Add at least one picture for your listing.<br /><br />You can add up to at least four pictures."><i class="fi-info"></i></span>
+    <%= f.collection_radio_buttons :category_id, @categories, :id, :name, { checked: @categories.first.id }, { id: 'categories_radio' } do |b| %>
+        <div class="small-5 large-4 columns"><%= b.radio_button %> <%= b.label %></div>
+      <% end %><br />
+    <hr />
+    <%= label_tag "Willing to ship?", nil, :class => "inline-label" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Check this box if you are willing to ship the item to the buyer."><i class="fi-info"></i></span><br />
+    <div class="small-12 columns">
+      <%= f.check_box :shippable %>
+      <%= f.label :shippable, "Yes" %>
+    </div><br />
+    <hr />
+    <%= label_tag "Publish listing?", nil, :class => "inline-label" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Check this box if you want to publish the listing right now.<br /><br />You can always pause a listing by unchecking this box later."><i class="fi-info"></i></span><br />
+    <div class="small-12 columns">
+      <%= f.check_box :publish %>
+      <%= f.label :publish, "Yes" %>
+    </div><br />
+    <hr />
+    <%= label_tag "Photos", nil, :class => "inline-label" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Add at least one picture for your listing.<br /><br />You can add up to four pictures."><i class="fi-info"></i></span>
     <%= f.fields_for :listing_images do |i| %>
       <% if i.object.new_record? %>
-        <%= i.file_field :image %>
+        <div class="small-12 columns">
+          <%= i.file_field :image %>
+        </div>
       <% else %>
         <div class="row">
           <div class="small-12 columns">
@@ -57,6 +70,7 @@
         </div>
       <% end %>
     <% end %>
+    <hr />
     <div class="actions">
       <%= f.submit "Save Listing", :class => "button tiny" %>
     </div>
