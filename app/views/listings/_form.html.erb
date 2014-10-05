@@ -39,13 +39,20 @@
     <%= f.check_box :publish %>
     <%= f.label :publish, "Publish now?" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Check this box if you want to publish the listing right now.<br /><br />You can always pause a listing by unchecking this box later."><i class="fi-info"></i></span>
 
-    <%= label_tag "Images" %>
+    <%= label_tag "Photos" %>
     <%= f.fields_for :listing_images do |i| %>
       <% if i.object.new_record? %>
         <%= i.file_field :image %>
       <% else %>
-        <%= image_tag(i.object.image.thumb) %>
-        <%= i.check_box :_destroy %>
+        <div class="row">
+          <div class="small-12 columns">
+            <%= image_tag(i.object.image.thumb) %>
+          </div>
+          <div class="small-12 columns">
+            <%= i.check_box :_destroy %>
+            <%= label_tag "Remove photo?" %>
+          </div>
+        </div>
       <% end %>
     <% end %>
     <div class="actions">
