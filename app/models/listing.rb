@@ -8,10 +8,10 @@ class Listing < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :category
-  has_many :inquiries, dependent: :destroy
+  has_many :inquiries, inverse_of: :listing, dependent: :destroy
   has_many :listing_images, dependent: :destroy
   accepts_nested_attributes_for :listing_images, allow_destroy: true
-  validates :headline, :description, :price, :category, :user_id, :latitude, :longitude, :sale_type, presence: true
+  validates :headline, :description, :price, :category, :user_id, :latitude, :longitude, :sale_type, :listing_images, presence: true
   validates :shippable, :publish, :remove, inclusion: { in: [true, false] }
   validates :price, numericality: true
 
