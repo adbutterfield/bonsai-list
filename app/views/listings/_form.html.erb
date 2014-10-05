@@ -37,9 +37,9 @@
     <%= f.label :shippable, "Willing to ship?" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Check this box if you are willing to ship the item to the buyer."><i class="fi-info"></i></span><br />
 
     <%= f.check_box :publish %>
-    <%= f.label :publish, "Publish now?" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Check this box if you want to publish the listing right now.<br /><br />You can always pause a listing by unchecking this box later."><i class="fi-info"></i></span>
+    <%= f.label :publish, "Publish now?" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Check this box if you want to publish the listing right now.<br /><br />You can always pause a listing by unchecking this box later."><i class="fi-info"></i></span><br />
 
-    <%= label_tag "Photos" %>
+    <%= label_tag "Photos", nil, :class => "inline-label" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Add at least one picture for your listing.<br /><br />You can add up to at least four pictures."><i class="fi-info"></i></span>
     <%= f.fields_for :listing_images do |i| %>
       <% if i.object.new_record? %>
         <%= i.file_field :image %>
@@ -49,6 +49,8 @@
             <%= image_tag(i.object.image.thumb) %>
           </div>
           <div class="small-12 columns">
+            <%= f.radio_button(:main_image_id, i.object.id) %>
+            <%= label_tag "Set as display photo?" %><br />
             <%= i.check_box :_destroy %>
             <%= label_tag "Remove photo?" %>
           </div>
