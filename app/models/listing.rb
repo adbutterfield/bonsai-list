@@ -19,6 +19,21 @@ class Listing < ActiveRecord::Base
 
   reverse_geocoded_by :latitude, :longitude
 
+  def up_to_four
+    case self.listing_images.count
+    when 0
+      return 4
+    when 1
+      return 3
+    when 2
+      return 2
+    when 3
+      return 1
+    when 4
+      return 0
+    end
+  end
+
   def published?
     self.publish ? "Yes" : "No"
   end
