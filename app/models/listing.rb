@@ -59,6 +59,14 @@ class Listing < ActiveRecord::Base
     self.sale_type == "offer"
   end
 
+  def main_image
+    (self.listing_images.where(id: self.main_image_id)[0] || self.listing_images.first).image.main
+  end
+
+  def marketplace_image
+    (self.listing_images.where(id: self.main_image_id)[0] || self.listing_images.first).image.marketplace
+  end
+
   def new_offers
     Inquiry.where(listing_id: self.id).not_seen
   end
