@@ -29,6 +29,7 @@ class ListingsController < ApplicationController
   end
 
   def edit
+    @listing.up_to_four.times { @listing.listing_images.build }
   end
 
   def create
