@@ -5,7 +5,7 @@
       <% if @listing.listing_images.empty? %>
         <img src="http://placehold.it/1000x1000&text=Thumbnail">
       <% else %>
-        <%= image_tag(@main_image, :class => "th listing-pic-main") %>
+        <%= image_tag(@listing.main_image, :class => "th listing-pic-main") %>
       <% end %>
     </div>
     <div class="row">
