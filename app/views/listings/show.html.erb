@@ -2,7 +2,11 @@
 <div class="row">
   <div class="small-12 medium-8 columns">
     <div class="row" id="listing-pic-main-row">
-      <%= image_tag(@listing.pics.first.image.main, :class => "th listing-pic-main") %>
+      <% if @listing.listing_images.empty? %>
+        <img src="http://placehold.it/1000x1000&text=Thumbnail">
+      <% else %>
+        <%= image_tag(@main_image, :class => "th listing-pic-main") %>
+      <% end %>
     </div>
     <div class="row">
       <ul class="clearing-thumbs" data-clearing>
