@@ -3,7 +3,7 @@
   <div class="small-12 medium-8 columns">
     <div class="row" id="listing-pic-main-row">
       <% if @listing.listing_images.empty? %>
-        <img src="http://placehold.it/1000x1000&text=Thumbnail">
+        <img src="http://placehold.it/1000x1000&text=img">
       <% else %>
         <%= image_tag(@listing.main_image, :class => "th listing-pic-main") %>
       <% end %>
