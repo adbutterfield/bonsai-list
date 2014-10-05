@@ -42,6 +42,7 @@ class ListingsController < ApplicationController
       redirect_to user_root_url, notice: 'Listing was successfully created.'
     else
       @categories = Category.all
+      @listing.up_to_four.times { @listing.listing_images.build }
       render :new
     end
   end
@@ -54,6 +55,8 @@ class ListingsController < ApplicationController
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
       else
+        @categories = Category.all
+        @listing.up_to_four.times { @listing.listing_images.build }
         format.html { render :edit }
       end
     end
@@ -89,7 +92,7 @@ class ListingsController < ApplicationController
     end
 
     def listing_params
-      params.require(:listing).permit(:headline, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :sale_type, :published_at, listing_images_attributes: [:id, :listing_id, :image, :_destroy])
+      params.require(:listing).permit(:headline, :description, :price, :shippable, :publish, :latitude, :longitude, :remove, :user_id, :category_id, :sale_type, :published_at, :main_image_id, listing_images_attributes: [:id, :listing_id, :image, :_destroy, :image_cache])
     end
 
     def verify_user!
