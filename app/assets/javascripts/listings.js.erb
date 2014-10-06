@@ -10,12 +10,13 @@ $(function(){
   });
 
   function listingSearchSort (){
+    var url = window.location.pathname + '/listing_ajax_sort'
     var search = $('.marketplace-search').val();
     var category = $('#listings').data('categoryId');
     var sortValue = $('#sort_listing option:selected').val();
     var distanceValue = $('#distance_filter option:selected').val();
     $.ajax({
-      url: 'listing_ajax_sort',
+      url: url,
       type: 'GET',
       dataType: 'script',
       data: {
