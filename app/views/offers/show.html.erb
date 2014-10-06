@@ -1,6 +1,10 @@
 <div class="row">
   <div class="small-12 medium-5 large-4 columns">
-    <img src="http://placehold.it/610x610&text=Thumbnail">
+    <% if @listing.listing_images.empty? %>
+      <img src="http://placehold.it/610x610&text=[img]">
+    <% else %>
+      <%= image_tag(@listing.main_image) %>
+    <% end %>
     <%= render partial: "shared/pricing_table" %>
   </div>
   <div class="small-12 medium-7 large-8 columns">
