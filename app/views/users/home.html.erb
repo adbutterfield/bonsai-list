@@ -11,7 +11,7 @@
     <div class="row">
       <div class="small-3 medium-2 columns listing-thumb">
         <% if listing.pics.empty? %>
-          <%= link_to image_tag("http://placehold.it/50x50&text=img"), listing_path(listing) %>
+          <%= link_to image_tag("http://placehold.it/50x50&text=[img]", :class => "th"), listing_path(listing) %>
         <% else %>
           <%= link_to image_tag(listing.thumb_image, :class => "th"), listing_path(listing) %>
         <% end %>
