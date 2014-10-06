@@ -1,6 +1,10 @@
 <div id="profile-banner" class="row">
   <div id="profile-pic-box" class="small-4 medium-3 large-2 columns no-padding">
-    <img id="profile-pic" src="http://placehold.it/240x240&text=[img]">
+    <% if @user.avatar.present? %>
+      <%= image_tag(@user.avatar.main, id: "profile-pic") %>
+    <% else %>
+      <%= image_tag("http://placehold.it/240x240&text=[img]", id: "profile-pic") %>
+    <% end %>
   </div>
   <div id="profile-name-column" class="small-7 medium-8 large-9 columns no-padding">
     <h4 id="profile-name" class="text-left"><%= @user.full_name %></h4>
