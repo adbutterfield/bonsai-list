@@ -1,9 +1,10 @@
 <div id="profile-banner" class="row">
-  <div id="profile-pic-box" class="small-4 medium-2 columns no-padding">
-    <img id="profile-pic" src="http://placehold.it/240x240&text=Thumbnail">
+  <div id="profile-pic-box" class="small-4 medium-3 large-2 columns no-padding">
+    <img id="profile-pic" src="http://placehold.it/240x240&text=[img]">
   </div>
-  <div id="profile-name-column" class="small-7 medium-9 columns no-padding">
+  <div id="profile-name-column" class="small-7 medium-8 large-9 columns no-padding">
     <h4 id="profile-name" class="text-left"><%= @user.full_name %></h4>
+    <p id="profile-address"><%= @user.location %></p>
     <% if user_signed_in? && not_current_user(@user) %>
       <div class="row">
         <div class="small-10 medium-5 large-4 columns">
