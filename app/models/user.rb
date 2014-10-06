@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
     "#{self.firstname} #{self.lastname}"
   end
 
+  def location
+    "#{self.address.city}, #{self.address.state}"
+  end
+
   def mailboxer_email(object)
     self.email
   end
