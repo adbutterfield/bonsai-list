@@ -2,10 +2,11 @@ Rails.application.routes.draw do
 
   get 'home' => 'users#home', as: 'user_root'
 
-  get '(marketplace(/category/:category_id))/marketplace_ajax_sort' => 'marketplace#ajax_sort'
   get 'marketplace(/category/:category_id)' => 'marketplace#index', as: 'marketplace'
-  get 'marketplace/:id(/category(/:category_id))/marketplace_ajax_sort' => 'marketplace#ajax_sort'
+  get 'marketplace(/category/:category_id)/marketplace_ajax_sort' => 'marketplace#ajax_sort'
+
   get 'marketplace/:id(/category/:category_id)/' => 'marketplace#show', as: 'user_marketplace'
+  get 'marketplace/:id(/category/:category_id)/marketplace_ajax_sort' => 'marketplace#ajax_sort'
 
   get  'messages/inbox'       => 'messages#index',        as: 'messages'
   get  'messages/sent'        => 'messages#sent_box',     as: 'sent'
@@ -21,8 +22,8 @@ Rails.application.routes.draw do
   get 'offers/sent' => 'offers#sent', as: 'sent_offers'
   resources :offers, only: [:index, :show]
 
-  get '(listings(/category/:category_id))/listing_ajax_sort' => 'listings#ajax_sort'
   get 'listings(/category/:category_id)' => 'listings#index', as: 'listings'
+  get 'listings(/category/:category_id)/listing_ajax_sort' => 'listings#ajax_sort'
 
   resources :listings, except: [:index]
   # TODO set better url for listing#show
