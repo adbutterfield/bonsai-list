@@ -1,5 +1,9 @@
 <div class="small-3 medium-2 columns message-pic">
-  <a href="#"><img src="http://placehold.it/50x50&text=[img]" /></a>
+  <% if inquiry.user.avatar.present? %>
+    <%= link_to image_tag(inquiry.user.avatar.thumb), user_marketplace_path(inquiry.user) %>
+  <% else %>
+    <%= link_to image_tag("http://placehold.it/50x50&text=[img]"), user_marketplace_path(inquiry.user) %>
+  <% end %>
 </div>
 <div class="small-9 medium-10 columns message-block left">
   <p class="message-name"><%= link_to inquiry.user.full_name, user_marketplace_path(inquiry.user) %></p>
