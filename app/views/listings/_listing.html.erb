@@ -1,8 +1,8 @@
 <li>
   <% if listing.listing_images.empty? %>
-    <img src="http://placehold.it/1000x1000&text=Thumbnail">
+    <%= link_to image_tag("http://placehold.it/1000x1000&text=[img]"), listing_path(listing) %>
   <% else %>
-    <%= image_tag(listing.marketplace_image, 'data-interchange' => "[#{asset_path(listing.main_image)}, (small)], [#{asset_path(listing.marketplace_image)}, (medium)]") %>
+    <%= link_to image_tag(listing.marketplace_image, 'data-interchange' => "[#{asset_path(listing.main_image)}, (small)], [#{asset_path(listing.marketplace_image)}, (medium)]"), listing_path(listing) %>
   <% end %>
   <div class="panel listing-title">
     <h5><%= link_to listing.headline, listing %></h5>
