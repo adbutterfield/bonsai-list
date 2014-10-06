@@ -84,7 +84,7 @@ class ListingsController < ApplicationController
     end
 
     def set_listings
-      if params[:sort].blank?
+      if params[:search].blank?
         @listings = current_user.filter_listings_by(params)
       else
         @listings = current_user.filter_listings_by(params).search_by(params[:search])
