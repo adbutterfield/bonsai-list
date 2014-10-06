@@ -2,20 +2,24 @@
 <div class="row">
   <div class="small-12 medium-8 columns">
     <div class="row" id="listing-pic-main-row">
-      <% if @listing.listing_images.empty? %>
-        <img src="http://placehold.it/1000x1000&text=img">
-      <% else %>
-        <%= image_tag(@listing.main_image, :class => "th listing-pic-main") %>
-      <% end %>
+      <div class="small-12 columns">
+        <% if @listing.listing_images.empty? %>
+          <%= image_tag("http://placehold.it/1000x1000&text=[img]", :class => "th listing-pic-main" ) %>
+        <% else %>
+          <%= image_tag(@listing.main_image, :class => "th listing-pic-main") %>
+        <% end %>
+      </div>
     </div>
     <div class="row">
-      <ul class="clearing-thumbs" data-clearing>
-      <% @listing.pics.each do |pic| %>
-        <li>
-          <%= link_to image_tag(pic.image.thumb, :class => "listing-pic-thumb"), image_path(pic.image.main), :class => "th" %>
-        </li>
-      <% end %>
-      </ul>
+      <div class="small-12 columns">
+        <ul class="clearing-thumbs" data-clearing>
+        <% @listing.pics.each do |pic| %>
+          <li>
+            <%= link_to image_tag(pic.image.thumb, :class => "listing-pic-thumb"), image_path(pic.image.main), :class => "th" %>
+          </li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   </div>
   <div class="small-12 medium-4 columns">
