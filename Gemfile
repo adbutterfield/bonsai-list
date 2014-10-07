@@ -42,7 +42,11 @@ gem 'friendly_id', '~> 5.0.0'
 
 gem 'carrierwave'
 
-gem "mini_magick"
+gem 'fog'
+
+gem 'mini_magick'
+
+gem 'figaro'
 
 group :development do
   gem 'better_errors'
@@ -56,7 +60,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-autotest'
   gem 'faker'
-
 end
 
 group :test do
