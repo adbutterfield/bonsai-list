@@ -33,6 +33,14 @@ class ApplicationController < ActionController::Base
     current_user == user
   end
 
+  def new_messages?
+    current_user.mailbox.inbox(unread: true).lenght > 0
+  end
+
+  def new_offers?
+    current_user.new_offers.lenght > 0
+  end
+
   protected
 
   def configure_permitted_parameters
