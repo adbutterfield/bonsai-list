@@ -7,31 +7,6 @@
     <%= link_to "Add new listing", new_listing_path, :class => "button radius expand new-listing-button" %>
     <h2>Current Listings</h2>
     <hr class="nav-hr" />
-    <% @listings.each do |listing| %>
-    <div class="row">
-      <div class="small-3 medium-2 columns listing-thumb">
-        <% if listing.pics.empty? %>
-          <%= link_to image_tag("http://placehold.it/50x50&text=[img]", :class => "th"), listing_path(listing) %>
-        <% else %>
-          <%= link_to image_tag(listing.thumb_image, :class => "th"), listing_path(listing) %>
-        <% end %>
-      </div>
-      <div class="small-9 medium-10 columns left no-padding">
-        <div class="small-9 columns">
-          <p class="message-name">
-            <%= link_to truncate(listing.headline, length: 30), listing_path(listing) %>
-          </p>
-          <p>Category: <%= listing.category.name %></p>
-          <p>Published: <%= listing.published? %></p>
-        </div>
-        <div class="small-3 columns panel listing-list-panel">
-          <p class="centered-text"><%= link_to 'Edit', edit_listing_path(listing) %></p>
-          <hr class="nav-hr" />
-          <p class="centered-text"><%= link_to 'Delete', remove_listing_path(listing), method: :patch, data: { confirm: 'Are you sure you want to remove this listing?' } %></p>
-        </div>
-      </div>
-      <hr />
-    </div>
-    <% end %>
+    <%= (render partial: "home_listing", collection: @listings, as: :listing) || no_listings_message %>
   </div>
 </div>
