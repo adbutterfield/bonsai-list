@@ -27,6 +27,10 @@ module ApplicationHelper
     content_for(:title) { name + " | bonsai list"}
   end
 
+  def no_listings_message
+    "<p class='text-center no-listing-message-margin'>No listings found</p>".html_safe
+  end
+
   def marketplace_or_listings
     return user_marketplace_path(@user) if @user
     return marketplace_path if controller_name == "marketplace"
