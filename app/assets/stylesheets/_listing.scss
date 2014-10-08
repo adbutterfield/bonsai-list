@@ -1,0 +1,22 @@
+.inline-label {
+  display: inline;
+  margin-right: 10px;
+}
+
+.listing-title {
+  min-height: 108px;
+}
+
+.listing-pic-main {
+  margin-bottom: 20px;
+}
+
+#listing-pic-main-row {
+  img.th:hover, img.th:focus {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.preview-pic-row {
+  margin-bottom: 15px;
+}
