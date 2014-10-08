@@ -44,4 +44,16 @@ module ApplicationHelper
   def set_controller_name
     return Rails.env.test? ? "marketplace" : controller_name
   end
+
+  def new_messages?
+    current_user.mailbox.inbox(unread: true).length > 0
+  end
+
+  def new_offers?
+    current_user.new_offers.length > 0
+  end
+
+  def new_notification?
+    new_messages? || new_offers?
+  end
 end
