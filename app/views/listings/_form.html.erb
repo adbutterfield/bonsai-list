@@ -22,11 +22,11 @@
     <%= f.text_area :description %>
     <hr />
     <%= f.label :sale_type, :class => 'inline-label' %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Select 'Sell now' if you want to give your listing a firm price.<br /><br />If you select 'Take offers', potential buyers will give you offers."><i class="fi-info"></i></span><br />
-    <div class="small-5 large-4 columns">
+    <div class="small-6 large-4 columns">
       <%= f.radio_button(:sale_type, "sale") %>
       <%= f.label "Sell now" %>
     </div>
-    <div class="small-7 large-8 columns left">
+    <div class="small-6 large-8 columns">
       <%= f.radio_button(:sale_type, "offer") %>
       <%= f.label "Take offers" %><br />
     </div>
