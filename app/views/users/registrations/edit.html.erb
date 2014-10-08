@@ -1,17 +1,17 @@
 <% page_title "Edit Settings" %>
 <div class="row">
-  <div class="small-12 medium-5 large-4 columns hide-for-small">
+  <div class="small-12 medium-4 columns hide-for-small">
     <%= render partial: "shared/home_nav" %>
   </div>
 
-  <div class="small-12 medium-7 large-8 columns">
+  <div class="small-12 medium-8 columns">
     <div class="row">
       <div class="small-12 columns">
         <h1>Update your info</h1>
       </div>
     </div>
     <div class="row">
-      <div class="small-12 medium-6 columns">
+      <div class="small-12 medium-8 large-6 columns">
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f| %>
           <%= devise_error_messages! %>
 
@@ -25,9 +25,9 @@
           <%= f.email_field :email %>
 
           <% if current_user.avatar.url.present? %>
-            <%= image_tag(current_user.avatar.url)  %>
-            <%= f.label :remove_avatar %>
+            <%= image_tag(current_user.avatar.url) %><br />
             <%= f.check_box :remove_avatar  %>
+            <%= f.label :remove_avatar, "Remove image" %>
           <% else %>
             <%= f.file_field :avatar %>
             <%= f.hidden_field :avatar_cache %>
