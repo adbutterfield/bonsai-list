@@ -18,20 +18,20 @@
       <hr class="home-nav-hr" />
       <h5 class="title"><i class="fi-price-tag"></i> <%= link_to_unless_current "My Listings", listings_path %></h5>
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-mail"></i> <%= link_to_unless(messages_page?, "Messages", messages_path) %></h5>
+      <h5 class="title"><i class="fi-burst-sale <%= "notification" if new_offers? %>"></i> <%= link_to_unless(offers_page?, "Offers", offers_path) %></h5>
+      <% if offers_page? %>
+        <ul>
+          <li><%= link_to_unless_current "Received", offers_path %></li>
+          <li><%= link_to_unless_current "Sent", sent_offers_path %></li>
+        </ul>
+      <% end %>
+      <hr class="home-nav-hr" />
+      <h5 class="title"><i class="fi-mail <%= "notification" if new_messages? %>"></i> <%= link_to_unless(messages_page?, "Messages", messages_path) %></h5>
       <% if messages_page? %>
         <ul id="mailbox-links">
           <li><%= link_to_unless_current "Inbox", messages_path %></li>
           <li><%= link_to_unless_current "Sent", sent_path %></li>
           <li><%= link_to_unless_current "Trash", trash_path %></li>
-        </ul>
-      <% end %>
-      <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-burst-sale"></i> <%= link_to_unless(offers_page?, "Offers", offers_path) %></h5>
-      <% if offers_page? %>
-        <ul>
-          <li><%= link_to_unless_current "Received", offers_path %></li>
-          <li><%= link_to_unless_current "Sent", sent_offers_path %></li>
         </ul>
       <% end %>
       <hr class="home-nav-hr" />
