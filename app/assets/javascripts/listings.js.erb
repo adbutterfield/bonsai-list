@@ -25,6 +25,9 @@ $(function(){
         sort: sortValue,
         distance_filter: distanceValue
       },
+    }).done(function(){
+       $(document).foundation('interchange', 'reflow');
+       $(document).foundation('interchange', 'resize');
     });
   }
   $('#search-button').on('click', listingSearchSort);
