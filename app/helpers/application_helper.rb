@@ -46,11 +46,11 @@ module ApplicationHelper
   end
 
   def new_messages?
-    current_user.mailbox.inbox(unread: true).length > 0
+    user_signed_in? ? current_user.mailbox.inbox(unread: true).length > 0 : false
   end
 
   def new_offers?
-    current_user.new_offers.length > 0
+    user_signed_in? ? current_user.new_offers.length > 0 : false
   end
 
   def new_notification?
