@@ -23,6 +23,10 @@ module ApplicationHelper
     controller_name == "offers" && action_name == "index"
   end
 
+  def all_listings?
+    ((controller_name == "listings"  && action_name == "index") || controller_name == "marketplace") && params[:category_id] == nil
+  end
+
   def page_title(name)
     content_for(:title) { name + " | bonsai list"}
   end
