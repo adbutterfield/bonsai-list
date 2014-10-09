@@ -1,6 +1,4 @@
-<li>
-  <%= link_to_unless_current category.name, {
+<%= link_to "<li>#{ category.name }</li>".html_safe, {
   controller: set_controller_name,
   action: action_name,
-  category_id: category.name.downcase } %>
-</li>
+  category_id: category.name.downcase }, :class => "nav-link" %>
