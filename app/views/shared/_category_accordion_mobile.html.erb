@@ -3,14 +3,17 @@
     <dd class="accordion-navigation">
       <a href="#panel2">Select Category</a>
       <div id="panel2" class="content">
-        <ul>
-          <%= link_to_unless_current "All listings", marketplace_or_listings %>
-          <hr class="nav-hr" />
-          Categories
+        <div class="panel">
           <ul>
-            <%= render partial: @categories %>
+            <label class="marketplace-nav-title">
+              <em>Categories</em>
+              <%= " - #{ link_to 'Show All', marketplace_or_listings, :class => 'marketplace-show-all' }".html_safe unless all_listings? %>
+            </label>
+            <ul>
+              <%= render partial: @categories %>
+            </ul>
           </ul>
-        </ul>
+        </div>
       </div>
     </dd>
   </dl>
