@@ -4,7 +4,7 @@
     <%= render partial: "shared/home_nav" %>
   </div>
   <div class="small-12 medium-8 columns">
-    <%= link_to "Add new listing", new_listing_path, :class => "button radius expand new-listing-button" %>
+    <%= link_to "Add new listing", new_listing_path, :class => "button radius expand" %>
     <h2>Current Listings</h2>
     <hr class="nav-hr" />
     <%= (render partial: "home_listing", collection: @listings, as: :listing) || no_listings_message %>
