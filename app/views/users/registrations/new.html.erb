@@ -4,8 +4,6 @@
     <h2>Sign up</h2>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {multipart: true}) do |f| %>
       <%= devise_error_messages! %>
-      <%= f.hidden_field :latitude, value: @user.address.latitude %>
-      <%= f.hidden_field :longitude, value: @user.address.longitude %>
       <div class="row">
         <div class="smaill-12 medium-6 columns">
           <%= f.label :firstname, "First name" %>
