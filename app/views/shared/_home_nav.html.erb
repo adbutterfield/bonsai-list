@@ -14,28 +14,28 @@
   <div class="row">
     <div id="home-nav" class="small-12 columns">
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-home"></i> <%= link_to_unless_current "Home", user_root_path %></h5>
+      <%= link_to_unless_current "<h5 class='title'><i class='fi-home'></i> Home</h5>".html_safe, user_root_path, :class => "nav-link" %>
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-price-tag"></i> <%= link_to_unless_current "My Listings", listings_path %></h5>
+      <%= link_to_unless_current "<h5 class='title'><i class='fi-price-tag'></i> My Listings</h5>".html_safe, listings_path, :class => "nav-link" %>
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-burst-sale <%= "notification" if new_offers? %>"></i> <%= link_to_unless(offers_page?, "Offers", offers_path) %></h5>
+      <h5 class="title"><%= link_to_unless(offers_page?, "<h5 class='title'><i class='fi-burst-sale #{ 'notification' if new_offers? }'></i> Offers</h5>".html_safe, offers_path, :class => "nav-link") %></h5>
       <% if offers_page? %>
         <ul>
-          <li><%= link_to_unless_current "Received", offers_path %></li>
-          <li><%= link_to_unless_current "Sent", sent_offers_path %></li>
+          <li><%= link_to_unless_current "Received", offers_path, :class => "nav-link" %></li>
+          <li><%= link_to_unless_current "Sent", sent_offers_path, :class => "nav-link" %></li>
         </ul>
       <% end %>
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-mail <%= "notification" if new_messages? %>"></i> <%= link_to_unless(messages_page?, "Messages", messages_path) %></h5>
+      <h5 class="title"><%= link_to_unless(messages_page?, "<h5 class='title'><i class='fi-mail #{ 'notification' if new_messages? }'></i> Messages</h5>".html_safe, messages_path, :class => "nav-link") %></h5>
       <% if messages_page? %>
         <ul id="mailbox-links">
-          <li><%= link_to_unless_current "Inbox", messages_path %></li>
-          <li><%= link_to_unless_current "Sent", sent_path %></li>
-          <li><%= link_to_unless_current "Trash", trash_path %></li>
+          <li><%= link_to_unless_current "Inbox", messages_path, :class => "nav-link" %></li>
+          <li><%= link_to_unless_current "Sent", sent_path, :class => "nav-link" %></li>
+          <li><%= link_to_unless_current "Trash", trash_path, :class => "nav-link" %></li>
         </ul>
       <% end %>
       <hr class="home-nav-hr" />
-      <h5 class="title"><i class="fi-wrench"></i> <%= link_to_unless_current "Settings", edit_user_registration_path %></h5>
+      <h5 class="title"><%= link_to_unless_current "<h5 class='title'><i class='fi-wrench'></i> Settings</h5>".html_safe, edit_user_registration_path, :class => "nav-link" %></h5>
     </div>
   </div>
 </div>
