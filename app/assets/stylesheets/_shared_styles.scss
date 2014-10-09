@@ -15,6 +15,7 @@ p {
 
 .bon-button:hover {
   background-color: #246020;
+  color: white;
 }
 
 .fi-info {
@@ -31,8 +32,8 @@ p {
   padding-right: 0;
 }
 
-.marketplace-nav-title {
-  font-size: large;
+.marketplace-nav-hr {
+  margin: 0;
 }
 
 .message-block {
@@ -59,13 +60,74 @@ p {
   margin: 10px 0;
 }
 
+a.nav-link h5 {
+  color: #707070;
+  text-shadow: 2px black, 2px black;
+}
+
+a.nav-link h5:hover {
+  color: #009900;
+}
+
+#marketplace-nav {
+  padding: 0;
+  margin-bottom: 0;
+  padding-right: 20px;
+}
+
+a.nav-link li, .marketplace-nav-title {
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #d8d8d8;
+  color: #111;
+  font-size: 1em;
+  line-height: 1.625em;
+  padding-bottom: 12px;
+  padding-left: 30px;
+  padding-right: 12px;
+  padding-top: 12px;
+}
+
+.marketplace-nav-title, .marketplace-nav-title a{
+  font-size: large;
+  padding-top: 0px;
+  padding-left: 0px;
+}
+
+.marketplace-show-all {
+  color: #111;
+  font-size: small;
+}
+
+.marketplace-show-all:hover {
+  color: #009900;
+}
+
+.marketplace-nav-ul {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+a.nav-link li:hover {
+  background-color: #ddd;
+  text-shadow: none;
+}
+
+.nav-link {
+  color: #707070;
+  text-shadow: 2px black, 2px black;
+}
+
+.nav-link:hover {
+  color: #009900;
+}
+
 .no-messages {
   font-size: larger;
   padding-bottom: 20px;
 }
 
 .notification {
-  color: #2ECC40;
+  color: #009900;
 }
 
 .no-listing-message-margin {
