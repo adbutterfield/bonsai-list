@@ -28,10 +28,13 @@ Rails.application.routes.draw do
   resources :listings, except: [:index]
   # TODO set better url for listing#show
   patch 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
-
   # resources :categories, except: [:index, :show]
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
+
+  get 'about'   => 'static_pages#about'
+  get 'contact' => 'static_pages#contact'
+  get 'faq'     => 'static_pages#faq'
 
   root 'static_pages#home'
 
