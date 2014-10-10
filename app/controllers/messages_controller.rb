@@ -16,7 +16,7 @@ class MessagesController < ApplicationController
   def show
     @conversation = Mailboxer::Conversation.find(params[:id])
     @conversation.mark_as_read(current_user)
-    @messages = @conversation.messages
+    @messages = @conversation.messages.reverse
   end
 
   def reply
