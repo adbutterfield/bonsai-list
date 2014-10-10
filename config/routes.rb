@@ -29,7 +29,6 @@ Rails.application.routes.draw do
   # TODO set better url for listing#show
   patch 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
   put   'listings/remove/:id' => 'listings#remove'
-  # resources :categories, except: [:index, :show]
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
