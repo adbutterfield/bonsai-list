@@ -8,4 +8,8 @@ class Inquiry < ActiveRecord::Base
   def conversation
     Mailboxer::Conversation.find(self.conversation_id)
   end
+
+  def sent_time
+    self.created_at.strftime('%A %b %e %l:%M %P')
+  end
 end

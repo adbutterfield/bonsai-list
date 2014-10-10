@@ -7,7 +7,7 @@
 </div>
 <div class="small-9 medium-10 columns message-block left">
   <p class="message-name"><%= link_to inquiry.user.full_name, user_marketplace_path(inquiry.user) %></p>
-  <p class="message-date"><%= inquiry.created_at.strftime('%A %b %e %l:%M %P') %></p>
+  <p class="message-date"><%= inquiry.sent_time %></p>
   <div class="row">
     <div class="small-12 columns">
       <% if inquiry.listing.is_offer? %>
