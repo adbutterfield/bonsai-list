@@ -9,7 +9,7 @@ class Inquiry < ActiveRecord::Base
     Mailboxer::Conversation.find(self.conversation_id)
   end
 
-  def sent_time
-    self.created_at.strftime('%A %b %e %l:%M %P')
+  def sent_time(current_user)
+    self.created_at.in_time_zone(current_user.timezone).strftime('%A %b %e %l:%M %P')
   end
 end
