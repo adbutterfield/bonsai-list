@@ -11,7 +11,7 @@
   <div class="row">
     <div class="small-12 columns">
       <% if inquiry.listing.is_offer? %>
-        <p><strong>Offer: <%= inquiry.offer %></strong></p>
+        <p><strong>Offer: <%= number_to_currency(inquiry.offer) %></strong></p>
       <% else %>
         <p><strong>Is interested</strong></p>
       <% end %>
