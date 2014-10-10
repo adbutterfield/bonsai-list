@@ -51,8 +51,8 @@ class Listing < ActiveRecord::Base
     self.update(remove: true)
   end
 
-  def inquiry_sent_date
-    self.inquiries.first.created_at.strftime('%A %b %e %l:%M %P')
+  def inquiry_sent_date(current_user)
+    self.inquiries.first.created_at.in_time_zone(current_user.timezone).strftime('%A %b %e %l:%M %P')
   end
 
   def is_offer?
