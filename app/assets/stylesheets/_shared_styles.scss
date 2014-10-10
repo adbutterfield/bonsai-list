@@ -18,6 +18,14 @@ p {
   color: white;
 }
 
+.edit-user-image:hover, .edit-user-image:focus {
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.fi-asterisk {
+  color: #246020;
+}
+
 .fi-info {
   color: gray;
   font-size: 20px;
