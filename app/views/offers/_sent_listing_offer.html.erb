@@ -9,7 +9,7 @@
   <p class="message-name"><%= link_to listing.headline, listing_path(listing) %></p>
   <div class="row">
     <div class="small-12 columns">
-      <p>Inquiry sent: <%= listing.inquiry_sent_date %></p>
+      <p>Inquiry sent: <%= listing.inquiry_sent_date(current_user) %></p>
     </div>
   </div>
 </div>

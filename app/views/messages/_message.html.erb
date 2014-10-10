@@ -31,7 +31,7 @@
       <p class=" <%= 'read_message' unless conversation.receipts_for(current_user).first.is_unread? %>"><%= link_to conversation.subject, message_path(conversation) %></p>
     </div>
     <div class="small-12 columns">
-      <p class="message-date"><%= conversation.messages.last.created_at.strftime('%A %b %e %l:%M %P') %></p>
+      <p class="message-date"><%= conversation.messages.last.created_at.in_time_zone(current_user.timezone).strftime('%A %b %e %l:%M %P') %></p>
     </div>
   </div>
 </div>

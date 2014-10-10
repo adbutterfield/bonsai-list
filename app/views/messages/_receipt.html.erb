@@ -7,7 +7,7 @@
 </div>
 <div class="small-9 medium-10 columns message-block left">
   <p class="message-name"><%= link_to message.sender.full_name, user_marketplace_path(message.sender) %></p>
-  <p class="message-date"><%= message.created_at.strftime('%A %b %e %l:%M %P') %></p>
+  <p class="message-date"><%= message.created_at.in_time_zone(current_user.timezone).strftime('%A %b %e %l:%M %P') %></p>
   <div class="row">
     <div class="small-12 columns">
       <p><%= message.body %></p>
