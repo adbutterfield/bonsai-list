@@ -14,7 +14,7 @@
       <div class="small-12 medium-8 large-6 columns">
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f| %>
           <%= devise_error_messages! %>
-
+          <h5>Basic info</h5>
           <%= f.label :firstname, "First name" %>
           <%= f.text_field :firstname, :autofocus => true %>
 
@@ -23,22 +23,23 @@
 
           <%= f.label :email %>
           <%= f.email_field :email %>
-
+          <hr />
+          <h5>Profile image</h5>
           <% if current_user.avatar.url.present? %>
-            <%= image_tag(current_user.avatar.url) %><br />
+            <%= image_tag(current_user.avatar.url, :class => "th edit-user-image") %><br />
             <%= f.check_box :remove_avatar  %>
             <%= f.label :remove_avatar, "Remove image" %>
           <% else %>
             <%= f.file_field :avatar %>
             <%= f.hidden_field :avatar_cache %>
           <% end %>
-
+          <hr class="nav-hr" />
           <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
             <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
           <% end %>
 
           <%= f.fields_for :address, @user.address do |addr| %>
-            <p>Address</p>
+            <h5>Address</h5>
             <div class="row">
               <div class="small-12 medium-6 columns"><%= addr.label :city %>
               <%= addr.text_field :city, value: @user.address.city %></div>
@@ -54,23 +55,19 @@
               <%= addr.text_field :country, value: @user.address.country %></div>
             </div>
           <% end %>
-          <dl class="accordion" data-accordion>
-            <dd class="accordion-navigation">
-              <a href="#panel2">Change password</a>
-              <div id="panel2" class="content">
-                <%= f.label :password %> <em>(leave blank if you don't want to change it)</em>
-                <%= f.password_field :password, :autocomplete => "off" %>
+          <hr class="nav-hr" />
+          <h5 class="inline-label">Change password</h5><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Leave these blank if you don't want to change your current password."><i class="fi-info"></i></span><br />
+          <%= f.label :password %>
+          <%= f.password_field :password, :autocomplete => "off" %>
 
-                <%= f.label :password_confirmation %>
-                <%= f.password_field :password_confirmation %>
-              </div>
-            </dd>
-          </dl>
-
-          <%= f.label :current_password %> <em>(to confirm your changes)</em>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+          <hr />
+          <h5 class="inline-label">Confirm your password</h5><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Please enter your current password to confirm your changes."><i class="fi-info"></i></span><br />
+          <%= f.label :current_password, "<i class='fi-asterisk'></i> Current password".html_safe, :class => 'inline-label' %>
           <%= f.password_field :current_password %>
 
-          <%= f.submit "Update", :class => "button tiny" %>
+          <%= f.submit "Update info", :class => "button tiny" %>
         <% end %>
 
         <h3>Cancel my account</h3>
