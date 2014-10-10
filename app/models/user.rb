@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   validates :firstname, :lastname, presence: true
   validates :email, uniqueness: { case_sensitive: false }
 
+  before_save :set_timezone, if: :timezone_is_blank?
+
   def full_name
     "#{self.firstname} #{self.lastname}"
   end
@@ -56,4 +58,13 @@ class User < ActiveRecord::Base
       return self.posted_listings.order(params[:sort])
     end
   end
+
+  private
+    def timezone_is_blank?
+      self.timezone.blank?
+    end
+
+    def set_timezone
+      self.timezone = (Timezone::Zone.new :latlon => [self.address.latitude, self.address.longitude]).zone
+    end
 end
