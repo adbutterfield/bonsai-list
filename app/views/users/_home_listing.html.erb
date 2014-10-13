@@ -13,6 +13,7 @@
       </p>
       <p>Category: <%= listing.category.name %></p>
       <p>Published: <%= listing.published? %></p>
+      <p>Views: <%= listing.views %></p>
     </div>
     <div class="small-4 columns listing-list-panel">
       <p class="centered-text"><%= link_to 'Edit', edit_listing_path(listing), :class => "button bon-button tiny home-listing-button" %></p>
