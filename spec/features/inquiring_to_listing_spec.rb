@@ -4,9 +4,9 @@ feature 'Inquiring to Listings' do
   before do
     Capybara.current_driver = :selenium
 
-    @user = FactoryGirl.create(:user_with_address)
+    @user = FactoryGirl.create(:user)
     sign_in_as!(@user)
-    @other_user = FactoryGirl.create(:user_with_address)
+    @other_user = FactoryGirl.create(:user)
     @sale_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @other_user, sale_type: "sale")
     @offer_listing = FactoryGirl.create(:listing, headline: "Black pine", user: @other_user, sale_type: "offer")
   end

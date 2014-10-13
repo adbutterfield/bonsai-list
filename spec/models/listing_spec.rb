@@ -9,7 +9,7 @@ RSpec.describe Listing, :type => :model do
   end
 
   before do
-    @user = FactoryGirl.create(:user_with_address)
+    @user = FactoryGirl.create(:user)
     @listing = FactoryGirl.build(:listing, user: @user)
     @listing.set_latitude_and_longitude
     @listing.save
@@ -58,6 +58,19 @@ RSpec.describe Listing, :type => :model do
 
       expect(Listing.postable).to eq [@listing, postable_listing]
       expect(Listing.all).to eq [@listing, postable_listing, remove_true_listing, publish_false_listing, remove_true_publish_false_listing]
+    end
+  end
+
+  describe "#increment_view_count" do
+    it "increments the view count" do
+      @other_user = FactoryGirl.create(:user)
+      @listing.increment_view_count(@other_user)
+      expect(@listing.views).to eq 1
+    end
+
+    it "does not increment views for your own listing" do
+      @listing.increment_view_count(@user)
+      expect(@listing.views).to eq 0
     end
   end
 

@@ -3,9 +3,9 @@ require 'rails_helper'
 feature 'Viewing Messages of Interest for Listings' do
 
     before do
-      @user = FactoryGirl.create(:user_with_address)
+      @user = FactoryGirl.create(:user)
       sign_in_as!(@user)
-      @other_user = FactoryGirl.create(:user_with_address)
+      @other_user = FactoryGirl.create(:user)
       @user.send_message(@other_user, "User message body", "User message subject")
       @other_user.send_message(@user, "Other user message body", "Other user message subject")
     end

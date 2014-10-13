@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
 
-  subject(:user) { FactoryGirl.create(:user_with_address) }
+  subject(:user) { FactoryGirl.create(:user) }
 
   it "has a valid factory" do
     expect(user).to be_valid

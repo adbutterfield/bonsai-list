@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "listings/show" do
 
   before do
-    @user = FactoryGirl.create(:user_with_address)
+    @user = FactoryGirl.create(:user)
     @listing = FactoryGirl.create(:listing, user: @user)
     assign(:listing, @listing)
   end

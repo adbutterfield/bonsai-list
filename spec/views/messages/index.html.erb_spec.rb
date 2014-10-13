@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "messages/index" do
 
   before do
-    @user = FactoryGirl.create(:user_with_address)
+    @user = FactoryGirl.create(:user)
     sign_in @user
   end
 
