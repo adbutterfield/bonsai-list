@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+  <h1>Hi <%= @user.full_name %></h1>
+  <p>Someone is interested in your <%= @listing.headline %></p>
+  <p>Sign in to check it out!</p>
+  <p><%= link_to "Sign in", new_user_session_url %></p>
+</body>
+</html>
