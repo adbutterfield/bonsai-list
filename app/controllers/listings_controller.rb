@@ -17,6 +17,7 @@ class ListingsController < ApplicationController
 
   def show
     @title = @listing.headline
+    @listing.increment_view_count(current_user)
     if current_user
       @message_body = "Please let me know if it's still for sale!"
     end
