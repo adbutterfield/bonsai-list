@@ -14,7 +14,6 @@ feature 'Signing in User' do
     click_button 'Sign In'
 
     expect(page).to have_content 'Signed in successfully.'
-
   end
 
   scenario "with invalid password" do
