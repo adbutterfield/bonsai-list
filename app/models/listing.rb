@@ -36,7 +36,7 @@ class Listing < ActiveRecord::Base
 
   def increment_view_count(current_user)
     unless current_user == self.user
-      self.views += 1
+      self.increment(:views)
       self.save
     end
   end
