@@ -34,6 +34,13 @@ class Listing < ActiveRecord::Base
     end
   end
 
+  def increment_view_count(current_user)
+    unless current_user == self.user
+      self.views += 1
+      self.save
+    end
+  end
+
   def published?
     self.publish ? "Yes" : "No"
   end
