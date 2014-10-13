@@ -3,7 +3,7 @@ class InquiryMailer < ActionMailer::Base
 
   def new_inquiry_email(inquiry)
     @listing = inquiry.listing
-    @user = inquiry.user
+    @user = @listing.user
     mail(to: @user.email, subject: "You have a new offer on #{@listing.headline} | Bonsai List")
   end
 end
