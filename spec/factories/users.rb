@@ -9,9 +9,6 @@ FactoryGirl.define do
     password_confirmation pass
     firstname { Faker::Name.first_name }
     lastname { Faker::Name.last_name }
-
-    factory :user_with_address do
-      after(:create) { |user| create_list(:address, 1, user: user) }
-    end
+    address
   end
 end
