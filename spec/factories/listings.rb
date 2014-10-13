@@ -13,6 +13,9 @@ FactoryGirl.define do
     latitude { Faker::Address.latitude }
     longitude { Faker::Address.longitude }
     user
+    after(:build) do |listing, eval|
+        listing.listing_images << FactoryGirl.build(:listing_image, listing: listing)
+    end
 
     # TODO test geocode
 
