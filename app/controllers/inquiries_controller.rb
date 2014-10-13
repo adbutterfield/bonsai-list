@@ -5,7 +5,8 @@ class InquiriesController < ApplicationController
     listing = Listing.find(params[:id])
     current_user.send_message(listing.user, message_body, message_subject(listing))
     conversation = Mailboxer::Conversation.last
-    Inquiry.create(listing_id: listing.id, user_id: current_user.id, offer: params[:offer], conversation_id: conversation.id)
+    inquiry = Inquiry.create(listing_id: listing.id, user_id: current_user.id, offer: params[:offer], conversation_id: conversation.id)
+    InquiryMailer.new_inquiry_email(inquiry).deliver
     redirect_to listing
   end
 
