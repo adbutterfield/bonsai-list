@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Creating Listings' do
-  let!(:user) { FactoryGirl.create(:user_with_address) }
+  let!(:user) { FactoryGirl.create(:user) }
   before do
     sign_in_as!(user)
     trees = FactoryGirl.create(:category, name: 'Trees')
@@ -19,8 +19,10 @@ feature 'Creating Listings' do
     # Capybara cannot find the 'Trees' radio button, but it's chosen by default.
     # choose 'Trees'
     choose 'listing_sale_type_sale'
-    check 'Willing to ship?'
-    check 'Publish now?'
+    find(:css, '#listing_shippable').set(true)
+    find(:css, '#listing_publish').set(true)
+
+    attach_file('listing_listing_images_attributes_0_image', "#{Rails.root}/spec/support/photos/test.png")
 
     click_button 'Save Listing'
 

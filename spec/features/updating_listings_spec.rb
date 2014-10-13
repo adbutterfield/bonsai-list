@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Updating Listings' do
-  let!(:user) { FactoryGirl.create(:user_with_address) }
+  let!(:user) { FactoryGirl.create(:user) }
   before do
     sign_in_as!(user)
     trees = FactoryGirl.create(:category, name: 'Trees')
@@ -14,7 +14,7 @@ feature 'Updating Listings' do
 
     visit edit_listing_path(listing)
 
-    check "Publish now?"
+    find(:css, '#listing_publish').set(true)
 
     click_button "Save Listing"
 
@@ -25,7 +25,7 @@ feature 'Updating Listings' do
   end
 
   scenario "doesn't allow editing another user's listing" do
-    other_user = FactoryGirl.create(:user_with_address)
+    other_user = FactoryGirl.create(:user)
     other_user_listing = FactoryGirl.create(:listing, user: other_user)
 
     visit edit_listing_path(other_user_listing)
