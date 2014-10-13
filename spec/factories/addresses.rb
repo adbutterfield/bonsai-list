@@ -7,8 +7,8 @@ FactoryGirl.define do
     state { Faker::Address.state }
     postcode { Faker::Address.postcode }
     country { Faker::Address.country }
-    latitude { Faker::Address.latitude }
-    longitude { Faker::Address.longitude }
+    latitude "38.7992"
+    longitude "-123.0172"
     user nil
   end
 end
