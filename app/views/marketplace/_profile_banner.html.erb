@@ -20,7 +20,7 @@
 </div>
 <% if user_signed_in? && not_current_user(@user) %>
 <div id="sendMessageModal" class="reveal-modal" data-reveal>
-  <%= form_tag send_message_path(@user) do %>
+  <%= form_tag send_message_path(@user), remote: true do %>
     <h2>Send a message!</h2>
     <div class="row">
       <div class="small-12 medium-8 large-6 columns">
@@ -31,7 +31,7 @@
       </div>
     </div>
     <a class="close-reveal-modal">&#215;</a>
-    <%= submit_tag "Send", :class => "button tiny listing-close-reveal-modal" %>
+    <%= submit_tag "Send", :class => "button tiny message-close-reveal-modal" %>
   <% end %>
 </div>
 <% end %>
