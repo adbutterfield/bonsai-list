@@ -7,9 +7,9 @@ RSpec.describe MessageMailer, :type => :mailer do
     ActionMailer::Base.deliveries = []
     @user = FactoryGirl.create(:user, firstname: "Sender")
     @other_user = FactoryGirl.create(:user, firstname: "Receiver")
-    @user.send_message(@other_user, "Message body", "Message subject")
-    @conversation = @other_user.mailbox.inbox(unread: true).first
-    MessageMailer.new_message_email(@conversation).deliver
+    reciept = @user.send_message(@other_user, "Message body", "Message subject")
+    @conversation = reciept.conversation
+    MessageMailer.new_message_email(@conversation, @user, @other_user).deliver
   end
 
   after(:each) do
