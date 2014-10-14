@@ -11,6 +11,7 @@ class MessagesController < ApplicationController
   def send_message
     user = User.find(params[:id])
     current_user.send_message(user, params[:body], params[:subject])
+    head :ok
   end
 
   def show
