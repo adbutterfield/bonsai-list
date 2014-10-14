@@ -10,7 +10,9 @@ class MessagesController < ApplicationController
 
   def send_message
     user = User.find(params[:id])
-    current_user.send_message(user, params[:body], params[:subject])
+    #TODO deal with case for no subject or body
+    receipt = current_user.send_message(user, params[:body], params[:subject])
+    MessageMailer.new_message_email(receipt.conversation, current_user, user).deliver
     head :ok
   end
 
@@ -23,6 +25,8 @@ class MessagesController < ApplicationController
   def reply
     conversation = Mailboxer::Conversation.find(params[:id])
     current_user.reply_to_conversation(conversation, params[:reply][:body])
+    recipient = conversation.participants.reject { |u| u == current_user }.first
+    MessageMailer.new_message_email(conversation, current_user, recipient).deliver
     redirect_to message_path(conversation)
   end
 
