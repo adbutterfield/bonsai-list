@@ -3,8 +3,8 @@ require 'rails_helper'
 feature "Sending messages" do
 
   before do
-    @user = FactoryGirl.create(:user)
-    @other_user = FactoryGirl.create(:user)
+    @user = FactoryGirl.create(:user, email: 'user@example.com')
+    @other_user = FactoryGirl.create(:user, email: 'other_user@example.com')
   end
 
   scenario "sending a message from a users show page", js: true do
@@ -27,6 +27,13 @@ feature "Sending messages" do
     visit messages_path
     expect(page).to have_content("I send you a message")
     click_link "Sign Out"
+
+    open_email('other_user@example.com')
+    expect(current_email).to have_content("Hi #{ @other_user.full_name },")
+    expect(current_email.to).to eq ['other_user@example.com']
+    expect(current_email.subject).to eq 'You received a new message | Bonsai List'
+
+    clear_emails
   end
 
   scenario "replying to a message" do
@@ -44,5 +51,12 @@ feature "Sending messages" do
     first(:link, "User message subject").click
     expect(page).to have_content("Here is the reply")
     click_link "Sign Out"
+
+    open_email('user@example.com')
+    expect(current_email).to have_content("Hi #{ @user.full_name },")
+    expect(current_email.to).to eq ['user@example.com']
+    expect(current_email.subject).to eq 'You received a new message | Bonsai List'
+
+    clear_emails
   end
 end
