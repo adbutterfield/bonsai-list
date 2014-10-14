@@ -15,7 +15,19 @@ RSpec.describe InquiryMailer, :type => :mailer do
     ActionMailer::Base.deliveries.clear
   end
 
-  it 'should send an email' do
+  it 'sends an email' do
     expect(ActionMailer::Base.deliveries.count).to eq 1
+  end
+
+  it 'sets the correct receiver' do
+    expect(ActionMailer::Base.deliveries.first.to).to eq [@inquiry.listing.user.email]
+  end
+
+  it 'sets the subject to the correct subject' do
+    expect(ActionMailer::Base.deliveries.first.subject).to eq "You have a new offer on #{@listing.headline} | Bonsai List"
+  end
+
+  it 'renders the sender email' do
+    expect(ActionMailer::Base.deliveries.first.from).to eq ['no-reply@bonsai-list.com']
   end
 end
