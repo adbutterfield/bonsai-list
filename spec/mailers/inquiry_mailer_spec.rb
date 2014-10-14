@@ -19,7 +19,7 @@ RSpec.describe InquiryMailer, :type => :mailer do
     expect(ActionMailer::Base.deliveries.count).to eq 1
   end
 
-  it 'sets the correct receiver' do
+  it 'sets the correct recipient' do
     expect(ActionMailer::Base.deliveries.first.to).to eq [@inquiry.listing.user.email]
   end
 
