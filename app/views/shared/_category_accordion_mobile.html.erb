@@ -3,20 +3,7 @@
     <dd class="accordion-navigation">
       <a href="#panel2">Select Category</a>
       <div id="panel2" class="content">
-        <div class="panel">
-          <ul>
-            <label class="marketplace-nav-title">
-              <% if all_listings? %>
-                <em>Categories</em>
-              <% else %>
-                <%= link_to "<em>Categories</em> - <span class='marketplace-show-all'>Show All</span>".html_safe, marketplace_or_listings %>
-              <% end %>
-            </label>
-            <ul class="marketplace-nav-ul">
-              <%= render partial: @categories %>
-            </ul>
-          </ul>
-        </div>
+        <%= render partial: 'shared/marketplace_nav' %>
       </div>
     </dd>
   </dl>
