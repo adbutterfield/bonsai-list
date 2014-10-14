@@ -1,17 +1,5 @@
 <div class="small-3 medium-2 columns message-pic">
-  <% if sent_box? %>
-    <% if recipient(conversation).avatar.present? %>
-      <%= link_to image_tag(recipient(conversation).avatar.thumb), user_marketplace_path(recipient(conversation)) %>
-    <% else %>
-      <%= link_to image_tag("http://placehold.it/50x50&text=[img]"), user_marketplace_path(recipient(conversation)) %>
-    <% end %>
-  <% else %>
-    <% if conversation.messages.last.sender.avatar.present? %>
-      <%= link_to image_tag(conversation.messages.last.sender.avatar.thumb), user_marketplace_path(conversation.messages.last.sender) %>
-    <% else %>
-      <%= link_to image_tag("http://placehold.it/50x50&text=[img]"), user_marketplace_path(conversation.messages.last.sender) %>
-    <% end %>
-  <% end %>
+  <%= avatar_pic(conversation) %>
 </div>
 <div class="small-9 medium-10 columns message-block left">
   <div class="row">
