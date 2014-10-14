@@ -7,8 +7,4 @@ module AuthenticationHelpers
     click_button 'Sign In'
     expect(page.current_path).to eql(user_root_path)
   end
-
-  def sign_out!
-    visit destroy_user_session_path
-  end
 end
