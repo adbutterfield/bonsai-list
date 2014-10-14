@@ -1,4 +1,21 @@
 module MessagesHelper
+
+  def avatar_pic(conversation)
+    if sent_box?
+      if recipient(conversation).avatar.present?
+        return link_to image_tag(recipient(conversation).avatar.thumb), user_marketplace_path(recipient(conversation))
+      else
+        return link_to image_tag("http://placehold.it/50x50&text=[img]"), user_marketplace_path(recipient(conversation))
+      end
+    else
+      if conversation.messages.last.sender.avatar.present?
+        return link_to image_tag(conversation.messages.last.sender.avatar.thumb), user_marketplace_path(conversation.messages.last.sender)
+      else
+        return link_to image_tag("http://placehold.it/50x50&text=[img]"), user_marketplace_path(conversation.messages.last.sender)
+      end
+    end
+  end
+
   def set_message_notice_text(conversation)
     if conversation.receipts_for(current_user).first.is_unread?
       return conversation.subject
