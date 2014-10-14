@@ -66,11 +66,12 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'capybara-email'
   gem 'selenium-webdriver'
   gem 'poltergeist'
   gem 'database_cleaner'
   # gem 'guard-rspec'
-  # gem 'launchy'
+  gem 'launchy'
 end
 
 group :production do
