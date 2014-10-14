@@ -95,20 +95,26 @@ a.nav-link li, .marketplace-nav-title {
   padding-top: 12px;
 }
 
+.marketplace-nav-title {
+  background-color: #246020;
+  color: white;
+  padding: 12px;
+  border: 1px solid #262626;
+  width: 100%;
+}
+
 .marketplace-nav-title, .marketplace-nav-title a{
-  color: #111;
+  color: white;
   font-size: large;
-  padding-top: 0px;
-  padding-left: 0px;
 }
 
 .marketplace-show-all {
-  color: #111;
+  color: white;
   font-size: small;
 }
 
 .marketplace-show-all:hover {
-  color: #009900;
+  color: #ddd;
 }
 
 .marketplace-nav-ul {
@@ -163,6 +169,10 @@ a.nav-link li:hover {
 
 .top-margin {
   margin-top: 20px;
+}
+
+.accordion .accordion-navigation > .content, .accordion dd > .content {
+  padding: 15px 0 0 0;
 }
 
 #notice {
