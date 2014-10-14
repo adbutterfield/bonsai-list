@@ -1,4 +1,7 @@
 $(function(){
+  $('.message-close-reveal-modal').on('click', function (){
+    $('#sendMessageModal').foundation('reveal', 'close.fndtn.reveal');
+  });
 
   function searchFliterSort (){
     var url = window.location.pathname + '/marketplace_ajax_sort'
