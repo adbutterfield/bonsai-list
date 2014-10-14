@@ -4,7 +4,7 @@
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 </head>
 <body>
-  <h1>Hi <%= @recipient.full_name %></h1>
+  <h1>Hi <%= @recipient.full_name %>,</h1>
   <p><%= @sender.full_name %> sent you a message.</p>
   <p>Sign in to check it out!</p>
   <p><%= link_to "Sign in", new_user_session_url %></p>
