@@ -3,15 +3,12 @@ require 'rails_helper'
 feature 'Removing Listings' do
   let!(:user) { FactoryGirl.create(:user) }
   before do
-    Capybara.current_driver = :selenium
-
     sign_in_as!(user)
     FactoryGirl.create(:category, name: 'Trees')
     @listing = FactoryGirl.create(:listing, user: user)
   end
 
-  @javascript
-  scenario "can remove a listing" do
+  scenario "can remove a listing", js: true do
     visit user_root_path
     expect(page).to have_content(@listing.headline)
 
@@ -23,8 +20,7 @@ feature 'Removing Listings' do
     expect(page).not_to have_content(@listing.headline)
   end
 
-  @javascript
-  scenario "can dismiss removing a listing" do
+  scenario "can dismiss removing a listing", js: true do
     visit user_root_path
     expect(page).to have_content(@listing.headline)
 

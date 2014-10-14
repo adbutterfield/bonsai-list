@@ -2,8 +2,6 @@ require 'rails_helper'
 
 feature 'Inquiring to Listings' do
   before do
-    Capybara.current_driver = :selenium
-
     @user = FactoryGirl.create(:user)
     sign_in_as!(@user)
     @other_user = FactoryGirl.create(:user)
@@ -12,7 +10,7 @@ feature 'Inquiring to Listings' do
   end
 
   @javascript
-  scenario "can notify other user of being interested a listing" do
+  scenario "can notify other user of being interested a listing", js: true do
 
     visit listing_path(@sale_listing)
 
@@ -31,7 +29,7 @@ feature 'Inquiring to Listings' do
   end
 
   @javascript
-  scenario "can make an offer on a listing" do
+  scenario "can make an offer on a listing", js: true do
 
     visit listing_path(@offer_listing)
 
