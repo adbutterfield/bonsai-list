@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
 
   acts_as_messageable
 
+  extend FriendlyId
+  friendly_id :name_and_id, use: :slugged
+
   has_one :address
   validates_associated :address
   has_many :listings, -> { where(remove: false) }
@@ -19,6 +22,10 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: { case_sensitive: false }
 
   before_save :set_timezone, if: :timezone_is_blank?
+
+  def name_and_id
+    "#{self.firstname}#{self.lastname}#{self.id}"
+  end
 
   def full_name
     "#{self.firstname} #{self.lastname}"
