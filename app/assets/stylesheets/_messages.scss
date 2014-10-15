@@ -8,5 +8,10 @@
 }
 
 .trash-link {
-  margin-left: 20px;
+  @media only screen and (min-width: 40.063em) and (max-width: 64em) {
+    margin-left: 20px;
+  }
+  @media only screen and (min-width: 64.063em) {
+    margin-left: 80px;
+  }
 }
