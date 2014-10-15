@@ -81,7 +81,7 @@ class ListingsController < ApplicationController
 
   private
     def set_listing
-      @listing = Listing.find(params[:id])
+      @listing = Listing.friendly.find(params[:id])
     end
 
     def set_listings
@@ -97,7 +97,7 @@ class ListingsController < ApplicationController
     end
 
     def verify_user!
-      user = Listing.find(params[:id]).user if params[:id]
+      user = Listing.friendly.find(params[:id]).user if params[:id]
       redirect_to user_root_path, notice: "We can't find the page you're looking for..." unless current_user?(user)
     end
 

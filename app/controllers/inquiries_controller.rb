@@ -2,7 +2,7 @@ class InquiriesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    listing = Listing.find(params[:id])
+    listing = Listing.friendly.find(params[:id])
     current_user.send_message(listing.user, message_body, message_subject(listing))
     conversation = Mailboxer::Conversation.last
     inquiry = Inquiry.create(listing_id: listing.id, user_id: current_user.id, offer: params[:offer], conversation_id: conversation.id)
