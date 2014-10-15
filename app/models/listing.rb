@@ -5,6 +5,8 @@ class Listing < ActiveRecord::Base
                   :using => {
                     :tsearch => {:prefix => true}
                   }
+  extend FriendlyId
+  friendly_id :headline_and_id, use: :slugged
 
   belongs_to :user
   belongs_to :category
@@ -18,6 +20,10 @@ class Listing < ActiveRecord::Base
   scope :postable, -> { where(remove: false, publish: true) }
 
   reverse_geocoded_by :latitude, :longitude
+
+  def headline_and_id
+    "#{self.headline} #{self.id}"
+  end
 
   def up_to_four
     case self.listing_images.length
