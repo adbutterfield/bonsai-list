@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   # get 'listings(/category/:category_id)/listing_ajax_sort' => 'listings#ajax_sort'
 
   resources :listings, except: [:index]
-  # TODO set better url for listing#show
+
   patch 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
   put   'listings/remove/:id' => 'listings#remove'
 
