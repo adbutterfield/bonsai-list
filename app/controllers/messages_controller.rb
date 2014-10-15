@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
   end
 
   def send_message
-    user = User.find(params[:id])
+    user = User.friendly.find(params[:id])
     #TODO deal with case for no subject or body
     receipt = current_user.send_message(user, params[:body], params[:subject])
     MessageMailer.new_message_email(receipt.conversation, current_user, user).deliver
