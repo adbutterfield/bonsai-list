@@ -19,7 +19,7 @@ class MarketplaceController < ApplicationController
 
     def set_listings
       if params[:id]
-        @user = User.find(params[:id])
+        @user = User.friendly.find(params[:id])
         if params[:search].blank?
           @listings = @user.filter_listings_by(params)
         else
