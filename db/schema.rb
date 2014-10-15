@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141015023009) do
+ActiveRecord::Schema.define(version: 20141015033016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,10 +94,12 @@ ActiveRecord::Schema.define(version: 20141015023009) do
     t.string   "sale_type"
     t.integer  "main_image_id"
     t.integer  "views",                                  default: 0
+    t.string   "slug"
   end
 
   add_index "listings", ["category_id"], name: "index_listings_on_category_id", using: :btree
   add_index "listings", ["latitude", "longitude"], name: "index_listings_on_latitude_and_longitude", using: :btree
+  add_index "listings", ["slug"], name: "index_listings_on_slug", unique: true, using: :btree
   add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
 
   create_table "mailboxer_conversation_opt_outs", force: true do |t|
