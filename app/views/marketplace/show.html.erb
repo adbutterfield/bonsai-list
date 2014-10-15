@@ -2,11 +2,15 @@
 <div class="row">
   <%= render partial: "profile_banner" %>
   <div id="marketplace-nav" class="medium-4 large-3 columns hide-for-small">
-    <div class="panel">
-      <%= render partial: "shared/marketplace_nav" %>
-    </div>
+    <% if my_profile?(@user) %>
+      <%= link_to "Add new listing", new_listing_path, :class => "button radius expand new-product-button" %>
+    <% end %>
+    <%= render partial: "shared/marketplace_nav" %>
   </div>
   <div class="small-12 medium-8 large-9 columns">
+    <% if my_profile?(@user) %>
+      <%= link_to "Add new listing", new_listing_path, :class => "button radius expand new-product-button hide-for-medium-up" %>
+    <% end %>
     <%= render partial: "user_marketplace_search_filter" %>
     <h1><%= @category %></h1>
     <%= render partial: "shared/marketplace_items" %>
