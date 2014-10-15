@@ -16,7 +16,7 @@
       <hr class="home-nav-hr" />
       <%= link_to_unless_current "<h5 class='title'><i class='fi-home'></i> Home</h5>".html_safe, user_root_path, :class => "nav-link" %>
       <hr class="home-nav-hr" />
-      <%= link_to_unless_current "<h5 class='title'><i class='fi-price-tag'></i> My Listings</h5>".html_safe, user_marketplace_path(current_user), :class => "nav-link" %>
+      <%= link_to_unless_current "<h5 class='title'><i class='fi-price-tag'></i> Profile</h5>".html_safe, user_marketplace_path(current_user), :class => "nav-link" %>
       <hr class="home-nav-hr" />
       <h5 class="title"><%= link_to_unless(offers_page?, "<h5 class='title'><i class='fi-burst-sale #{ 'notification' if new_offers? }'></i> Offers</h5>".html_safe, offers_path, :class => "nav-link") %></h5>
       <% if offers_page? %>
