@@ -2,7 +2,7 @@ class ListingsController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :verify_user!, only: [:edit, :update, :destroy, :remove]
   before_action :set_listing, only: [:show, :edit, :update, :destroy, :remove]
-  before_action :set_categories, only: [:index, :new, :edit]
+  before_action :set_categories, only: [:index, :new, :edit, :create, :update]
   before_action :set_listings, only: [:index, :ajax_sort]
 
   def index
@@ -42,7 +42,6 @@ class ListingsController < ApplicationController
     if @listing.save
       redirect_to user_root_url, notice: 'Listing was successfully created.'
     else
-      @categories = Category.all
       @listing.up_to_four.times { @listing.listing_images.build }
       render :new
     end
@@ -56,7 +55,6 @@ class ListingsController < ApplicationController
       if @listing.update(listing_params)
         format.html { redirect_to @listing, notice: 'Listing was successfully updated.' }
       else
-        @categories = Category.all
         @listing.up_to_four.times { @listing.listing_images.build }
         format.html { render :edit }
       end
