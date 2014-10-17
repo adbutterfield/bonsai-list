@@ -1,7 +1,7 @@
 <li class="topbar-link-moz"><%= link_to("<i class='fi-shopping-cart'></i> Marketplace".html_safe, marketplace_path, :class => marketplace_page? ? "current topbar-link-moz" : "topbar-link-moz") %></li>
 <% if user_signed_in? %>
   <li class="has-dropdown topbar-link-moz hide-for-small-only">
-    <%= link_to "<i class='fi-home  #{'notification' if new_notification?}'></i> Home".html_safe, user_root_path, :class => "topbar-link-moz" %>
+    <%= link_to "<i class='fi-home  #{'notification' if new_notification?}'></i> Home".html_safe, user_root_path, :class => "topbar-link-moz home-link" %>
     <ul class="dropdown">
       <%= render partial: "home_links" %>
     </ul>
