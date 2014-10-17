@@ -1,6 +1,9 @@
 .offers-page-button {
   padding: 5px 10px;
   width: 45%;
+  @media only screen and (min-width: 40.063em) {
+    margin-top: 47px;
+  }
 }
 
 .offer-block {
