@@ -5,20 +5,28 @@
     <%= link_to image_tag("http://placehold.it/50x50&text=[img]"), user_marketplace_path(inquiry.user) %>
   <% end %>
 </div>
-<div class="small-9 medium-10 columns message-block left">
-  <p class="message-name"><%= link_to inquiry.user.full_name, user_marketplace_path(inquiry.user) %></p>
-  <p class="message-date"><%= inquiry.sent_time(current_user) %></p>
+<div class="small-9 medium-10 columns offers-block left">
   <div class="row">
-    <div class="small-12 columns">
-      <% if inquiry.listing.is_offer? %>
-        <p><strong>Offer: <%= number_to_currency(inquiry.offer) %></strong></p>
-      <% else %>
-        <p><strong>Is interested</strong></p>
-      <% end %>
+    <div class="small-12 medium-6 large-7 columns">
+      <p class="message-name"><%= link_to inquiry.user.full_name, user_marketplace_path(inquiry.user) %></p>
+      <p class="message-date"><%= inquiry.sent_time(current_user) %></p>
+      <div class="row">
+        <div class="small-12 columns">
+          <% if inquiry.listing.is_offer? %>
+            <p><strong>Offer: <%= number_to_currency(inquiry.offer) %></strong></p>
+          <% else %>
+            <p><strong>Is interested</strong></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="small-12 medium-6 large-5 columns">
+      <%= link_to "<i class='fi-mail'></i> View Message".html_safe, message_path(inquiry.conversation_id), :class => "button radius bon-button offers-page-button expand" %>
     </div>
   </div>
+
 </div>
 <div class="small-12 medium-9 large-6 columns">
-  <%= link_to "<i class='fi-mail'></i> Message".html_safe, message_path(inquiry.conversation_id), :class => "button radius bon-button offers-page-button" %>
+
 </div>
 <hr />
