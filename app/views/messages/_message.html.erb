@@ -1,5 +1,8 @@
 <div class="small-3 medium-2 columns message-pic">
   <%= avatar_pic(conversation) %>
+  <% if conversation.is_unread?(current_user) %>
+    <p class="new-message-notice">NEW</p>
+  <% end %>
 </div>
 <div class="small-9 medium-10 columns message-block left">
   <div class="row">
