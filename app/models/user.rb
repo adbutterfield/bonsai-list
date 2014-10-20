@@ -39,6 +39,15 @@ class User < ActiveRecord::Base
     self.email
   end
 
+  def new_messages_count
+    self.mailbox.inbox(unread: true).length
+  end
+
+  def new_offers_count
+    # TODO optimize a query to grab this stuff
+    self.new_offers.map { |listing| listing.inquiries.not_seen.count }.inject(&:+)
+  end
+
   def not_already_inquired?(listing)
     self.inquiries.where(listing_id: listing.id).empty?
   end
