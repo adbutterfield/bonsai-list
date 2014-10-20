@@ -49,15 +49,37 @@ module ApplicationHelper
     return Rails.env.test? ? "marketplace" : controller_name
   end
 
-  def new_messages?
-    user_signed_in? ? current_user.mailbox.inbox(unread: true).length > 0 : false
+  def notifcation_count
+    current_user.new_messages_count + current_user.new_offers_count
   end
 
-  def new_offers?
-    user_signed_in? ? current_user.new_offers.length > 0 : false
+  def new_messages_notice
+    if user_signed_in? && current_user.new_messages_count > 0
+      return push_notice(current_user.new_messages_count)
+    end
   end
 
-  def new_notification?
-    new_messages? || new_offers?
+  def new_offers_notice
+    if user_signed_in? && current_user.new_offers_count > 0
+      return push_notice(current_user.new_offers_count)
+    end
+  end
+
+  def new_notification_notice(display={})
+    if (user_signed_in? && current_user.new_messages_count > 0) || (user_signed_in? && current_user.new_offers_count > 0)
+      if display[:mobile]
+        return mobile_push_notification(notifcation_count)
+      else
+        return push_notice(notifcation_count)
+      end
+    end
+  end
+
+  def push_notice(count)
+    "<span class='noti-container'><span class='noti-bubble'>#{ count }</span></span>".html_safe
+  end
+
+  def mobile_push_notification(count)
+    return   "<div class='noti-container'><div class='noti-bubble'>#{ count }</div></div>".html_safe
   end
 end
