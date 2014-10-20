@@ -6,7 +6,7 @@
       <%= link_to image_tag(listing.thumb_image, :class => "th"), listing_path(listing) %>
     <% end %>
   </div>
-  <div class="small-9 medium-10 columns left no-padding">
+  <div class="small-9 medium-10 columns left no-padding home-listing-info">
     <div class="small-8 columns">
       <p class="message-name">
         <%= link_to truncate(listing.headline, length: 30), listing_path(listing) %>
