@@ -1,16 +1,20 @@
 <div class="small-3 medium-2 columns message-pic">
   <%= avatar_pic(conversation) %>
   <% if conversation.is_unread?(current_user) %>
-    <p class="new-message-notice">NEW</p>
+    <i class="fi-burst-new"></i>
   <% end %>
 </div>
 <div class="small-9 medium-10 columns message-block left">
   <div class="row">
     <div class="small-10 columns">
       <% if sent_box? %>
-        <p class="message-name"><%= truncate(recipient(conversation).full_name, length: 33) %></p>
+        <p class="message-name">
+          <%= truncate(recipient(conversation).full_name, length: 33) %>
+        </p>
       <% else %>
-        <p class="message-name"><%= truncate(conversation.messages.last.sender.full_name, length: 33) %></p>
+        <p class="message-name">
+          <%= truncate(conversation.messages.last.sender.full_name, length: 33) %>
+        </p>
       <% end %>
     </div>
     <% if not_trash? %>
@@ -19,7 +23,9 @@
       </div>
     <% end %>
     <div class="small-12 columns">
-      <p class=" <%= 'read_message' unless conversation.receipts_for(current_user).first.is_unread? %>"><%= link_to conversation.subject, message_path(conversation) %></p>
+      <p>
+        <%= link_to conversation.subject, message_path(conversation) %>
+      </p>
     </div>
     <div class="small-12 columns">
       <p class="message-date"><%= conversation.messages.last.created_at.in_time_zone(current_user.timezone).strftime('%A %b %e %l:%M %P') %></p>
