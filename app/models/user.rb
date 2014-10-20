@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 
   def new_offers_count
     # TODO optimize a query to grab this stuff
-    self.new_offers.map { |listing| listing.inquiries.not_seen.count }.inject(&:+)
+    self.new_offers.map { |listing| listing.inquiries.not_seen.count }.inject(&:+).to_i
   end
 
   def not_already_inquired?(listing)
