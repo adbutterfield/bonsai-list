@@ -17,6 +17,7 @@ class OffersController < ApplicationController
     @listing = Listing.friendly.find(params[:id])
     @new_inquiries = @listing.new_offers
     @seen_inquiries = @listing.seen_offers
+    # TODO fix this so that I can mark these as seen, numbers are stupid
   end
 
   private
