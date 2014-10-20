@@ -1,4 +1,4 @@
 <li><%= link_to "<i class='fi-price-tag'></i> Profile".html_safe, user_marketplace_path(current_user) %></li>
-<li><%= link_to "<i class='fi-burst-sale #{'notification' if new_offers?}'></i> Offers".html_safe, offers_path %></li>
-<li><%= link_to "<i class='fi-mail #{'notification' if new_messages?}'></i> Messages".html_safe, messages_path %></li>
+<li><%= link_to "#{ new_offers_notice }<i class='fi-burst-sale'></i> Offers".html_safe, offers_path %></li>
+<li><%= link_to "#{ new_messages_notice }<i class='fi-mail'></i> Messages".html_safe, messages_path %></li>
 <li><%= link_to "<i class='fi-wrench'></i> Settings".html_safe, edit_user_registration_path %></li>
