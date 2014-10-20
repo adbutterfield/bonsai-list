@@ -18,6 +18,40 @@ p {
   color: white;
 }
 
+.noti-container {
+  border-radius: 50%;
+  height: 20px;
+  line-height: 10px;
+  position: relative;
+  width: 20px;
+}
+
+.noti-bubble {
+  background-color: #009900;
+  box-shadow: 1px 1px 1px gray;
+  color: white;
+  font-size: 0.55em;
+  font-weight: bold;
+  padding: 1px 2px 1px 2px;
+  position: absolute;
+  right: -4px;
+  top: -5px;
+}
+
+div.noti-bubble {
+  margin-top: 8px;
+  line-height: 15px;
+  font-size: 0.75em;
+  right: 0;
+  top: 0;
+  text-align: center;
+
+}
+
+div.noti-container {
+  display: inline;
+}
+
 .edit-user-image:hover, .edit-user-image:focus {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
 }
@@ -76,6 +110,10 @@ a.home-link {
   padding-left: 0px;
   padding-right: 10px;
   padding-bottom: 0px;
+}
+
+.top-bar-menu-icon {
+  padding-left: 10px !important;
 }
 
 a.nav-link h5 {
@@ -150,10 +188,6 @@ a.nav-link li:hover {
 .no-messages {
   font-size: larger;
   padding-bottom: 20px;
-}
-
-.notification {
-  color: #009900;
 }
 
 .no-listing-message-margin {
