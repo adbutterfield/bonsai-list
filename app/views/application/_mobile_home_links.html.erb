@@ -2,16 +2,16 @@
   <%= link_to "<i class='fi-home'></i> Home".html_safe, user_root_path %>
 </li>
 <li class="hide-for-medium-up">
-  <%= link_to "<i class='fi-price-tag'></i> Profile".html_safe, user_marketplace_path(current_user) %>
+  <%= link_to "<i class='fi-torso'></i> Profile".html_safe, user_marketplace_path(current_user) %>
 </li>
-<li class="hide-for-medium-up has-dropdown">
-  <%= link_to "#{ new_offers_notice }<i class='fi-burst-sale'></i> Offers".html_safe, offers_path %>
+<li class="hide-for-medium-up">
+  <%= link_to "#{ new_offers_notice }<i class='fi-price-tag'></i> Offers".html_safe, offers_path %>
   <ul class="dropdown">
     <li><%= link_to "Received", offers_path %></li>
     <li><%= link_to "Sent", sent_offers_path %></li>
   </ul>
 </li>
-<li class="hide-for-medium-up has-dropdown">
+<li class="hide-for-medium-up">
   <%= link_to "#{ new_messages_notice }<i class='fi-mail'></i> Messages".html_safe, messages_path %>
   <ul class="dropdown">
     <li><%= link_to "Inbox", messages_path %></li>
