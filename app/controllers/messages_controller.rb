@@ -3,8 +3,7 @@ class MessagesController < ApplicationController
   before_action :verify_user!, only: [:show, :reply, :trash]
 
   def index
-    @messages = current_user.mailbox.inbox(unread: true)
-    @read_messages = current_user.mailbox.inbox(unread: false)
+    @messages = current_user.mailbox.inbox
     @box_title = "Inbox"
   end
 
