@@ -5,8 +5,7 @@
 
 .fi-burst-new {
   color: #009900;
-  font-size: 40px;
-  margin-left: 8px;
+  font-size: 20px;
 }
 
 .trash-link {
@@ -16,4 +15,13 @@
   @media only screen and (min-width: 64.063em) {
     margin-left: 80px;
   }
+}
+
+.read-message {
+  color: #246020;
+}
+
+.unread-message {
+  color: #009900;
+  font-style: bold;
 }
