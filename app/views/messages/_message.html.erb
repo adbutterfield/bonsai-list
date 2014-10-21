@@ -1,8 +1,5 @@
 <div class="small-3 medium-2 columns message-pic">
   <%= avatar_pic(conversation) %>
-  <% if conversation.is_unread?(current_user) %>
-    <i class="fi-burst-new"></i>
-  <% end %>
 </div>
 <div class="small-9 medium-10 columns message-block left">
   <div class="row">
@@ -23,8 +20,11 @@
       </div>
     <% end %>
     <div class="small-12 columns">
-      <p>
-        <%= link_to conversation.subject, message_path(conversation) %>
+      <p class="no-margin">
+        <% if conversation.is_unread?(current_user) %>
+          <i class="fi-burst-new"></i>
+        <% end %>
+        <%= link_to conversation.subject, message_path(conversation), :class => message_subject_class(conversation) %>
       </p>
     </div>
     <div class="small-12 columns">
