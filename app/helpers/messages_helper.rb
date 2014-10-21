@@ -47,4 +47,12 @@ module MessagesHelper
   def not_trash?
     controller_name == 'messages' && action_name != 'trash_box'
   end
+
+  def message_subject_class(conversation)
+    if conversation.is_unread?(current_user)
+      return "unread-message"
+    else
+      return "read-message"
+    end
+  end
 end
