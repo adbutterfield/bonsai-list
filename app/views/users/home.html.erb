@@ -4,8 +4,11 @@
     <%= render partial: "shared/home_nav" %>
   </div>
   <div class="small-12 medium-8 columns">
-    <h2>Current Listings</h2>
-    <hr class="nav-hr" />
+    <div class="row">
+      <div class="small-12 columns panel">
+        <h4>Current Listings</h4>
+      </div>
+    </div>
     <%= (render partial: "home_listing", collection: @listings, as: :listing) || no_listings_message %>
   </div>
 </div>
