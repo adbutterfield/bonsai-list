@@ -13,15 +13,15 @@
     <div class="row">
       <div class="small-12 medium-8 large-6 columns">
         <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :multipart => true }) do |f| %>
-          <%= devise_error_messages! %>
+
           <h5>Basic info</h5>
-          <%= f.label :firstname, "First name" %>
-          <%= f.text_field :firstname, :autofocus => true %>
+          <%= f.label :first_name, "First name #{validation_error_message(resource, :first_name)}".html_safe %>
+          <%= f.text_field :first_name, :autofocus => true %>
 
-          <%= f.label :lastname, "Last name" %>
-          <%= f.text_field :lastname %>
+          <%= f.label :last_name, "Last name #{validation_error_message(resource, :last_name)}".html_safe %>
+          <%= f.text_field :last_name %>
 
-          <%= f.label :email %>
+          <%= f.label :email, "Email address #{validation_error_message(resource, :email)}".html_safe %>
           <%= f.email_field :email %>
           <hr />
           <h5>Profile image</h5>
@@ -41,17 +41,17 @@
           <%= f.fields_for :address, @user.address do |addr| %>
             <h5>Address</h5>
             <div class="row">
-              <div class="small-12 medium-6 columns"><%= addr.label :city %>
+              <div class="small-12 medium-6 columns"><%= addr.label :city, "City  #{validation_error_message(resource.address, :city)}".html_safe %>
               <%= addr.text_field :city, value: @user.address.city %></div>
 
-              <div class="small-12 medium-6 columns"><%= addr.label :postcode %>
-              <%= addr.text_field :postcode, value: @user.address.postcode %></div>
+              <div class="small-12 medium-6 columns left"><%= addr.label :state, "State #{validation_error_message(resource.address, :state)}".html_safe %>
+              <%= addr.text_field :state, value: @user.address.state %></div>
             </div>
             <div class="row">
-              <div class="small-12 medium-6 columns left"><%= addr.label :state %>
-              <%= addr.text_field :state, value: @user.address.state %></div>
+              <div class="small-12 medium-6 columns"><%= addr.label :postcode, "Postal code #{validation_error_message(resource.address, :postcode)}".html_safe %>
+              <%= addr.text_field :postcode, value: @user.address.postcode %></div>
 
-              <div class="small-12 medium-6 columns left"><%= addr.label :country %>
+              <div class="small-12 medium-6 columns left"><%= addr.label :country, "Country #{validation_error_message(resource.address, :country)}".html_safe %>
               <%= addr.text_field :country, value: @user.address.country %></div>
             </div>
           <% end %>
@@ -63,8 +63,8 @@
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation %>
           <hr />
-          <h5 class="inline-label">Confirm your password</h5><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Please enter your current password to confirm your changes."><i class="fi-info"></i></span><br />
-          <%= f.label :current_password, "<i class='fi-asterisk'></i> Current password".html_safe, :class => 'inline-label' %>
+          <h5 class="inline-label">Confirm changes</h5><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Please enter your current password to confirm your changes."><i class="fi-info"></i></span><br />
+          <%= f.label :current_password, "<i class='fi-asterisk'></i> Current password #{validation_error_message(resource, :current_password)} ".html_safe, :class => 'inline-label' %>
           <%= f.password_field :current_password %>
 
           <%= f.submit "Update info", :class => "button tiny" %>
