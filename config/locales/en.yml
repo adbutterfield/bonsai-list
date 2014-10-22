@@ -23,6 +23,8 @@ en:
   hello: "Hello world"
   activerecord:
     attributes:
+      address:
+        postcode: "Postal code"
       listing:
         listing_images: ""
     errors:
