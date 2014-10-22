@@ -80,6 +80,12 @@ module ApplicationHelper
   end
 
   def mobile_push_notification(count)
-    return   "<div class='noti-container'><div class='noti-bubble'>#{ count }</div></div>".html_safe
+    return "<div class='noti-container'><div class='noti-bubble'>#{ count }</div></div>".html_safe
+  end
+
+  def validation_error_message(object, attr)
+    unless object.errors.full_messages_for(attr).empty?
+      return " - <span class='error-message'>#{ object.errors.full_messages_for(attr).first }</span>".html_safe
+    end
   end
 end
