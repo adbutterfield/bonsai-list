@@ -20,8 +20,8 @@ feature 'Creating Listings' do
 
     click_button "Sign up"
     user = User.last
-    expect(user.firstname).to eq("First")
-    expect(user.lastname).to eq("Last")
+    expect(user.first_name).to eq("First")
+    expect(user.last_name).to eq("Last")
     expect(user.email).to eq("something@mail.com")
     expect(user.address.city).to eq("Cloverdale")
     expect(user.address.state).to eq("California")

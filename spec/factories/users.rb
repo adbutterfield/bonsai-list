@@ -7,8 +7,8 @@ FactoryGirl.define do
     email { Faker::Internet.email }
     password pass
     password_confirmation pass
-    firstname { Faker::Name.first_name }
-    lastname { Faker::Name.last_name }
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
     address
   end
 end

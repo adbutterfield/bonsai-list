@@ -14,7 +14,7 @@ RSpec.describe User, :type => :model do
   end
 
   describe "validations" do
-    [:firstname, :lastname].each do |attr|
+    [:first_name, :last_name].each do |attr|
       it "is invalid without a #{attr}" do
         expect(FactoryGirl.build(:user, attr => nil)).to_not be_valid
       end
@@ -36,7 +36,7 @@ RSpec.describe User, :type => :model do
 
   describe "#full_name" do
     it "returns the full name of a user" do
-      expect(user.full_name).to eq("#{user.firstname} #{user.lastname}")
+      expect(user.full_name).to eq("#{user.first_name} #{user.last_name}")
     end
   end
 

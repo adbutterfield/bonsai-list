@@ -18,17 +18,17 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :firstname, :lastname, presence: true
+  validates :first_name, :last_name, presence: true
   validates :email, uniqueness: { case_sensitive: false }
 
   before_save :set_timezone, if: :timezone_is_blank?
 
   def name_and_id
-    "#{self.firstname}#{self.lastname}#{self.id}"
+    "#{self.first_name}#{self.last_name}#{self.id}"
   end
 
   def full_name
-    "#{self.firstname} #{self.lastname}"
+    "#{self.first_name} #{self.last_name}"
   end
 
   def location
