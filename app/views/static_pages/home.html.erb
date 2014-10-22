@@ -17,7 +17,7 @@
 </div>
 <div class="row">
   <div class="small-5 columns">
-    <label><p class="get-started">Get started!</p></label>
+    <%= link_to "<label><p class='get-started'>Get started!</p></label>".html_safe, new_user_registration_path %>
   </div>
   <div class="small-7 columns">
     <%= link_to "Sign Up!", new_user_registration_path, :class => "button radius" %>
