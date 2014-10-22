@@ -27,6 +27,8 @@ en:
         postcode: "Postal code"
       listing:
         listing_images: ""
+      user:
+        email: "Email address"
     errors:
       models:
         listing:
