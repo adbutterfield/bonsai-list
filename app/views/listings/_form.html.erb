@@ -1,27 +1,14 @@
 <%= form_for(@listing, multipart: true) do |f| %>
-<div class="row">
-  <% if @listing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
 
-      <ul>
-      <% @listing.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-</div>
 <div class="row">
   <div class="small-12 medium-7 large-6 columns">
-
-    <%= f.label :headline %>
+    <%= f.label :headline, "Headline #{validation_error_message(@listing, :headline)}".html_safe %><%=  %>
     <%= f.text_field :headline %>
 
-    <%= f.label :description %>
+    <%= f.label :description, "Description #{validation_error_message(@listing, :description)}".html_safe %>
     <%= f.text_area :description %>
     <hr />
-    <%= f.label :sale_type, :class => 'inline-label' %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Select 'Sell now' if you want to give your listing a firm price.<br /><br />If you select 'Take offers', potential buyers will give you offers."><i class="fi-info"></i></span><br />
+    <%= f.label :sale_type, "Sale Type #{validation_error_message(@listing, :sale_type)}".html_safe, :class => 'inline-label' %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Select 'Sell now' if you want to give your listing a firm price.<br /><br />If you select 'Take offers', potential buyers will give you offers."><i class="fi-info"></i></span><br />
     <div class="small-6 large-4 columns">
       <%= f.radio_button(:sale_type, "sale") %>
       <%= f.label "Sell now" %>
@@ -30,7 +17,7 @@
       <%= f.radio_button(:sale_type, "offer") %>
       <%= f.label "Take offers" %><br />
     </div>
-    <%= f.label :price, :class => "inline-label" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Enter a price, even if you selected 'Take offers'.<br /><br />We won't display the price for listings you're taking offers on, but we'll use it to help search and sort listings."><i class="fi-info"></i></span>
+    <%= f.label :price, "Price #{validation_error_message(@listing, :price)}".html_safe, :class => "inline-label" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Enter a price, even if you selected 'Take offers'.<br /><br />We won't display the price for listings you're taking offers on, but we'll use it to help search and sort listings."><i class="fi-info"></i></span>
     <%= f.text_field :price %>
     <hr />
     <%= f.label "Category" %>
@@ -50,7 +37,7 @@
       <%= f.label :publish, "Yes" %>
     </div><br />
     <hr />
-    <%= label_tag "Photos", nil, :class => "inline-label" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Add at least one picture for your listing.<br /><br />You can add up to four pictures."><i class="fi-info"></i></span>
+    <%= f.label :listing_images, "Photos #{validation_error_message(@listing, :listing_images)}".html_safe, :class => "inline-label" %><span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="Add at least one picture for your listing.<br /><br />You can add up to four pictures."><i class="fi-info"></i></span>
     <%= f.fields_for :listing_images do |i| %>
       <% if i.object.new_record? %>
         <div class="small-12 columns">
