@@ -1,7 +1,7 @@
 class ListingsController < ApplicationController
   before_action :authenticate_user!, except: :show
   before_action :verify_user!, only: [:edit, :update, :destroy, :remove]
-  before_action :set_listing, only: [:show, :edit, :update, :destroy, :remove]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy, :remove, :confirm_remove]
   before_action :set_categories, only: [:index, :new, :edit, :create, :update]
   before_action :set_listings, only: [:index, :ajax_sort]
 
@@ -59,6 +59,9 @@ class ListingsController < ApplicationController
         format.html { render :edit }
       end
     end
+  end
+
+  def confirm_remove
   end
 
   def destroy
