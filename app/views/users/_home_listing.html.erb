@@ -18,7 +18,7 @@
     <div class="small-4 columns listing-list-panel">
       <p class="centered-text"><%= link_to 'Edit', edit_listing_path(listing), :class => "button bon-button tiny home-listing-button" %></p>
       <hr class="nav-hr" />
-      <p class="centered-text"><%= link_to 'Remove', remove_listing_path(listing), :class => " button bon-button home-listing-button tiny remove-button", method: :patch, data: { confirm: 'Are you sure you want to remove this listing?' } %></p>
+      <p class="centered-text"><%= link_to 'Remove', confirm_remove_path(listing), :class => " button bon-button home-listing-button tiny remove-button" %></p>
     </div>
   </div>
   <hr />
