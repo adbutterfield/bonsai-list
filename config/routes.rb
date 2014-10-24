@@ -27,8 +27,9 @@ Rails.application.routes.draw do
 
   resources :listings, except: [:index]
 
-  patch 'listings/remove/:id' => 'listings#remove', as: 'remove_listing'
-  put   'listings/remove/:id' => 'listings#remove'
+  get   'listings/:id/remove' => 'listings#confirm_remove', as: 'confirm_remove'
+  patch 'listings/:id/remove' => 'listings#remove',         as: 'remove_listing'
+  put   'listings/:id/remove' => 'listings#remove'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
