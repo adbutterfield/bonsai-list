@@ -27,6 +27,14 @@ module ApplicationHelper
     ((controller_name == "listings"  && action_name == "index") || controller_name == "marketplace") && params[:category_id] == nil
   end
 
+  def title_link
+    if user_signed_in?
+      return user_root_path
+    else
+      return root_path
+    end
+  end
+
   def page_title(name)
     content_for(:title) { name + " | bonsai list"}
   end
