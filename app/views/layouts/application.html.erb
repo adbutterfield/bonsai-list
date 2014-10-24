@@ -3,16 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta name="keywords" content="Bonsai, Bonsai for sale, Bonsai Trees, Bonsai Pots, Bonsai Tools, Bonsai Stands">
+    <meta name="description" content="Buy and sell bonsai trees, pots, stands, containers, and tools.">
     <title><%= content_for?(:title) ? yield(:title) : "bonsai list" %></title>
-
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
   </head>
-
   <body>
-
     <%= render partial: "topbar" %>
     <%= render partial: "hero" %>
     <div class="row">
@@ -22,10 +20,8 @@
         </div>
       <% end %>
     </div>
-
     <%= yield %>
     <%= render partial: "footer" %>
-
     <%= javascript_include_tag "application" %>
   </body>
 </html>
