@@ -31,6 +31,10 @@ Rails.application.routes.draw do
   patch 'listings/:id/remove' => 'listings#remove',         as: 'remove_listing'
   put   'listings/:id/remove' => 'listings#remove'
 
+  post 'donations/:listing_id'        => 'donations#create', as: 'donations'
+  post 'donations/:listing_id/thanks' => 'donations#show',   as: 'donation'
+  post 'hook' => 'donations#hook'
+
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
   get 'about'   => 'static_pages#about'
