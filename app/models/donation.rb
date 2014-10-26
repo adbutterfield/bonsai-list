@@ -12,7 +12,7 @@ class Donation < ActiveRecord::Base
         amount: self.amount,
         item_name: "Bonsai List Donation",
         quantity: '1',
-        notify_url: "#{Rails.application.secrets.app_host}/hook"
+        notify_url: "#{Rails.application.secrets.app_host}/donation_notifications"
     }
     "#{Rails.application.secrets.paypal_host}/cgi-bin/webscr?" + values.to_query
   end
