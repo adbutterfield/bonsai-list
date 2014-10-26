@@ -1,8 +1,6 @@
 <div class="row">
   <div class="small-12 columns">
 
-    <p><%= flash[:notice] %></p>
-
     <p><%= link_to 'Remove', remove_listing_path(@listing), :class => " button bon-button tiny", method: :patch, data: { confirm: 'Are you sure you want to remove this listing?' } %></p>
     <%= link_to :back %>
   </div>
