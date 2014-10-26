@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   post 'donations/:listing_id'        => 'donations#create', as: 'donations'
   post 'donations/:listing_id/thanks' => 'donations#show',   as: 'donation'
-  post 'hook' => 'donations#hook'
+  post 'donation_notifications'       => 'donation_notifications#create'
 
   devise_for :users, controllers: { registrations: 'users/registrations' }
 
