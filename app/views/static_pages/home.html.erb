@@ -16,10 +16,17 @@
   </div>
 </div>
 <div class="row">
-  <div class="small-5 columns">
-    <%= link_to "<label><p class='get-started'>Get started!</p></label>".html_safe, new_user_registration_path %>
+  <div class="small-12 columns centered-text">
+    <h3>Get Started!</h3>
   </div>
-  <div class="small-7 columns">
-    <%= link_to "Sign Up!", new_user_registration_path, :class => "button radius" %>
+</div>
+<div class="row">
+  <div class="small-12 medium-5 medium-push-1 large-3 large-push-3 columns centered-text">
+    <p>Check out the Marketplace</p>
+    <%= link_to "<i class='fi-shopping-cart'></i> Marketplace".html_safe, marketplace_path, :class => "button radius expand" %>
+  </div>
+  <div class="small-12 medium-5 medium-pull-1 large-3 columns large-pull-3 centered-text">
+    <p>Register for a new account</p>
+    <%= link_to "<i class='fi-checkbox'></i> Sign up!".html_safe, new_user_registration_path, :class => "button radius expand" %>
   </div>
 </div>
