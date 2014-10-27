@@ -1,7 +1,32 @@
+<% page_title "Thanks!" %>
 <div class="row">
-  <div class="small-12 columns">
-
-    <p><%= link_to 'Remove', remove_listing_path(@listing), :class => " button bon-button tiny", method: :patch, data: { confirm: 'Are you sure you want to remove this listing?' } %></p>
-    <%= link_to :back %>
+  <div class="small-12 medium-6 columns">
+    <h2>Thanks!</h2>
+    <p>Every donation counts. Your support ensures that bonsai list will stay alive!</p>
+    <div class="row">
+      <div class="small-12 columns">
+        <p class="remove-listing-margin">Remove this listing?</p>
+      </div>
+      <div class="small-12 columns">
+        <div class="small-3 medium-2 columns listing-thumb">
+          <% if @listing.pics.empty? %>
+            <%= link_to image_tag("http://placehold.it/50x50&text=[img]", :class => "th"), listing_path(@listing) %>
+          <% else %>
+            <%= link_to image_tag(@listing.thumb_image, :class => "th"), listing_path(@listing) %>
+          <% end %>
+        </div>
+        <div class="small-9 medium-10 columns left no-padding home-listing-info">
+          <div class="small-12 columns">
+            <p class="message-name">
+              <%= link_to truncate(@listing.headline, length: 30), listing_path(@listing) %>
+            </p>
+            <p>Category: <%= @listing.category.name %></p>
+          </div>
+        </div>
+      </div>
+      <div class="small-12 columns">
+        <p><%= link_to 'Remove', remove_listing_path(@listing), :class => " button bon-button small expand", method: :patch, data: { confirm: 'Are you sure you want to remove this listing?' } %></p>
+      </div>
+    </div>
   </div>
 </div>
