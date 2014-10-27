@@ -17,6 +17,11 @@
   }
 }
 
+.amount-subtitle {
+  font-size: 10px;
+  font-style: italic;
+}
+
 .preview-pic-row {
   margin-bottom: 15px;
 }
@@ -25,4 +30,8 @@ a img.listing-image {
   border-top: 1px solid #d8d8d8;
   border-right: 1px solid #d8d8d8;
   border-left: 1px solid #d8d8d8;
+}
+
+.remove-listing-margin {
+  margin-bottom: 7px;
 }
