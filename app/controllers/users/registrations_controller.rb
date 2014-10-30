@@ -6,4 +6,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     respond_with self.resource
   end
 
+  def create
+    super
+    WelcomeMailer.new_account_email(@user).deliver unless @user.invalid?
+  end
+
 end
