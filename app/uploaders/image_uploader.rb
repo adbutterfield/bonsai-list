@@ -8,7 +8,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   # storage :file
-  # storage :fog
+  storage :fog
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -19,6 +19,20 @@ class ImageUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
+
+  # def is_landscape? picture
+  #   file =  (picture.is_a? CarrierWave::Storage::Fog::File) ? picture.public_url : picture.file
+  #   image = MiniMagick::Image.open(file)
+  #   image[:width] > image[:height]
+  # end
+
+  #  def rotate_cw
+  #   manipulate! do |img|
+  #     img.rotate "90>"
+  #     img = yield(img) if block_given?
+  #     img
+  #   end
+  #  end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -38,14 +52,17 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Create different versions of your uploaded files:
   version :thumb do
     process :resize_to_fit => [70, 70]
+    # process :rotate_cw, :if => :is_landscape?
   end
 
   version :marketplace do
     process :resize_to_fill => [310, 310]
+    # process :rotate_cw, :if => :is_landscape?
   end
 
   version :main do
     process :resize_to_fit => [655, 655]
+    # process :rotate_cw, :if => :is_landscape?
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
