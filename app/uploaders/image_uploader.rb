@@ -20,19 +20,11 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  def is_landscape? new_file
-    # file =  (picture.is_a? CarrierWave::Storage::Fog::File) ? picture.public_url : picture.file
-    # image = MiniMagick::Image.open(new_file)
-    new_file[:width] > new_file[:height]
-  end
-
-   def rotate_cw
-    manipulate! do |img|
-      img.rotate "90>"
-      img = yield(img) if block_given?
-      img
+  def auto_orient
+    manipulate! do |image|
+      image.tap(&:auto_orient)
     end
-   end
+  end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
@@ -50,19 +42,18 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  process :auto_orient
+
   version :thumb do
     process :resize_to_fit => [70, 70]
-    process :rotate_cw, if: ->( uploader, args ) { uploader.model.is_landscape? }
   end
 
   version :marketplace do
     process :resize_to_fill => [310, 310]
-    process :rotate_cw, if: ->( uploader, args ) { uploader.model.is_landscape? }
   end
 
   version :main do
     process :resize_to_fit => [655, 655]
-    process :rotate_cw, if: ->( uploader, args ) { uploader.model.is_landscape? }
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
