@@ -5,9 +5,10 @@
     <h1>Editing listing</h1>
 
     <%= render 'form' %>
-
+    <!-- <hr class="no-margin" /> -->
+    <p>Remove this listing? <%= link_to 'Remove', confirm_remove_path(@listing), :class => "button radius bon-button home-listing-button tiny remove-button" %></p>
+    <!-- <hr class="nav-hr" /> -->
     <%= link_to 'Show', @listing %> |
     <%= link_to 'Back', :back %>
-
   </div>
 </div>
