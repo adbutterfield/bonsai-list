@@ -10,13 +10,14 @@
     </div>
     <div class="row">
       <%= form_tag reply_message_path do %>
-        <div class="small-10 columns">
-          <%= text_field(:reply, :body, size: 20, placeholder: "Write a message...") %>
+        <div class="small-9 columns">
+          <%= text_area(:reply, :body, size: 20, placeholder: "Write a message...") %>
         </div>
-        <div class="small-2 columns no-padding">
+        <div class="small-2 small-pull-1 columns no-padding">
           <%= submit_tag "Reply", :class => "button tiny bon-button" %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
