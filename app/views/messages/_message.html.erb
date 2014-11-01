@@ -4,15 +4,9 @@
 <div class="small-9 medium-10 columns message-block left">
   <div class="row">
     <div class="small-10 columns">
-      <% if sent_box? %>
-        <p class="message-name">
-          <%= truncate(recipient(conversation).full_name, length: 33) %>
-        </p>
-      <% else %>
-        <p class="message-name">
-          <%= truncate(conversation.messages.last.sender.full_name, length: 33) %>
-        </p>
-      <% end %>
+      <p class="message-name">
+        <%= truncate(recipient(conversation).full_name, length: 33) %>
+      </p>
     </div>
     <% if not_trash? %>
       <div class="small-1 columns">
