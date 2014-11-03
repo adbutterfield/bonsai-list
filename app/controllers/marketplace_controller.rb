@@ -1,6 +1,5 @@
 class MarketplaceController < ApplicationController
-  before_action :set_listings, only: [:ajax_sort, :show]
-  before_action :set_listings, only: :index, :unless => :no_coordinates?
+  before_action :set_listings, only: [:index, :ajax_sort, :show], :unless => :no_coordinates?
   before_action :set_categories, only: [:index, :show]
   before_action :set_category, only: [:index, :show]
 
