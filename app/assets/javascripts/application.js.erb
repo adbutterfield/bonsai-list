@@ -37,8 +37,9 @@ $(function(){
 
   function showPosition(position) {
     if (position.coords) {
+      var url = window.location.pathname + '/set_location';
       $.ajax({
-        url: 'set_location',
+        url: url,
         type: 'POST',
         dataType: 'script',
         data: { coordinates: { latitude: position.coords.latitude, longitude: position.coords.longitude } },
