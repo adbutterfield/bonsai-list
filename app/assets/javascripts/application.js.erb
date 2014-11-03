@@ -39,7 +39,7 @@ $(function(){
     if (position.coords) {
       $.ajax({
         url: 'set_location',
-        type: 'GET',
+        type: 'POST',
         dataType: 'script',
         data: { coordinates: { latitude: position.coords.latitude, longitude: position.coords.longitude } },
         error: function(){
@@ -49,7 +49,6 @@ $(function(){
           console.log("Dynamic geolocation set OK!");
           $.cookie('location', 'set');
           var url = window.location.pathname + '/marketplace_ajax_sort'
-
           $.ajax({
             url: url,
             type: 'GET',
