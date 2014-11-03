@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'home' => 'users#home', as: 'user_root'
 
-  POST '(marketplace/)set_location' => 'marketplace#set_location'
+  post '(marketplace/)set_location' => 'marketplace#set_location'
   get 'marketplace(/category/:category_id)' => 'marketplace#index', as: 'marketplace'
   get 'marketplace(/category/:category_id)/marketplace_ajax_sort' => 'marketplace#ajax_sort'
 
