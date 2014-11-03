@@ -17,16 +17,9 @@ class ApplicationController < ActionController::Base
     user_root_path
   end
 
-  def location
-    if user_signed_in?
-      @location = current_user.address
-    else
-      if Rails.env.test? || Rails.env.development?
-        @location ||= Geocoder.search("76.103.52.107").first
-      else
-        @location ||= request.location
-      end
-    end
+  def visitor_location
+    Struct.new("VisitorLocation", :latitude, :longitude)
+    Struct::VisitorLocation.new(JSON.parse(cookies[:location])['latitude'], JSON.parse(cookies[:location])['longitude'])
   end
 
   def current_user?(user)

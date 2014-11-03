@@ -26,19 +26,16 @@ class MarketplaceController < ApplicationController
           @listings = @user.filter_listings_by(params).search_by(params[:search])
         end
       else
-        if location.nil?
-          return []
+        if params[:search].blank?
+          @listings = Listing.filter_by(params, coordinates)
         else
-          if params[:search].blank?
-            @listings = Listing.filter_by(params, coordinates)
-          else
-            @listings = Listing.filter_by(params, coordinates).search_by(params[:search])
-          end
+          @listings = Listing.filter_by(params, coordinates).search_by(params[:search])
         end
       end
     end
 
     def coordinates
+      location = current_user.nil? ? visitor_location : current_user.address
       "#{location.latitude}, #{location.longitude}"
     end
 

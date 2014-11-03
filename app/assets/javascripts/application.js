@@ -2,6 +2,7 @@
 //= require jquery_ujs
 //= require foundation
 //= require sticky-kit
+//= require jquery_cookie
 //= require_tree .
 
 $(function(){
@@ -22,4 +23,21 @@ $(function(){
       });
     }
   });
+
+  if ($.cookie('location')){
+    console.log("Cookie set");
+  } else {
+    (function getLocation() {
+      if (navigator.geolocation) {
+        // $( "body" ).addClass( "opaque" );
+        navigator.geolocation.getCurrentPosition(showPosition);
+      }
+    })();
+  };
+
+  function showPosition(position) {
+    $.cookie('location', JSON.stringify({ latitude: position.coords.latitude, longitude: position.coords.longitude }) );
+    // $( "body" ).removeClass( "opaque" );
+    location.reload();
+  }
 });
