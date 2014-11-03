@@ -1,6 +1,6 @@
 class MarketplaceController < ApplicationController
   before_action :set_listings, only: [:ajax_sort, :show]
-  before_action :set_listings, only: :index, :unless => :session_nil?
+  before_action :set_listings, only: :index, :unless => :no_coordinates?
   before_action :set_categories, only: [:index, :show]
   before_action :set_category, only: [:index, :show]
 
@@ -24,8 +24,8 @@ class MarketplaceController < ApplicationController
 
   private
 
-    def session_nil?
-      session[:coordinates].nil?
+    def no_coordinates?
+      current_user.nil? and session[:coordinates].nil?
     end
 
     def set_listings
