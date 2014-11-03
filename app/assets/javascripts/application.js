@@ -29,15 +29,40 @@ $(function(){
   } else {
     (function getLocation() {
       if (navigator.geolocation) {
-        // $( "body" ).addClass( "opaque" );
         navigator.geolocation.getCurrentPosition(showPosition);
       }
     })();
   };
 
   function showPosition(position) {
-    $.cookie('location', JSON.stringify({ latitude: position.coords.latitude, longitude: position.coords.longitude }) );
-    // $( "body" ).removeClass( "opaque" );
-    location.reload();
+    if (position.coords) {
+      $.ajax({
+        url: 'set_location',
+        type: 'GET',
+        dataType: 'script',
+        data: { coordinates: { latitude: position.coords.latitude, longitude: position.coords.longitude } },
+        error: function(){
+          console.log("AJAX Error:");
+        },
+        success: function(){
+          console.log("Dynamic geolocation set OK!");
+          $.cookie('location', 'set');
+          $.ajax({
+            url: 'marketplace/marketplace_ajax_sort',
+            type: 'GET',
+            dataType: 'script',
+            data: { },
+            error: function(){
+              console.log("AJAX Error:");
+            },
+            success: function(){
+              console.log("Listings set OK!");
+            }
+          });
+        }
+      });
+    } else {
+      showPosition(position)
+    }
   }
 });

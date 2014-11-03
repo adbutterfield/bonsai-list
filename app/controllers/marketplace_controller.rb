@@ -1,9 +1,10 @@
 class MarketplaceController < ApplicationController
-  before_action :set_listings, only: [:index, :ajax_sort, :show]
+  before_action :set_listings, only: [:ajax_sort, :show]
   before_action :set_categories, only: [:index, :show]
   before_action :set_category, only: [:index, :show]
 
   def index
+    @listings ||= []
   end
 
   def ajax_sort
@@ -13,6 +14,11 @@ class MarketplaceController < ApplicationController
   end
 
   def show
+  end
+
+  def set_location
+    session[:coordinates] = params[:coordinates]
+    head :ok
   end
 
   private

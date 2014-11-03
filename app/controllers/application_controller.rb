@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
   def visitor_location
     Struct.new("VisitorLocation", :latitude, :longitude)
-    Struct::VisitorLocation.new(JSON.parse(cookies[:location])['latitude'], JSON.parse(cookies[:location])['longitude'])
+    Struct::VisitorLocation.new(session[:coordinates]["latitude"].to_f, session[:coordinates]["longitude"].to_f)
   end
 
   def current_user?(user)
