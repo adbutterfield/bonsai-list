@@ -21,49 +21,4 @@ $(function(){
       });
     }
   });
-
-  if ($.cookie('location')){
-    console.log("Cookie set");
-  } else {
-    (function getLocation() {
-      if (navigator.geolocation) {
-        $("#listings").empty().append('<%= image_tag("Pageloading.gif", :class => "centered-image") %>');
-        navigator.geolocation.getCurrentPosition(showPosition);
-      }
-    })();
-  };
-
-  function showPosition(position) {
-    if (position.coords) {
-      var url = window.location.pathname + '/set_location';
-      $.ajax({
-        url: url,
-        type: 'POST',
-        dataType: 'script',
-        data: { coordinates: { latitude: position.coords.latitude, longitude: position.coords.longitude } },
-        error: function(){
-          console.log("AJAX Error:");
-        },
-        success: function(){
-          console.log("Dynamic geolocation set OK!");
-          $.cookie('location', 'set');
-          var url = window.location.pathname + '/marketplace_ajax_sort';
-          $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'script',
-            data: { },
-            error: function(){
-              console.log("AJAX Error:");
-            },
-            success: function(){
-              console.log("Listings set OK!");
-            }
-          });
-        }
-      });
-    } else {
-      showPosition(position)
-    }
-  }
 });
