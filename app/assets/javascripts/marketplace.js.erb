@@ -29,4 +29,57 @@ $(function(){
   $('#marketplace-sort-listing, #marketplace-distance-filter').on('change', searchFliterSort);
 
   $('#marketplace-search').on('keyup', searchFliterSort);
+
+  function getLocation() {
+    console.log("getting");
+    if (navigator.geolocation) {
+      $("#listings").empty().append('<p class="centered-text">Please share your location</p><%= image_tag("Pageloading.gif", :class => "centered-image") %>');
+      navigator.geolocation.getCurrentPosition(showPosition, function() {
+        $("#listings").empty().append('<p class="centered-text">bonsai list needs to know your location, don\'t worry, we don\'t use it for anything nefarious.</p><p class="centered-text">Please enable location sharing and refresh this page.</p><p class="centered-text"><a href="https://support.google.com/chrome/answer/142065?hl=en" target="_blank">To enable location sharing on Chrome</a></p><p class="centered-text"><a href="https://www.mozilla.org/en-US/firefox/geolocation/" target="_blank">To enable location sharing on Firefox</a></p>')
+      });
+    }
+  }
+
+  function checkForLocation () {
+    if ($.cookie('location')){
+      console.log("Cookie set");
+    } else {
+      getLocation();
+    };
+  }
+
+  function showPosition(position) {
+    if (position.coords) {
+      var url = window.location.pathname + '/set_location';
+      $.ajax({
+        url: url,
+        type: 'POST',
+        dataType: 'script',
+        data: { coordinates: { latitude: position.coords.latitude, longitude: position.coords.longitude } },
+        error: function(){
+          console.log("AJAX Error:");
+        },
+        success: function(){
+          console.log("Dynamic geolocation set OK!");
+          $.cookie('location', 'set');
+          var url = window.location.pathname + '/marketplace_ajax_sort';
+          $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'script',
+            data: { },
+            error: function(){
+              console.log("AJAX Error:");
+            },
+            success: function(){
+              console.log("Listings set OK!");
+            }
+          });
+        }
+      });
+    } else {
+      showPosition(position)
+    }
+  }
+  checkForLocation();
 });
