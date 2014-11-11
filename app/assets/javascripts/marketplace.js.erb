@@ -23,7 +23,8 @@ $(function(){
        $(document).foundation('interchange', 'reflow');
        $(document).foundation('interchange', 'resize');
     });
-  }
+  };
+
   $('#marketplace-search-button').on('click', searchFliterSort);
 
   $('#marketplace-sort-listing, #marketplace-distance-filter').on('change', searchFliterSort);
@@ -35,10 +36,26 @@ $(function(){
     if (navigator.geolocation) {
       $("#listings").empty().append('<p class="centered-text">Please share your location</p><%= image_tag("Pageloading.gif", :class => "centered-image") %>');
       navigator.geolocation.getCurrentPosition(showPosition, function() {
-        $("#listings").empty().append('<p class="centered-text">bonsai list needs to know your location, don\'t worry, we don\'t use it for anything nefarious.</p><p class="centered-text">Please enable location sharing and refresh this page.</p><p class="centered-text"><a href="https://support.google.com/chrome/answer/142065?hl=en" target="_blank">To enable location sharing on Chrome</a></p><p class="centered-text"><a href="https://www.mozilla.org/en-US/firefox/geolocation/" target="_blank">To enable location sharing on Firefox</a></p>')
+        $("#listings").empty().append('<div class="row">' +
+            '<div class="small-6 large-4 columns">' +
+              '<form id="zipform">' +
+                '<label class="inline-label">Please enter your zip code:</label>' +
+                '<span data-tooltip aria-haspopup="true" class="has-tip tip-right" title="bonsai list needs to know your location, don\'t worry, we don\'t use it for anything nefarious."><i class="fi-info"></i></span>' +
+                '<div class="row collapse">' +
+                  '<div class="small-8 columns">' +
+                    '<input type="text" id="zipcode" name="zipcode">' +
+                  '</div>' +
+                  '<div class="small-4 columns">' +
+                    '<input type="submit" class="button tiny postfix">' +
+                  '</div>' +
+                '</div>' +
+              '</form>' +
+            '</div>' +
+          '</div>');
+        $(document).foundation('tooltip', 'reflow');
       });
     }
-  }
+  };
 
   function checkForLocation () {
     if ($.cookie('location')){
@@ -46,7 +63,7 @@ $(function(){
     } else {
       getLocation();
     };
-  }
+  };
 
   function showPosition(position) {
     if (position.coords) {
@@ -78,8 +95,29 @@ $(function(){
         }
       });
     } else {
-      showPosition(position)
+      showPosition(position);
     }
-  }
+  };
+
+  function setCoordinates () {
+    var zipcode = $('#zipcode').val();
+    var url = window.location.pathname + '/set_coordinates';
+    $.ajax({
+      url: url,
+      type: 'POST',
+      dataType: 'script',
+      data: { zipcode: zipcode },
+      error: function() { console.log("LAME") },
+      success: function() {
+        $.cookie('location', 'set');
+      }
+    });
+  };
+
+  $(document).on('submit', '#zipform', function(e){
+    e.preventDefault();
+    setCoordinates();
+  });
+
   checkForLocation();
 });

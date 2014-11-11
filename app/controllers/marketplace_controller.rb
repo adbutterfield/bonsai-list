@@ -1,5 +1,6 @@
 class MarketplaceController < ApplicationController
   before_action :set_listings, only: [:index, :ajax_sort, :show], :unless => :no_coordinates?
+  # after_action :set_listings, only: :set_coordinates
   before_action :set_categories, only: [:index, :show]
   before_action :set_category, only: [:index, :show]
 
@@ -19,6 +20,19 @@ class MarketplaceController < ApplicationController
   def set_location
     session[:coordinates] = params[:coordinates]
     head :ok
+  end
+
+  def set_coordinates
+    # if Rails.env.development?
+    #   session[:coordinates] = [37.3189149, -121.9416226]
+    # else
+    coordinates = Geocoder.coordinates(params[:zipcode])
+    session[:coordinates] = {"latitude" => coordinates[0], "longitude" => coordinates[1]}
+    # end
+    # location = request.location
+    # coordinates = [location.latitude, location.longitude]
+    # Geocoder.coordinates(params[:zipcode])
+    redirect_to ajax_sort_path
   end
 
   private
