@@ -4,7 +4,7 @@ $(function(){
   });
 
   function searchFliterSort (){
-    var url = window.location.pathname + '/marketplace_ajax_sort'
+    var url = '/marketplace_ajax_sort'
     var search = $('.marketplace-search').val();
     var category = $('#listings').data('categoryId');
     var sortValue = $('#marketplace-sort-listing option:selected').val();
@@ -40,7 +40,7 @@ $(function(){
 
   function checkForLocation () {
     if ($.cookie('location')){
-      console.log("Cookie set");
+      return true
     } else {
       getLocation();
     };
@@ -48,30 +48,19 @@ $(function(){
 
   function showPosition(position) {
     if (position.coords) {
-      var url = window.location.pathname + '/set_location';
+      var url = '/set_location';
       $.ajax({
         url: url,
         type: 'POST',
         dataType: 'script',
         data: { coordinates: { latitude: position.coords.latitude, longitude: position.coords.longitude } },
-        error: function(){
-          console.log("AJAX Error:");
-        },
         success: function(){
-          console.log("Dynamic geolocation set OK!");
           $.cookie('location', 'set');
-          var url = window.location.pathname + '/marketplace_ajax_sort';
+          var url = '/marketplace_ajax_sort';
           $.ajax({
             url: url,
             type: 'GET',
-            dataType: 'script',
-            data: { },
-            error: function(){
-              console.log("AJAX Error:");
-            },
-            success: function(){
-              console.log("Listings set OK!");
-            }
+            dataType: 'script'
           });
         }
       });
@@ -102,13 +91,12 @@ $(function(){
 
   function setCoordinates () {
     var zipcode = $('#zipcode').val();
-    var url = window.location.pathname + '/set_coordinates';
+    var url = window.location.pathname + 'marketplace/set_coordinates';
     $.ajax({
       url: url,
       type: 'POST',
       dataType: 'script',
       data: { zipcode: zipcode },
-      error: function() { console.log("LAME") },
       success: function() {
         $.cookie('location', 'set');
       }

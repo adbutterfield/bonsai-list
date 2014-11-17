@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   get 'home' => 'users#home', as: 'user_root'
 
-  post '(marketplace(/category/:category_id)/)set_location' => 'marketplace#set_location'
-  get 'marketplace(/category/:category_id)' => 'marketplace#index', as: 'marketplace'
-  get 'marketplace(/category/:category_id)/marketplace_ajax_sort' => 'marketplace#ajax_sort', as: 'ajax_sort'
+  post '(category/:category_id)/set_location' => 'marketplace#set_location'
+  get '(category/:category_id)/' => 'marketplace#index', as: 'marketplace'
+  get '(category/:category_id)/marketplace_ajax_sort' => 'marketplace#ajax_sort', as: 'ajax_sort'
   post 'marketplace/set_coordinates' => 'marketplace#set_coordinates', as: 'set_coords'
 
   get 'marketplace/:id(/category/:category_id)/' => 'marketplace#show', as: 'user_marketplace'
@@ -37,14 +37,14 @@ Rails.application.routes.draw do
   post 'donations/:listing_id/thanks' => 'donations#show',   as: 'donation'
   post 'donation_notifications'       => 'donation_notifications#create'
 
-  devise_for :users, controllers: { registrations: 'users/registrations' }
+  devise_for :users, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
 
   get 'about'   => 'static_pages#about'
   get 'contact' => 'static_pages#contact'
   get 'faq'     => 'static_pages#faq'
   get 'terms'   => 'static_pages#terms'
 
-  root 'static_pages#home'
+  root 'marketplace#index'
 
   scope path: '/temp', controller: :temp_views do
     get 'photos'           => :photos
