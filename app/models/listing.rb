@@ -114,7 +114,7 @@ class Listing < ActiveRecord::Base
 
   def self.filter_by(params, coordinates)
     params[:sort] ||= "created_at desc"
-    params[:distance_filter] ||= "5000"
+    params[:distance_filter] ||= "10000"
 
     if params[:category_id].present?
       category = Category.friendly.find(params[:category_id])
